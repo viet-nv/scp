@@ -9,30 +9,37 @@ import { extendTheme, NativeBaseProvider } from 'native-base'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 Ionicons.loadFont()
 
-const App = () => {
-  const theme = extendTheme({
-    colors: {
-      // Add new color
-      primary: {
-        50: '#dff6f6',
-        100: '#b0e8e7',
-        200: '#7ed9d9',
-        300: '#4bc9cc',
-        400: '#25bec3',
-        500: '#00b3bc',
-        600: '#00a3ab',
-        700: '#008e92',
-        800: '#037a7c',
-        900: '#065753',
-      },
-      cyan: {
-        500: '#1C2B4D',
-      },
+const customTheme = extendTheme({
+  colors: {
+    primary: {
+      50: '#dcfdff',
+      100: '#b7f3f5',
+      200: '#8fe9ec',
+      300: '#66dfe3',
+      400: '#3ed5da',
+      500: '#25bcc1',
+      600: '#149296',
+      700: '#04696c',
+      800: '#004041',
+      900: '#001717',
     },
-  })
+    border: '#E7E7E9',
+    subText: '#6E6D7A',
+    text: '#333333',
+    navBackground: '#1c2b4d',
+    while: '#ffffff',
+  },
+})
 
+type CustomThemeType = typeof customTheme
+
+declare module 'native-base' {
+  interface ICustomTheme extends CustomThemeType {}
+}
+
+const App = () => {
   return (
-    <NativeBaseProvider theme={theme}>
+    <NativeBaseProvider theme={customTheme}>
       <Provider store={store}>
         {/**
          * PersistGate delays the rendering of the app's UI until the persisted state has been retrieved

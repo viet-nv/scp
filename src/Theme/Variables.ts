@@ -20,8 +20,12 @@ export const Colors: ThemeColors = {
   transparent: 'rgba(0,0,0,0)',
   inputBackground: '#FFFFFF',
   white: '#ffffff',
-  text: '#212529',
-  primary: '#E14032',
+  primary: '#25bec3',
+  border: '#E7E7E9',
+  subText: '#6E6D7A',
+  text: '#333333',
+  navBackground: '#1c2b4d',
+
   success: '#28a745',
   error: '#dc3545',
 }

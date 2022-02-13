@@ -16,6 +16,8 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { api } from '@/Services/api'
 import * as modules from '@/Services/modules'
 import theme from './Theme'
+import authReducer from './auth'
+import { authApi } from '@/Services/auth'
 
 const reducers = combineReducers({
   theme,
@@ -26,12 +28,14 @@ const reducers = combineReducers({
     }),
     {},
   ),
+  [authApi.reducerPath]: authApi.reducer,
+  auth: authReducer,
 })
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['theme'],
+  whitelist: ['theme', 'auth'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -43,7 +47,10 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(api.middleware as Middleware)
+      thunk: true,
+    })
+      .concat(api.middleware as Middleware)
+      .concat(authApi.middleware as Middleware)
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default
@@ -59,3 +66,6 @@ const persistor = persistStore(store)
 setupListeners(store.dispatch)
 
 export { store, persistor }
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

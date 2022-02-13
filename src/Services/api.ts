@@ -21,6 +21,7 @@ const baseQueryWithInterceptor: BaseQueryFn<
 }
 
 export const api = createApi({
+  reducerPath: 'api',
   baseQuery: baseQueryWithInterceptor,
   endpoints: () => ({}),
 })

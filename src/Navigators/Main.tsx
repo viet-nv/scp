@@ -1,31 +1,30 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ExampleContainer } from '@/Containers'
-import { useTheme } from 'native-base'
-import { Platform } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
+import { useTheme } from '@/Hooks'
+import { Platform } from 'react-native'
 
 const Tab = createBottomTabNavigator()
 
 // @refresh reset
 const MainNavigator = () => {
-  const { colors } = useTheme()
+  const { Colors } = useTheme()
   const { t } = useTranslation()
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: colors.primary['500'],
-        tabBarInactiveTintColor: colors.gray['500'],
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.subText,
         tabBarStyle: {
-          backgroundColor: 'white',
-          // borderTopColor: colors.gray['500'],
-          // borderTopWidth: 0.5,
-          // paddingTop: 4,
-          // ...(Platform.OS === 'android' && {
-          //   paddingBottom: 4,
-          // }),
+          backgroundColor: Colors.white,
+          borderTopColor: Colors.border,
+          borderTopWidth: 0.5,
+          ...(Platform.OS === 'android' && {
+            paddingBottom: 2,
+          }),
         },
         tabBarLabelStyle: { fontSize: 12 },
         tabBarHideOnKeyboard: true,
@@ -46,7 +45,7 @@ const MainNavigator = () => {
             <Ionicons
               name={iconName}
               size={size}
-              color={focused ? colors.primary['500'] : colors.gray['500']}
+              color={focused ? Colors.primary : Colors.subText}
             />
           )
         },
