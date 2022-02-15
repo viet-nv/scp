@@ -43,5 +43,7 @@ export default {
     enterpriseList: 'Danh sách doanh nghiệp',
     filter: 'Bộ lọc',
     noSchedule: 'Không có lịch gặp khách hàng trong tuần',
+    time: 'Thời gian',
+    client: 'Khách hàng',
   },
 }

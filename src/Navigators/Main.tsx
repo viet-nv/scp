@@ -5,11 +5,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
 import { Platform } from 'react-native'
+import { ClientScreen } from '@/Containers/Clients'
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack'
+import { EnterpriseScreen } from '@/Containers/Clients/Enterprise'
 
 const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
 
-// @refresh reset
-const MainNavigator = () => {
+const TabNavigator = () => {
   const { Colors } = useTheme()
   const { t } = useTranslation()
   return (
@@ -22,6 +28,7 @@ const MainNavigator = () => {
           backgroundColor: Colors.white,
           borderTopColor: Colors.border,
           borderTopWidth: 0.5,
+          paddingTop: 2,
           ...(Platform.OS === 'android' && {
             paddingBottom: 2,
           }),
@@ -64,7 +71,7 @@ const MainNavigator = () => {
       />
       <Tab.Screen
         name="Clients"
-        component={ExampleContainer}
+        component={ClientScreen}
         options={{ title: t`clientScreen.title` }}
       />
       <Tab.Screen
@@ -73,6 +80,22 @@ const MainNavigator = () => {
         options={{ title: 'Menu' }}
       />
     </Tab.Navigator>
+  )
+}
+
+// @refresh reset
+const MainNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+      initialRouteName="Main"
+    >
+      <Stack.Screen name="Main" component={TabNavigator} />
+      <Stack.Screen name="Enterprise" component={EnterpriseScreen} />
+    </Stack.Navigator>
   )
 }
 

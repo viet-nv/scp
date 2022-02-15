@@ -13,11 +13,13 @@ import {
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
-import { api } from '@/Services/api'
+import { api, pcApi } from '@/Services/api'
 import * as modules from '@/Services/modules'
 import theme from './Theme'
 import authReducer from './auth'
+import allEnterprisesReducer from './enterprises/all'
 import { authApi } from '@/Services/auth'
+import { enterpriseApi } from '@/Services/enterprise'
 
 const reducers = combineReducers({
   theme,
@@ -29,7 +31,9 @@ const reducers = combineReducers({
     {},
   ),
   [authApi.reducerPath]: authApi.reducer,
+  [enterpriseApi.reducerPath]: enterpriseApi.reducer,
   auth: authReducer,
+  allEnterprises: allEnterprisesReducer,
 })
 
 const persistConfig = {
@@ -51,6 +55,7 @@ const store = configureStore({
     })
       .concat(api.middleware as Middleware)
       .concat(authApi.middleware as Middleware)
+      .concat(pcApi.middleware as Middleware)
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default

@@ -43,5 +43,7 @@ export default {
     enterpriseList: 'Enterprise List',
     filter: 'Filter',
     noSchedule: 'No schedule this week',
+    time: 'Time',
+    client: 'Client',
   },
 }

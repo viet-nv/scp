@@ -28,6 +28,7 @@ export const Colors: ThemeColors = {
 
   success: '#28a745',
   error: '#dc3545',
+  warning: '#FBA928',
 }
 
 export const NavigationColors: Partial<ThemeNavigationColors> = {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
@@ -41,9 +40,8 @@ const ApplicationNavigator = () => {
           <AuthStack />
         ) : (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Startup" component={StartupContainer} />
             <Stack.Screen
-              name="Main"
+              name="App"
               component={MainNavigator}
               options={{
                 animationEnabled: false,

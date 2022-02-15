@@ -16,6 +16,9 @@ import { useLogoutMutation } from '@/Services/auth'
 import { useAppDispatch } from '@/Store/hooks'
 import { Screen } from '@/Components/Screen/screen'
 import { logout } from '@/Store/auth'
+import { useNavigation } from '@react-navigation/native'
+import { RootStackParamList } from '@/Navigators/utils'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const ExampleContainer = () => {
   const { t, i18n } = useTranslation()
@@ -37,6 +40,10 @@ const ExampleContainer = () => {
   }
 
   const [logoutServer] = useLogoutMutation()
+
+  const navigation = useNavigation<
+    StackNavigationProp<RootStackParamList, 'Home'>
+  >()
 
   return (
     <Screen preset="scroll" statusBackgroundColor={Colors.navBackground}>
@@ -125,6 +132,8 @@ const ExampleContainer = () => {
         >
           Logout
         </Button>
+
+        <Button onPress={() => navigation.navigate('Clients')}>navigate</Button>
       </ScrollView>
     </Screen>
   )
