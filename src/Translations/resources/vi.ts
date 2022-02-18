@@ -45,5 +45,11 @@ export default {
     noSchedule: 'Không có lịch gặp khách hàng trong tuần',
     time: 'Thời gian',
     client: 'Khách hàng',
+    enterpriseName: 'Tên doanh nghiệp',
+    enterpriseStatus: 'Trạng thái doanh nghiệp',
+    apply: 'Áp dụng',
+    clearFilter: 'Xóa bộ lọc',
+    assignedAccount: 'Chuyên viên phụ trách',
+    noEnterpriseFound: 'Không tìm thấy doanh nghiệp nào',
   },
 }

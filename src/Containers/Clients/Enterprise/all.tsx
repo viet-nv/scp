@@ -2,23 +2,16 @@ import { Colors } from '@/Theme/Variables'
 import dayjs from 'dayjs'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  ActivityIndicator,
-  ScrollView,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native'
+import { ScrollView, View, ViewStyle } from 'react-native'
 import { CalendarProvider, ExpandableCalendar } from 'react-native-calendars'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Actionsheet, Box, Flex, Text, useDisclose } from 'native-base'
-import Tag from '@/Components/Tag'
 import {
   useGetReportSummaryQuery,
   useLazyGetEnterpriseQuery,
 } from '@/Services/enterprise'
 import { useAllEnterPrises, useAppDispatch } from '@/Store/hooks'
 import { appendData, reset } from '@/Store/enterprises/all'
+import EnterpriseList from './components/EnterpriseList'
 
 const SUMMARY: ViewStyle = {
   backgroundColor: Colors.primary,
@@ -71,45 +64,6 @@ const SummaryItem = ({
   )
 }
 
-const getStatusText = (key: string): string => {
-  switch (key) {
-    case 'PERSUADING':
-      return 'enterpriseScreen.persuading'
-    case 'AGREED_TO_MEET':
-      return 'enterpriseScreen.agreedToMeet'
-    case 'AGREED_TO_JOIN':
-      return 'enterpriseScreen.agreedToJoin'
-    case 'ASSESSMENT':
-      return 'enterpriseScreen.inAssessment'
-    case 'DOCUMENT_REVIEWING':
-      return 'enterpriseScreen.inProcessing'
-    case 'REJECTED':
-      return 'enterpriseScreen.rejected'
-
-    default:
-      return ''
-  }
-}
-
-const getStatusColor = (key: string): string => {
-  switch (key) {
-    case 'PERSUADING':
-      return Colors.warning
-    case 'AGREED_TO_MEET':
-      return Colors.primary
-    case 'AGREED_TO_JOIN':
-      return Colors.success
-    case 'IN_ASSESSMENT':
-      return Colors.warning
-    case 'IN_PROCESSING':
-      return Colors.warning
-    case 'REJECTED':
-      return Colors.error
-
-    default:
-      return ''
-  }
-}
 const isCloseToBottom = ({
   layoutMeasurement,
   contentOffset,
@@ -206,6 +160,18 @@ export const AllEnterprise = () => {
 
   const { isOpen, onOpen, onClose } = useDisclose()
 
+  const [filters, setFilters] = useState<{
+    name: string
+    tax_code: string
+    senior_fullname: string
+    status: string[]
+  }>({
+    name: '',
+    tax_code: '',
+    senior_fullname: '',
+    status: [],
+  })
+
   return (
     <>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -266,6 +232,10 @@ export const AllEnterprise = () => {
               await getEnterprises({
                 page: allEnterprises.page + 1,
                 size: 10,
+                name: filters.name || undefined,
+                status: filters.status.join(',') || undefined,
+                senior_fullname: filters.senior_fullname || undefined,
+                tax_code: filters.tax_code || undefined,
               }).then(res => {
                 dispatch(
                   appendData({
@@ -409,120 +379,11 @@ export const AllEnterprise = () => {
             </View>
           </View>
 
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 16,
-            }}
-          >
-            <Text style={{ fontSize: 16, fontWeight: '500' }}>
-              {t`enterpriseScreen.enterpriseList`}
-            </Text>
-
-            <TouchableOpacity
-              style={{ flexDirection: 'row', alignItems: 'flex-end' }}
-            >
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: '500',
-                  marginRight: 6,
-                }}
-              >
-                {' '}
-                {t`enterpriseScreen.filter`}
-              </Text>
-              <Ionicons name="filter" size={16} />
-            </TouchableOpacity>
-          </View>
-
-          <View
-            style={{
-              marginTop: 12,
-              paddingBottom: 72,
-            }}
-          >
-            {allEnterprises.data.map((item: any) => (
-              <TouchableOpacity
-                key={item.id}
-                style={{
-                  borderBottomWidth: 1,
-                  borderBottomColor: Colors.border,
-                  paddingVertical: 12,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <Text style={{ fontSize: 14, fontWeight: '500' }}>
-                    {item.name}
-                  </Text>
-                  <Tag
-                    text={t(getStatusText(item.status))}
-                    backgroundColor={getStatusColor(item.status)}
-                    textColor={Colors.white}
-                  />
-                </View>
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: 4,
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 12, color: Colors.subText }}>
-                      {' '}
-                      {t`enterpriseScreen.tax` + ':'}
-                    </Text>
-                    <Text
-                      style={{
-                        marginLeft: 4,
-                        fontSize: 12,
-                        fontWeight: '500',
-                      }}
-                    >
-                      {item.tax_code}
-                    </Text>
-                  </View>
-                </View>
-
-                {item.senior_user && (
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      marginTop: 4,
-                    }}
-                  >
-                    <Text style={{ fontSize: 12, color: Colors.subText }}>
-                      {' '}
-                      {t`enterpriseScreen.seniorName` + ':'}
-                    </Text>
-                    <Text
-                      style={{
-                        marginLeft: 4,
-                        fontSize: 12,
-                        fontWeight: '500',
-                      }}
-                    >
-                      {/* @ts-ignore */}
-                      {item.senior_user?.fullname}
-                    </Text>
-                  </View>
-                )}
-              </TouchableOpacity>
-            ))}
-            {loadingMore && (
-              <ActivityIndicator size="small" style={{ marginTop: 24 }} />
-            )}
-          </View>
+          <EnterpriseList
+            loadingMore={loadingMore}
+            filters={filters}
+            setFilters={setFilters}
+          />
         </View>
       </ScrollView>
     </>

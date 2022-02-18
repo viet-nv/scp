@@ -45,5 +45,11 @@ export default {
     noSchedule: 'No schedule this week',
     time: 'Time',
     client: 'Client',
+    enterpriseName: 'Enterprise name',
+    enterpriseStatus: 'Enterprise status',
+    apply: 'Apply',
+    clearFilter: 'Clear filter',
+    assignedAccount: 'Assigned Account',
+    noEnterpriseFound: 'No Enterprise found',
   },
 }
