@@ -50,6 +50,6 @@ export default {
     apply: 'Áp dụng',
     clearFilter: 'Xóa bộ lọc',
     assignedAccount: 'Chuyên viên phụ trách',
-    noEnterpriseFound: 'Không tìm thấy doanh nghiệp nào',
+    noEnterpriseFound: 'Không tìm thấy doanh nghiệp',
   },
 }

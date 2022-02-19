@@ -13,19 +13,17 @@ import {
   TabBarIndicatorProps,
   Route,
 } from 'react-native-tab-view'
-import { Text } from 'native-base'
+import { Text, Fab, Icon } from 'native-base'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation } from '@react-navigation/native'
 import AllEnterprise from './all'
-import { useAllEnterPrises } from '@/Store/hooks'
+import { useAllEnterPrises, useOnboardedEnterprises } from '@/Store/hooks'
+import OnboardedEnterprise from './onboarded'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const renderScene = SceneMap({
   first: AllEnterprise,
-  second: () => (
-    <View>
-      <Text>bbbb</Text>
-    </View>
-  ),
+  second: OnboardedEnterprise,
 })
 
 const HEADER: ViewStyle = {
@@ -46,6 +44,7 @@ export const EnterpriseScreen = () => {
   const navigation = useNavigation()
 
   const { total_record: totalEnterprises } = useAllEnterPrises()
+  const { total_record: totalOnboardedEnterprises } = useOnboardedEnterprises()
 
   const [index, setIndex] = React.useState(0)
   const [routes] = React.useState([
@@ -83,7 +82,9 @@ export const EnterpriseScreen = () => {
         <Text
           style={{ color: Colors.navBackground, fontSize: 10, lineHeight: 16 }}
         >
-          {labelProps.route.key === 'first' ? totalEnterprises : 13}
+          {labelProps.route.key === 'first'
+            ? totalEnterprises
+            : totalOnboardedEnterprises}
         </Text>
       </View>
     </View>
@@ -102,6 +103,13 @@ export const EnterpriseScreen = () => {
         titleStyle={{ color: Colors.white }}
         leftIcon="arrow-back-outline"
         onLeftPress={() => navigation.goBack()}
+      />
+
+      <Fab
+        renderInPortal={false}
+        shadow={2}
+        size="sm"
+        icon={<Icon as={Ionicons} size="sm" name="add" color="white" />}
       />
 
       <TabView

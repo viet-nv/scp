@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ScrollView, View, ViewStyle } from 'react-native'
-import { CalendarProvider, ExpandableCalendar } from 'react-native-calendars'
+import CalendarStrip from 'react-native-calendar-strip'
 import { Actionsheet, Box, Flex, Text, useDisclose } from 'native-base'
 import {
   useGetReportSummaryQuery,
@@ -127,8 +127,8 @@ export const AllEnterprise = () => {
           meeting_date_to: sunday.toISOString(),
           size: 100,
         }).then(res =>
-          setClientInWeek(prev => [
-            ...prev,
+          setClientInWeek([
+            ...clientsInWeek,
             {
               start: monday,
               end: sunday,
@@ -137,12 +137,12 @@ export const AllEnterprise = () => {
           ]),
         )
     },
-    [getEnterprises],
+    [getEnterprises, clientsInWeek],
   )
 
   useEffect(() => {
     getClientInWeekData()
-  }, [getClientInWeekData])
+  }, [])
 
   const clientActive = clientsInWeek.find(
     item => item.start <= date && date <= item.end,
@@ -277,39 +277,58 @@ export const AllEnterprise = () => {
             </Text>
           </View>
         </View>
-        <CalendarProvider
-          date={date.toISOString()}
-          onDateChanged={date => {
-            getClientInWeekData(date)
+        <CalendarStrip
+          calendarAnimation={{ type: 'parallel', duration: 30 }}
+          daySelectionAnimation={{
+            type: 'border',
+            duration: 200,
+            borderWidth: 1,
+            borderHighlightColor: Colors.primary,
           }}
-        >
-          <ExpandableCalendar
-            firstDay={1}
-            calendarHeight={1}
-            current={date.toISOString()}
-            theme={{
-              textMonthFontWeight: '500',
-              textSectionTitleColor: Colors.text,
-              textDayHeaderFontWeight: '500',
-              dayTextColor: Colors.text,
-              textDisabledColor: Colors.text,
-            }}
-            onDayPress={({ timestamp }) => {
-              setSelectedDate(dayjs(timestamp).format())
-              onOpen()
-            }}
-            markedDates={clientActive?.data?.reduce(
-              (acc: any, cur: any) => ({
-                ...acc,
-                [dayjs(cur.meeting_date).format('YYYY-MM-DD')]: {
-                  marked: true,
-                  selected: true,
+          style={{
+            marginHorizontal: 16,
+            padding: 12,
+            paddingBottom: 0,
+            height: 90,
+            borderRadius: 8,
+            borderWidth: 1,
+            borderColor: Colors.border,
+          }}
+          calendarHeaderStyle={{
+            color: Colors.text,
+            fontWeight: '500',
+            fontSize: 14,
+          }}
+          calendarColor={Colors.white}
+          dateNumberStyle={{
+            color: Colors.text,
+            fontWeight: '500',
+            fontSize: 14,
+          }}
+          dateNameStyle={{ color: Colors.subText }}
+          highlightDateNumberStyle={{ color: Colors.primary }}
+          highlightDateNameStyle={{ color: Colors.primary }}
+          onDateSelected={date => {
+            setSelectedDate(date.toISOString())
+            onOpen()
+          }}
+          onWeekChanged={monday => {
+            const d = new Date(monday.toISOString())
+            d.setDate(d.getDate() + 3)
+            getClientInWeekData(d.toISOString())
+          }}
+          markedDates={clientActive?.data?.map(
+            (item: any) => ({
+              date: dayjs(item.meeting_date).format('YYYY-MM-DD'),
+              lines: [
+                {
+                  color: Colors.primary,
                 },
-              }),
-              {},
-            )}
-          />
-        </CalendarProvider>
+              ],
+            }),
+            {},
+          )}
+        />
 
         <View style={{ padding: 16 }}>
           <View style={SUMMARY}>

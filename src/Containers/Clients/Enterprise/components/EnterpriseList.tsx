@@ -2,7 +2,6 @@ import React from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import {
   Actionsheet,
-  Badge,
   Box,
   Button,
   Flex,
@@ -12,11 +11,22 @@ import {
 } from 'native-base'
 import { useTranslation } from 'react-i18next'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { useAllEnterPrises, useAppDispatch } from '@/Store/hooks'
+import {
+  useAllEnterPrises,
+  useAppDispatch,
+  useOnboardedEnterprises,
+} from '@/Store/hooks'
 import { useLazyGetEnterpriseQuery } from '@/Services/enterprise'
 import { Colors } from '@/Theme/Variables'
 import Tag, { TagOutline } from '@/Components/Tag'
-import { appendData, reset } from '@/Store/enterprises/all'
+import {
+  appendData as appendDataAll,
+  reset as resetAll,
+} from '@/Store/enterprises/all'
+import {
+  appendData as appendDataOnboarded,
+  reset as resetOnboarded,
+} from '@/Store/enterprises/onBoarded'
 
 const getStatusText = (key: string): string => {
   switch (key) {
@@ -32,9 +42,11 @@ const getStatusText = (key: string): string => {
       return 'enterpriseScreen.inProcessing'
     case 'REJECTED':
       return 'enterpriseScreen.rejected'
+    case 'ONBOARDED':
+      return 'enterpriseScreen.onboarded'
 
     default:
-      return ''
+      return key
   }
 }
 
@@ -54,7 +66,7 @@ const getStatusColor = (key: string): string => {
       return Colors.error
 
     default:
-      return ''
+      return Colors.primary
   }
 }
 
@@ -69,14 +81,22 @@ function EnterpriseList({
   loadingMore,
   filters,
   setFilters,
+  isOnboarded = false,
 }: {
   loadingMore: boolean
   filters: Filter
   setFilters: (filters: Filter) => void
+  isOnboarded?: boolean
 }) {
   const { t } = useTranslation()
 
   const allEnterprises = useAllEnterPrises()
+  const onboardedEnterprises = useOnboardedEnterprises()
+
+  const appendData = isOnboarded ? appendDataOnboarded : appendDataAll
+  const reset = isOnboarded ? resetOnboarded : resetAll
+  const enterprises = !isOnboarded ? allEnterprises : onboardedEnterprises
+
   const dispatch = useAppDispatch()
 
   const [
@@ -135,45 +155,49 @@ function EnterpriseList({
               onChangeText={tax_code => setFilters({ ...filters, tax_code })}
             />
 
-            <Text marginTop="24px">{t`enterpriseScreen.enterpriseStatus`}</Text>
-            <Flex flexDirection="row" flexWrap="wrap">
-              <Box margin="4px">
-                <TagOutline
-                  active={filters.status.includes('AGREED_TO_MEET')}
-                  onPress={() => handleTagClick('AGREED_TO_MEET')}
-                >{t`enterpriseScreen.agreedToMeet`}</TagOutline>
-              </Box>
-              <Box margin="4px">
-                <TagOutline
-                  onPress={() => handleTagClick('AGREED_TO_JOIN')}
-                  active={filters.status.includes('AGREED_TO_JOIN')}
-                >{t`enterpriseScreen.agreedToJoin`}</TagOutline>
-              </Box>
-              <Box margin="4px">
-                <TagOutline
-                  active={filters.status.includes('PERSUADING')}
-                  onPress={() => handleTagClick('PERSUADING')}
-                >{t`enterpriseScreen.persuading`}</TagOutline>
-              </Box>
-              <Box margin="4px">
-                <TagOutline
-                  active={filters.status.includes('DOCUMENT_REVIEWING')}
-                  onPress={() => handleTagClick('DOCUMENT_REVIEWING')}
-                >{t`enterpriseScreen.inProcessing`}</TagOutline>
-              </Box>
-              <Box margin="4px">
-                <TagOutline
-                  active={filters.status.includes('ASSESSMENT')}
-                  onPress={() => handleTagClick('ASSESSMENT')}
-                >{t`enterpriseScreen.inAssessment`}</TagOutline>
-              </Box>
-              <Box margin="4px">
-                <TagOutline
-                  active={filters.status.includes('REJECTED')}
-                  onPress={() => handleTagClick('REJECTED')}
-                >{t`enterpriseScreen.rejected`}</TagOutline>
-              </Box>
-            </Flex>
+            {!isOnboarded && (
+              <>
+                <Text marginTop="24px">{t`enterpriseScreen.enterpriseStatus`}</Text>
+                <Flex flexDirection="row" flexWrap="wrap">
+                  <Box margin="4px">
+                    <TagOutline
+                      active={filters.status.includes('AGREED_TO_MEET')}
+                      onPress={() => handleTagClick('AGREED_TO_MEET')}
+                    >{t`enterpriseScreen.agreedToMeet`}</TagOutline>
+                  </Box>
+                  <Box margin="4px">
+                    <TagOutline
+                      onPress={() => handleTagClick('AGREED_TO_JOIN')}
+                      active={filters.status.includes('AGREED_TO_JOIN')}
+                    >{t`enterpriseScreen.agreedToJoin`}</TagOutline>
+                  </Box>
+                  <Box margin="4px">
+                    <TagOutline
+                      active={filters.status.includes('PERSUADING')}
+                      onPress={() => handleTagClick('PERSUADING')}
+                    >{t`enterpriseScreen.persuading`}</TagOutline>
+                  </Box>
+                  <Box margin="4px">
+                    <TagOutline
+                      active={filters.status.includes('DOCUMENT_REVIEWING')}
+                      onPress={() => handleTagClick('DOCUMENT_REVIEWING')}
+                    >{t`enterpriseScreen.inProcessing`}</TagOutline>
+                  </Box>
+                  <Box margin="4px">
+                    <TagOutline
+                      active={filters.status.includes('ASSESSMENT')}
+                      onPress={() => handleTagClick('ASSESSMENT')}
+                    >{t`enterpriseScreen.inAssessment`}</TagOutline>
+                  </Box>
+                  <Box margin="4px">
+                    <TagOutline
+                      active={filters.status.includes('REJECTED')}
+                      onPress={() => handleTagClick('REJECTED')}
+                    >{t`enterpriseScreen.rejected`}</TagOutline>
+                  </Box>
+                </Flex>
+              </>
+            )}
 
             <Text marginTop="24px">{t`enterpriseScreen.assignedAccount`}</Text>
             <Input
@@ -203,7 +227,11 @@ function EnterpriseList({
                   })
                   dispatch(reset())
 
-                  getEnterprises({ page: 1, size: 10 }).then(res => {
+                  getEnterprises({
+                    page: 1,
+                    size: 10,
+                    status: isOnboarded ? 'ONBOARDED' : undefined,
+                  }).then(res => {
                     dispatch(
                       appendData({
                         ...res.data.paginate,
@@ -224,7 +252,9 @@ function EnterpriseList({
                     page: 1,
                     size: 10,
                     name: filters.name || undefined,
-                    status: filters.status.join(',') || undefined,
+                    status: isOnboarded
+                      ? 'ONBOARDED'
+                      : filters.status.join(',') || undefined,
                     senior_fullname: filters.senior_fullname || undefined,
                     tax_code: filters.tax_code || undefined,
                   }).then(res => {
@@ -306,7 +336,7 @@ function EnterpriseList({
           paddingBottom: 72,
         }}
       >
-        {allEnterprises.data.map((item: any) => (
+        {enterprises.data.map((item: any) => (
           <TouchableOpacity
             key={item.id}
             style={{
@@ -384,9 +414,9 @@ function EnterpriseList({
         {(isFetching || isLoading || loadingMore) && (
           <ActivityIndicator size="small" style={{ marginTop: 24 }} />
         )}
-        {!isFetching && !loadingMore && !allEnterprises.data.length && (
+        {!isFetching && !loadingMore && !enterprises.data.length && (
           <Text textAlign="center" marginTop="24px" color={Colors.subText}>
-            No enterprise found
+            {t`enterpriseScreen.noEnterpriseFound`}
           </Text>
         )}
       </View>

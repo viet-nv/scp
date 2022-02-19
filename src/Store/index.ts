@@ -18,6 +18,7 @@ import * as modules from '@/Services/modules'
 import theme from './Theme'
 import authReducer from './auth'
 import allEnterprisesReducer from './enterprises/all'
+import onboardedEnterprises from './enterprises/onBoarded'
 import { authApi } from '@/Services/auth'
 import { enterpriseApi } from '@/Services/enterprise'
 
@@ -34,6 +35,7 @@ const reducers = combineReducers({
   [enterpriseApi.reducerPath]: enterpriseApi.reducer,
   auth: authReducer,
   allEnterprises: allEnterprisesReducer,
+  onboardedEnterprises: onboardedEnterprises,
 })
 
 const persistConfig = {
