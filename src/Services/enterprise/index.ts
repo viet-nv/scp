@@ -44,6 +44,14 @@ export const enterpriseApi = pcApi.injectEndpoints({
         url: '/v1/',
       }),
     }),
+
+    createEnterprise: builder.mutation({
+      query: params => ({
+        url: '/v1/enterprises',
+        method: 'POST',
+        body: params,
+      }),
+    }),
   }),
 })
 
@@ -51,4 +59,5 @@ export const {
   useGetEnterpriseQuery,
   useLazyGetEnterpriseQuery,
   useGetReportSummaryQuery,
+  useCreateEnterpriseMutation,
 } = enterpriseApi

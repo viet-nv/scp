@@ -10,6 +10,12 @@ export default {
     },
   },
 
+  common: {
+    error: 'Error',
+    success: 'Success',
+    errorMsg: 'Somethings went wrong. Please try again!',
+  },
+
   home: {
     title: 'Home',
   },
@@ -51,5 +57,24 @@ export default {
     clearFilter: 'Clear filter',
     assignedAccount: 'Assigned Account',
     noEnterpriseFound: 'No Enterprise found',
+    addEnterprise: 'Add new enterprise',
+    enterpriseAddress: 'Enterprise address',
+    legalRepresentative: "Legal Representative's Name",
+    legalRepresentativePosition: "Legal Representative's Position",
+    businessSector: 'Business Sector',
+    contactName: 'Contact name',
+    department: 'Department',
+    contactEmail: 'Contact email',
+    contactPhone: 'Contact phone',
+    pleaseInputTax: 'Please enter tax code',
+    pleaseInputName: 'Please enter enterprise name',
+    pleaseInputAddress: 'Please enter address',
+    pleaseInputLegalRepresentative: "Please enter legal representative's name",
+    pleaseInputLegalRepresentativePosition:
+      "Please enter legal representative's position",
+    pleaseInputContactName: 'Please enter contact name',
+    pleaseInputContactPhone: 'Please enter contact phone',
+    pleaseInputContactEmail: 'Please enter contact email',
+    createEnterpriseSuccess: 'Add enterprise success',
   },
 }

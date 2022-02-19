@@ -11,6 +11,7 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack'
 import { EnterpriseScreen } from '@/Containers/Clients/Enterprise'
+import CreateNewEnterprise from '@/Containers/Clients/Enterprise/create'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -95,6 +96,7 @@ const MainNavigator = () => {
     >
       <Stack.Screen name="Main" component={TabNavigator} />
       <Stack.Screen name="Enterprise" component={EnterpriseScreen} />
+      <Stack.Screen name="AddNewEnterprise" component={CreateNewEnterprise} />
     </Stack.Navigator>
   )
 }

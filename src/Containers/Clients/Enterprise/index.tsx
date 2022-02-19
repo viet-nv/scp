@@ -41,7 +41,7 @@ const TAB_INDICATOR = {
 export const EnterpriseScreen = () => {
   const { t } = useTranslation()
   const layout = useWindowDimensions()
-  const navigation = useNavigation()
+  const navigation: any = useNavigation()
 
   const { total_record: totalEnterprises } = useAllEnterPrises()
   const { total_record: totalOnboardedEnterprises } = useOnboardedEnterprises()
@@ -110,6 +110,7 @@ export const EnterpriseScreen = () => {
         shadow={2}
         size="sm"
         icon={<Icon as={Ionicons} size="sm" name="add" color="white" />}
+        onPress={() => navigation.navigate('AddNewEnterprise')}
       />
 
       <TabView

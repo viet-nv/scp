@@ -82,7 +82,7 @@ export const OnboardedEnterprise = () => {
             }
           }
         }}
-        scrollEventThrottle={400}
+        scrollEventThrottle={100}
       >
         <View style={{ padding: 16 }}>
           <EnterpriseList

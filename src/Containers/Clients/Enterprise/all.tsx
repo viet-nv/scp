@@ -248,7 +248,7 @@ export const AllEnterprise = () => {
             }
           }
         }}
-        scrollEventThrottle={400}
+        scrollEventThrottle={100}
       >
         <View
           style={{
