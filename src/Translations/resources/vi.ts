@@ -14,6 +14,7 @@ export default {
     error: 'Lỗi',
     success: 'Thành công',
     errorMsg: 'Đã có lỗi xảy ra, vui lòng thử lại sau',
+    fieldIsRequire: 'Trường bắt buộc, không được để trống',
   },
 
   home: {
@@ -77,6 +78,7 @@ export default {
     pleaseInputContactPhone: 'Vui lòng nhập số điện thoại',
     pleaseInputContactEmail: 'Vui lòng nhập địa chỉ Email',
     createEnterpriseSuccess: 'Thêm mới doanh nghiệp thành công',
+    commonInfo: 'Thông tin chung',
     enterpriseDetail: 'Chi tiết doanh nghiệp',
     status: 'Trạng thái',
     address: 'Địa chỉ',
@@ -90,6 +92,7 @@ export default {
     authorized_representative: 'Tên người đại diện theo ủy quyền',
     authorized_representative_position: 'Chức vụ người đại diện theo ủy quyền',
     attorney_letter_no: 'Số giấy ủy quyền',
+    attorney_signing_date: 'Ngày ký ủy quyền',
     formOfPaymentAtMaturity: 'Hình thức thanh toán đến hạn',
     transactionRepresentativeInformation: 'Người đại diện giao dịch',
     coorperationTerms: 'Điều kiện Hợp tác của Doanh nghiệp',
@@ -100,5 +103,8 @@ export default {
     contractManagement: 'Quản lý hợp đồng',
     frequencyOfUpdateNotice: 'Tần suât Cập nhật & Thông báo',
     bankAccount: 'Tài khoản ngân hàng',
+    contact_position: 'Bộ phận',
+    updateEnterprise: 'Cập nhật thông tin Doanh nghiệp',
+    updateEnterpriseSuccess: 'Cập nhật thông tin doanh nghiệp thành công',
   },
 }

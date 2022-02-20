@@ -124,7 +124,7 @@ export const LoginScreen = () => {
 
         <Text style={{ marginTop: 24 }}>Password</Text>
         <View style={INPUT_ROW}>
-          <Ionicons name="lock-closed-outline" size={20} />
+          <Ionicons name="lock-closed-outline" size={20} color={colors.text} />
           <TextInput
             style={TEXT_INPUT}
             placeholder="Enter your password..."

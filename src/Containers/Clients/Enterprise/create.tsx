@@ -124,7 +124,7 @@ function CreateNewEnterprise() {
       error: t`enterpriseScreen.pleaseInputContactName`,
     },
     {
-      field: 'department',
+      field: 'contact_department',
       label: t`enterpriseScreen.department`,
       error: '',
     },
@@ -202,7 +202,9 @@ function CreateNewEnterprise() {
       <Box
         position="absolute"
         padding="16px"
-        paddingBottom={insets.bottom + 16}
+        style={{
+          paddingBottom: insets.bottom + 16,
+        }}
         borderTopWidth={1}
         borderTopColor={Colors.border}
         backgroundColor={Colors.white}

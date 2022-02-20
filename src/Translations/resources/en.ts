@@ -14,6 +14,7 @@ export default {
     error: 'Error',
     success: 'Success',
     errorMsg: 'Somethings went wrong. Please try again!',
+    fieldIsRequire: 'Field is required, can not empty',
   },
 
   home: {
@@ -90,6 +91,7 @@ export default {
     authorized_representative: "Authorized epresentative's name",
     authorized_representative_position: "Authorized epresentative's position",
     attorney_letter_no: 'Attorney letter no.',
+    attorney_signing_date: 'Attorney signing date',
     formOfPaymentAtMaturity: 'Form of Payment at Maturity',
     transactionRepresentativeInformation:
       'Transaction Representative Information',
@@ -101,5 +103,7 @@ export default {
     contractManagement: 'Contract Management',
     frequencyOfUpdateNotice: 'Frequency of Update & Notice',
     bankAccount: 'Bank Account',
+    updateEnterprise: 'Update enterprise',
+    updateEnterpriseSuccess: 'Update Enterprise Success',
   },
 }

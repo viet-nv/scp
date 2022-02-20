@@ -13,6 +13,7 @@ import {
 import { EnterpriseScreen } from '@/Containers/Clients/Enterprise'
 import CreateNewEnterprise from '@/Containers/Clients/Enterprise/create'
 import EnterpriseDetail from '@/Containers/Clients/Enterprise/detail'
+import UpdateEnterprise from '@/Containers/Clients/Enterprise/update'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -99,6 +100,7 @@ const MainNavigator = () => {
       <Stack.Screen name="Enterprise" component={EnterpriseScreen} />
       <Stack.Screen name="AddNewEnterprise" component={CreateNewEnterprise} />
       <Stack.Screen name="EnterpriseDetail" component={EnterpriseDetail} />
+      <Stack.Screen name="UpdateEnterprise" component={UpdateEnterprise} />
     </Stack.Navigator>
   )
 }

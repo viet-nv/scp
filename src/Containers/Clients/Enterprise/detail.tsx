@@ -27,7 +27,18 @@ function EnterpriseDetail() {
 
   const { t } = useTranslation()
 
-  const { data, isLoading } = useGetEnterpriseDetailQuery(route.params.id)
+  const { data, isLoading, refetch } = useGetEnterpriseDetailQuery(
+    route.params.id,
+  )
+
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      refetch()
+    })
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe
+  }, [navigation])
 
   const [isOpenInfo, setOnpenInfo] = React.useState(true)
   const [isOpenPaymentInfo, setOnpenPaymentInfo] = React.useState(false)
@@ -49,14 +60,22 @@ function EnterpriseDetail() {
           <Text fontWeight="500" fontSize={16}>
             Menu
           </Text>
-          <Actionsheet.Item padding="0">
+          <Actionsheet.Item
+            padding="0"
+            onPress={() => {
+              onClose()
+              navigation.navigate('UpdateEnterprise', {
+                data,
+              })
+            }}
+          >
             <Flex
               flexDirection="row"
               paddingX="16px"
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="create-outline" size={20} />
+              <Ionicons name="create-outline" size={20} color={Colors.text} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.update`}
               </Text>
@@ -70,7 +89,11 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="document-text-outline" size={20} />
+              <Ionicons
+                name="document-text-outline"
+                size={20}
+                color={Colors.text}
+              />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.clientReport`}
               </Text>
@@ -84,7 +107,7 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="document-outline" size={20} />
+              <Ionicons color={Colors.text} name="document-outline" size={20} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.legalDocuments`}
               </Text>
@@ -98,7 +121,11 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="notifications-outline" size={20} />
+              <Ionicons
+                color={Colors.text}
+                name="notifications-outline"
+                size={20}
+              />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.frequencyOfUpdateNotice`}
               </Text>
@@ -112,7 +139,7 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="podium-outline" size={20} />
+              <Ionicons color={Colors.text} name="podium-outline" size={20} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.bankAccount`}
               </Text>
@@ -126,7 +153,7 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="people-outline" size={20} />
+              <Ionicons color={Colors.text} name="people-outline" size={20} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`clientScreen.referralPartner`}
               </Text>
@@ -140,7 +167,7 @@ function EnterpriseDetail() {
               paddingY="12px"
               alignItems="center"
             >
-              <Ionicons name="person-outline" size={20} />
+              <Ionicons color={Colors.text} name="person-outline" size={20} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.assignedAccount`}
               </Text>
@@ -328,8 +355,8 @@ function EnterpriseDetail() {
                       {t`enterpriseScreen.latestAmendmentDate`}
                     </Text>
                     <Text flex={3} fontWeight="500" textAlign="right">
-                      {data.updated_at &&
-                        dayjs(data.updated_at).format('DD-MM-YYYY')}
+                      {data.last_amendment_date &&
+                        dayjs(data.last_amendment_date).format('DD-MM-YYYY')}
                     </Text>
                   </Flex>
 
@@ -510,7 +537,7 @@ function EnterpriseDetail() {
                       {t`enterpriseScreen.department`}
                     </Text>
                     <Text flex={3} fontWeight="500" textAlign="right">
-                      {data.department}
+                      {data.contact_department}
                     </Text>
                   </Flex>
 
