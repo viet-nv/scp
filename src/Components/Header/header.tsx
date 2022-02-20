@@ -62,7 +62,11 @@ export const Header = (props: HeaderProps) => {
           onPress={onRightPress}
           style={{ paddingHorizontal: 16, height: 56 }}
         >
-          <Ionicons name={rightIcon} size={20} />
+          <Ionicons
+            name={rightIcon}
+            size={20}
+            color={iconColor || colors.white}
+          />
         </Button>
       ) : (
         <View style={RIGHT} />

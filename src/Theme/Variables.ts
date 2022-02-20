@@ -25,6 +25,7 @@ export const Colors: ThemeColors = {
   subText: '#6E6D7A',
   text: '#333333',
   navBackground: '#1c2b4d',
+  background: '#E6E6E6',
 
   success: '#28a745',
   error: '#dc3545',

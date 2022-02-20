@@ -27,8 +27,9 @@ import {
   appendData as appendDataOnboarded,
   reset as resetOnboarded,
 } from '@/Store/enterprises/onBoarded'
+import { useNavigation } from '@react-navigation/native'
 
-const getStatusText = (key: string): string => {
+export const getStatusText = (key: string): string => {
   switch (key) {
     case 'PERSUADING':
       return 'enterpriseScreen.persuading'
@@ -50,7 +51,7 @@ const getStatusText = (key: string): string => {
   }
 }
 
-const getStatusColor = (key: string): string => {
+export const getStatusColor = (key: string): string => {
   switch (key) {
     case 'PERSUADING':
       return Colors.warning
@@ -98,6 +99,7 @@ function EnterpriseList({
   const enterprises = !isOnboarded ? allEnterprises : onboardedEnterprises
 
   const dispatch = useAppDispatch()
+  const navigation: any = useNavigation()
 
   const [
     getEnterprises,
@@ -344,6 +346,9 @@ function EnterpriseList({
               borderBottomColor: Colors.border,
               paddingVertical: 12,
             }}
+            onPress={() =>
+              navigation.navigate('EnterpriseDetail', { id: item.id })
+            }
           >
             <View
               style={{

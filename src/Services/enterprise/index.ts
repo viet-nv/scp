@@ -39,17 +39,17 @@ export const enterpriseApi = pcApi.injectEndpoints({
       }),
     }),
 
-    getAgreedToMeet: builder.query({
-      query: () => ({
-        url: '/v1/',
-      }),
-    }),
-
     createEnterprise: builder.mutation({
       query: params => ({
         url: '/v1/enterprises',
         method: 'POST',
         body: params,
+      }),
+    }),
+
+    getEnterpriseDetail: builder.query({
+      query: id => ({
+        url: `/v1/enterprises/${id}`,
       }),
     }),
   }),
@@ -60,4 +60,5 @@ export const {
   useLazyGetEnterpriseQuery,
   useGetReportSummaryQuery,
   useCreateEnterpriseMutation,
+  useGetEnterpriseDetailQuery,
 } = enterpriseApi
