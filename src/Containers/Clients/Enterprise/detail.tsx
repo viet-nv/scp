@@ -82,7 +82,16 @@ function EnterpriseDetail() {
             </Flex>
           </Actionsheet.Item>
 
-          <Actionsheet.Item padding="0">
+          <Actionsheet.Item
+            padding="0"
+            onPress={() => {
+              onClose()
+              navigation.navigate('ClientReport', {
+                id: route.params.id,
+                STATUSES: data.to_statuses || [],
+              })
+            }}
+          >
             <Flex
               flexDirection="row"
               paddingX="16px"

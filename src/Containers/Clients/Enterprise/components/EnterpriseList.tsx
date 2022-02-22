@@ -31,21 +31,32 @@ import { useNavigation } from '@react-navigation/native'
 
 export const getStatusText = (key: string): string => {
   switch (key) {
+    case 'NEW':
+      return 'enterpriseScreen.new'
     case 'PERSUADING':
       return 'enterpriseScreen.persuading'
     case 'AGREED_TO_MEET':
       return 'enterpriseScreen.agreedToMeet'
     case 'AGREED_TO_JOIN':
       return 'enterpriseScreen.agreedToJoin'
+    case 'PROCESSING':
+      return 'enterpriseScreen.inProcessing'
+    case 'CONSIDERING':
+      return 'enterpriseScreen.considering'
+    case 'REJECTED':
+      return 'enterpriseScreen.rejected'
+    case 'REGISTERED':
+      return 'enterpriseScreen.registered'
     case 'ASSESSMENT':
       return 'enterpriseScreen.inAssessment'
     case 'DOCUMENT_REVIEWING':
-      return 'enterpriseScreen.inProcessing'
-    case 'REJECTED':
-      return 'enterpriseScreen.rejected'
+      return 'enterpriseScreen.documentReviewing'
     case 'ONBOARDED':
       return 'enterpriseScreen.onboarded'
-
+    case 'STOP_CORPORATION':
+      return 'enterpriseScreen.stopCorperation'
+    case 'ACTIVATE':
+      return 'enterpriseScreen.activate'
     default:
       return key
   }
@@ -65,6 +76,12 @@ export const getStatusColor = (key: string): string => {
       return Colors.warning
     case 'REJECTED':
       return Colors.error
+    case 'ONBOARDED':
+      return Colors.success
+    case 'NEW':
+      return Colors.error
+    case 'STOP_CORPORATION':
+      return Colors.warning
 
     default:
       return Colors.primary

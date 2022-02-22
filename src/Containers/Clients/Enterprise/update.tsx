@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next'
 import { Alert } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 function UpdateEnterprise() {
   const { t } = useTranslation()
@@ -268,29 +269,48 @@ function UpdateEnterprise() {
                     name={item.field as any}
                     control={control}
                     defaultValue=""
-                    render={({ field }) => (
-                      <Input
-                        {...field}
-                        value={
-                          item.type === 'date' && field.value !== undefined
-                            ? dayjs(field.value).format('DD-MM-YYYY')
-                            : field.value
-                        }
-                        onChangeText={
-                          item.type === 'date' ? undefined : field.onChange
-                        }
-                        onPressIn={
-                          item.type === 'date'
-                            ? () => {
+                    render={({ field }) =>
+                      item.type === 'date' ? (
+                        <Input
+                          {...field}
+                          isDisabled
+                          _disabled={{
+                            backgroundColor: Colors.white,
+                          }}
+                          value={
+                            (field.value &&
+                              dayjs(field.value).format('DD-MM-YYYY')) ||
+                            ''
+                          }
+                          onChangeText={undefined}
+                          onPressIn={() => {
+                            setShowDatePicker(item.field)
+                            setShow(true)
+                          }}
+                          placeholder={item.label}
+                          InputRightElement={
+                            <Ionicons
+                              name="calendar"
+                              style={{ paddingHorizontal: 8 }}
+                              size={16}
+                              color={Colors.text}
+                              onPress={() => {
                                 setShowDatePicker(item.field)
                                 setShow(true)
-                              }
-                            : undefined
-                        }
-                        placeholder={item.label}
-                        keyboardType={item.keyboardType as any}
-                      />
-                    )}
+                              }}
+                            />
+                          }
+                        />
+                      ) : (
+                        <Input
+                          {...field}
+                          value={field.value}
+                          onChangeText={field.onChange}
+                          placeholder={item.label}
+                          keyboardType={item.keyboardType as any}
+                        />
+                      )
+                    }
                     rules={{ required: item.require }}
                   />
                   <FormControl.ErrorMessage>

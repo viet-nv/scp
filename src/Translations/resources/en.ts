@@ -15,6 +15,7 @@ export default {
     success: 'Success',
     errorMsg: 'Somethings went wrong. Please try again!',
     fieldIsRequire: 'Field is required, can not empty',
+    noDataFound: 'No Data Found',
   },
 
   home: {
@@ -35,6 +36,7 @@ export default {
   enterpriseScreen: {
     title: 'Enterprise Management',
     all: 'All',
+    new: 'New',
     onboarded: 'Onboarded',
     meetingSchedule: 'Meeting Schedule',
     clientInWeek: 'Clients in week:',
@@ -42,9 +44,14 @@ export default {
     agreedToMeet: 'Agreed to Meet',
     agreedToJoin: 'Agreed to Join',
     persuading: 'Persuading',
+    registered: 'Registered',
     inProcessing: 'In Processing',
+    documentReviewing: 'Document Reviewing',
+    considering: 'Considering',
     inAssessment: 'In Assessment',
     rejected: 'Rejected',
+    stopCorperation: 'Stop cooperation',
+    activate: 'Activate',
     tax: 'Tax code',
     seniorName: 'Assigned Account',
     enterpriseList: 'Enterprise List',
@@ -105,5 +112,11 @@ export default {
     bankAccount: 'Bank Account',
     updateEnterprise: 'Update enterprise',
     updateEnterpriseSuccess: 'Update Enterprise Success',
+    reportHistory: 'Report history',
+    date: 'Date',
+    note: 'Note',
+    addClientReport: 'Add Report',
+    meetingDate: 'Meeting date',
+    addReportSuccess: 'Add report success',
   },
 }

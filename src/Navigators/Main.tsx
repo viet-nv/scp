@@ -14,6 +14,8 @@ import { EnterpriseScreen } from '@/Containers/Clients/Enterprise'
 import CreateNewEnterprise from '@/Containers/Clients/Enterprise/create'
 import EnterpriseDetail from '@/Containers/Clients/Enterprise/detail'
 import UpdateEnterprise from '@/Containers/Clients/Enterprise/update'
+import ClientReport from '@/Containers/Clients/Enterprise/clientReport'
+import AddNewClientReport from '@/Containers/Clients/Enterprise/AddNewClientReport'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -101,6 +103,8 @@ const MainNavigator = () => {
       <Stack.Screen name="AddNewEnterprise" component={CreateNewEnterprise} />
       <Stack.Screen name="EnterpriseDetail" component={EnterpriseDetail} />
       <Stack.Screen name="UpdateEnterprise" component={UpdateEnterprise} />
+      <Stack.Screen name="ClientReport" component={ClientReport} />
+      <Stack.Screen name="AddNewClientReport" component={AddNewClientReport} />
     </Stack.Navigator>
   )
 }

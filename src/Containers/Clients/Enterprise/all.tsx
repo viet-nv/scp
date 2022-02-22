@@ -158,8 +158,6 @@ export const AllEnterprise = () => {
       item.end >= new Date(selectedDate),
   )?.data
 
-  const { isOpen, onOpen, onClose } = useDisclose()
-
   const [filters, setFilters] = useState<{
     name: string
     tax_code: string
@@ -174,50 +172,52 @@ export const AllEnterprise = () => {
 
   return (
     <>
-      <Actionsheet isOpen={isOpen} onClose={onClose}>
+      <Actionsheet isOpen={!!selectedDate} onClose={() => setSelectedDate('')}>
         <Actionsheet.Content>
           <Box w="100%" h={60} px={4} justifyContent="center">
             <Text fontSize="16" fontWeight="500">
               {t`enterpriseScreen.meetingSchedule`}
             </Text>
           </Box>
-          <ScrollView style={{ width: '100%' }}>
-            {!!selectedWeek?.length ? (
-              selectedWeek.map((item: any) => (
-                <Actionsheet.Item
-                  key={item.id}
-                  style={{
-                    borderBottomWidth: 1,
-                    borderBottomColor: Colors.border,
-                  }}
-                >
-                  <Flex flexDirection="row">
-                    <Text color={Colors.subText}>
-                      {t`enterpriseScreen.time`}:
-                    </Text>{' '}
-                    <Text fontWeight="500">
-                      {dayjs(item.meeting_date).format('DD-MM-YYYY hh:mm')}
-                    </Text>
-                  </Flex>
-                  <Flex flexDirection="row">
-                    <Text color={Colors.subText}>
-                      {t`enterpriseScreen.client`}:
-                    </Text>{' '}
-                    <Text fontWeight="500" noOfLines={2}>
-                      {item.name}
-                    </Text>
-                  </Flex>
-                </Actionsheet.Item>
-              ))
-            ) : (
-              <Text
-                fontSize="16"
-                color={Colors.subText}
-                textAlign="center"
-                padding="20"
-              >{t`enterpriseScreen.noSchedule`}</Text>
-            )}
-          </ScrollView>
+          {!!selectedWeek?.length ? (
+            <ScrollView style={{ width: '100%' }}>
+              {selectedWeek.map((item: any) => {
+                return (
+                  <Actionsheet.Item
+                    key={item.id}
+                    style={{
+                      borderBottomWidth: 1,
+                      borderBottomColor: Colors.border,
+                    }}
+                  >
+                    <Flex flexDirection="row">
+                      <Text color={Colors.subText}>
+                        {t`enterpriseScreen.time`}:
+                      </Text>{' '}
+                      <Text fontWeight="500">
+                        {dayjs(item.meeting_date).format('DD-MM-YYYY hh:mm')}
+                      </Text>
+                    </Flex>
+                    <Flex flexDirection="row">
+                      <Text color={Colors.subText}>
+                        {t`enterpriseScreen.client`}:
+                      </Text>{' '}
+                      <Text fontWeight="500" noOfLines={2}>
+                        {item.name}
+                      </Text>
+                    </Flex>
+                  </Actionsheet.Item>
+                )
+              })}
+            </ScrollView>
+          ) : (
+            <Text
+              fontSize="16"
+              color={Colors.subText}
+              textAlign="center"
+              padding="20"
+            >{t`enterpriseScreen.noSchedule`}</Text>
+          )}
         </Actionsheet.Content>
       </Actionsheet>
 
@@ -310,7 +310,6 @@ export const AllEnterprise = () => {
           highlightDateNameStyle={{ color: Colors.primary }}
           onDateSelected={date => {
             setSelectedDate(date.toISOString())
-            onOpen()
           }}
           onWeekChanged={monday => {
             const d = new Date(monday.toISOString())
