@@ -16,6 +16,8 @@ export default {
     errorMsg: 'Somethings went wrong. Please try again!',
     fieldIsRequire: 'Field is required, can not empty',
     noDataFound: 'No Data Found',
+    update: 'Update',
+    delete: 'Delete',
   },
 
   home: {
@@ -118,5 +120,13 @@ export default {
     addClientReport: 'Add Report',
     meetingDate: 'Meeting date',
     addReportSuccess: 'Add report success',
+    accNo: 'Acc No.',
+    addBankAccount: 'Add bank account',
+    updateBankAccount: 'Update bank account',
+    bank: 'Bank',
+    branch: 'Branch',
+    account_number: 'Account number',
+    createBankSuccess: 'Add bank account successfully',
+    updateBankSuccess: 'Update successfully',
   },
 }

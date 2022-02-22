@@ -27,6 +27,7 @@ export const Colors: ThemeColors = {
   navBackground: '#1c2b4d',
   background: '#E6E6E6',
   lightGray: '#F7F8FA',
+  link: '#1890FF',
 
   success: '#28a745',
   error: '#dc3545',

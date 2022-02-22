@@ -16,6 +16,8 @@ export default {
     errorMsg: 'Đã có lỗi xảy ra, vui lòng thử lại sau',
     fieldIsRequire: 'Trường bắt buộc, không được để trống',
     noDataFound: 'Không có dữ liệu',
+    update: 'Cập nhật',
+    delete: 'Xóa',
   },
 
   home: {
@@ -119,5 +121,13 @@ export default {
     addClientReport: 'Thêm báo cáo',
     meetingDate: 'Ngày giờ hẹn gặp',
     addReportSuccess: 'Ghi nhận báo cáo thành công',
+    accNo: 'STK:',
+    addBankAccount: 'Thêm tài khoản',
+    updateBankAccount: 'Cập nhật tài khoản',
+    bank: 'Ngân hàng',
+    branch: 'Chi nhánh',
+    account_number: 'Số tài khoản',
+    createBankSuccess: 'Thêm tài khoản thành công',
+    updateBankSuccess: 'Cập nhật thành công',
   },
 }

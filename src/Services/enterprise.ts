@@ -1,4 +1,4 @@
-import { pcApi } from '../api'
+import { pcApi } from './api'
 
 export const enterpriseApi = pcApi.injectEndpoints({
   overrideExisting: true,
@@ -75,6 +75,21 @@ export const enterpriseApi = pcApi.injectEndpoints({
         body,
       }),
     }),
+
+    bankAccount: builder.query({
+      query: ({ id, params }) => ({
+        url: `/v1/enterprises/${id}/bank`,
+        params,
+      }),
+    }),
+
+    updateBankAccount: builder.mutation({
+      query: body => ({
+        url: `/v1/enterprises/${body.enterprise_id}/bank`,
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -87,4 +102,6 @@ export const {
   useUpdateEnterpriseMutation,
   useLazyClientReportQuery,
   useAddClientReportMutation,
+  useLazyBankAccountQuery,
+  useUpdateBankAccountMutation,
 } = enterpriseApi

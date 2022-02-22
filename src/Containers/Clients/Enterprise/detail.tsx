@@ -141,7 +141,15 @@ function EnterpriseDetail() {
             </Flex>
           </Actionsheet.Item>
 
-          <Actionsheet.Item padding="0">
+          <Actionsheet.Item
+            padding="0"
+            onPress={() => {
+              onClose()
+              navigation.navigate('BankAccount', {
+                id: route.params.id,
+              })
+            }}
+          >
             <Flex
               flexDirection="row"
               paddingX="16px"
