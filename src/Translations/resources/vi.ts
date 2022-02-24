@@ -17,6 +17,7 @@ export default {
     fieldIsRequire: 'Trường bắt buộc, không được để trống',
     noDataFound: 'Không có dữ liệu',
     update: 'Cập nhật',
+    cancel: 'Hủy',
     delete: 'Xóa',
   },
 
@@ -129,5 +130,8 @@ export default {
     account_number: 'Số tài khoản',
     createBankSuccess: 'Thêm tài khoản thành công',
     updateBankSuccess: 'Cập nhật thành công',
+    deleteBankAccount: 'Xóa tài khoản ngân hàng',
+    areYouSureToDelete: 'Bạn có chắc muốn xóa tài khoản này?',
+    deleteBankAccountSuccess: 'Xóa tài khoản thành công',
   },
 }

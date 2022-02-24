@@ -18,6 +18,7 @@ export default {
     noDataFound: 'No Data Found',
     update: 'Update',
     delete: 'Delete',
+    cancel: 'Cancel',
   },
 
   home: {
@@ -128,5 +129,8 @@ export default {
     account_number: 'Account number',
     createBankSuccess: 'Add bank account successfully',
     updateBankSuccess: 'Update successfully',
+    deleteBankAccount: 'Delete bank account',
+    areYouSureToDelete: 'Are you sure to delete this bank account?',
+    deleteBankAccountSuccess: 'Delete successfully',
   },
 }

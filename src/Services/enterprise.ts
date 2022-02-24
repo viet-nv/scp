@@ -90,6 +90,13 @@ export const enterpriseApi = pcApi.injectEndpoints({
         body,
       }),
     }),
+
+    deleteBankAccount: builder.mutation({
+      query: id => ({
+        url: `/v1/enterprises/${id}/bank`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
@@ -104,4 +111,5 @@ export const {
   useAddClientReportMutation,
   useLazyBankAccountQuery,
   useUpdateBankAccountMutation,
+  useDeleteBankAccountMutation,
 } = enterpriseApi

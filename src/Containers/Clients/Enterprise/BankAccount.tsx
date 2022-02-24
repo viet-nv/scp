@@ -1,11 +1,24 @@
 import { Header, Screen } from '@/Components'
-import { useLazyBankAccountQuery } from '@/Services/enterprise'
+import {
+  useDeleteBankAccountMutation,
+  useLazyBankAccountQuery,
+} from '@/Services/enterprise'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Divider, Fab, FlatList, Flex, Icon, Text } from 'native-base'
+import {
+  AlertDialog,
+  Divider,
+  Fab,
+  FlatList,
+  Flex,
+  Icon,
+  Text,
+  useDisclose,
+  Button,
+} from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, Alert, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -21,6 +34,14 @@ function ClientReport() {
     size: 10,
     total_record: 0,
   })
+
+  const [
+    deleteBankAccount,
+    { isLoading: isDeletingBankAcc },
+  ] = useDeleteBankAccountMutation()
+
+  const [idToDelete, setDeleteBank] = useState()
+  const cancelRef = React.useRef(null)
 
   const [getBankAccounts, { isLoading, isFetching }] = useLazyBankAccountQuery()
   const init = () => {
@@ -49,6 +70,53 @@ function ClientReport() {
       statusBackgroundColor={Colors.navBackground}
       backgroundColor={Colors.white}
     >
+      <AlertDialog
+        leastDestructiveRef={cancelRef}
+        isOpen={!!idToDelete}
+        onClose={() => setDeleteBank(undefined)}
+      >
+        <AlertDialog.Content>
+          <AlertDialog.CloseButton />
+          <AlertDialog.Header>{t`enterpriseScreen.deleteBankAccount`}</AlertDialog.Header>
+          <AlertDialog.Body>
+            {t`enterpriseScreen.areYouSureToDelete`}
+          </AlertDialog.Body>
+          <AlertDialog.Footer>
+            <Button.Group space={2}>
+              <Button
+                variant="ghost"
+                size="sm"
+                colorScheme="coolGray"
+                onPress={() => setDeleteBank(undefined)}
+                ref={cancelRef}
+              >
+                {t`common.cancel`}
+              </Button>
+              <Button
+                colorScheme="danger"
+                size="sm"
+                isLoading={isDeletingBankAcc}
+                _loading={{
+                  backgroundColor: Colors.error,
+                }}
+                onPress={async () => {
+                  const res: any = await deleteBankAccount(idToDelete)
+                  if (!res.error) {
+                    Alert.alert(
+                      t`common.success`,
+                      t`enterpriseScreen.deleteBankAccountSuccess`,
+                    )
+                    init()
+                    setDeleteBank(undefined)
+                  } else Alert.alert(t`common.error`, t`common.errorMsg`)
+                }}
+              >
+                {t`common.delete`}
+              </Button>
+            </Button.Group>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog>
       <Header
         title={t`enterpriseScreen.bankAccount`}
         style={{
@@ -138,7 +206,7 @@ function ClientReport() {
                     </Text>
                   </TouchableOpacity>
                   <Divider orientation="vertical" bg="red.600" mx="0.5" />
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => setDeleteBank(item.id)}>
                     <Text
                       color={Colors.error}
                       fontSize="12px"
