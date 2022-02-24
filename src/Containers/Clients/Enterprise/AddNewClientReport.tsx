@@ -64,7 +64,6 @@ function ClientReport() {
           text: 'Ok',
           onPress: () => {
             navigation.goBack()
-            route.params.reset()
           },
         },
       ])

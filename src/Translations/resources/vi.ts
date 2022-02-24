@@ -133,5 +133,11 @@ export default {
     deleteBankAccount: 'Xóa tài khoản ngân hàng',
     areYouSureToDelete: 'Bạn có chắc muốn xóa tài khoản này?',
     deleteBankAccountSuccess: 'Xóa tài khoản thành công',
+    updateEmployeeInformation: 'Cập nhật Thông tin Người Lao Động	',
+    updateWorkingDay: 'Cập nhật Thông tin Ngày Công',
+    updateEligibleEmployeeNotice:
+      'Cập nhật Thông báo Người Lao Động Đủ Điều kiện',
+    updateRetiredEmployee: 'Cập nhật Thông tin Người Lao Động nghỉ việc',
+    updateFequencySuccess: 'Cập nhật Tần suât Cập nhật & Thông báo thành công',
   },
 }

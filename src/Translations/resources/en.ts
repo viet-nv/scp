@@ -132,5 +132,10 @@ export default {
     deleteBankAccount: 'Delete bank account',
     areYouSureToDelete: 'Are you sure to delete this bank account?',
     deleteBankAccountSuccess: 'Delete successfully',
+    updateEmployeeInformation: 'Update Employee Information',
+    updateWorkingDay: 'Update Working Day',
+    updateEligibleEmployeeNotice: 'Update Eligible Employee Notice',
+    updateRetiredEmployee: 'Update Retired Employee',
+    updateFequencySuccess: 'Update Frequency of Update & Notice Successfully',
   },
 }

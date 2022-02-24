@@ -97,6 +97,20 @@ export const enterpriseApi = pcApi.injectEndpoints({
         method: 'DELETE',
       }),
     }),
+
+    getFrequency: builder.query({
+      query: id => ({
+        url: `/v1/enterprises/${id}/frequency`,
+      }),
+    }),
+
+    updateFequency: builder.mutation({
+      query: ({ enterprise_id, ...body }) => ({
+        url: `/v1/enterprises/${enterprise_id}/frequency`,
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -112,4 +126,6 @@ export const {
   useLazyBankAccountQuery,
   useUpdateBankAccountMutation,
   useDeleteBankAccountMutation,
+  useGetFrequencyQuery,
+  useUpdateFequencyMutation,
 } = enterpriseApi

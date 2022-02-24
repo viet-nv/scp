@@ -1,5 +1,8 @@
 import { Header, Screen } from '@/Components'
-import { useGetEnterpriseDetailQuery } from '@/Services/enterprise'
+import {
+  useGetEnterpriseDetailQuery,
+  useGetFrequencyQuery,
+} from '@/Services/enterprise'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import {
@@ -30,10 +33,15 @@ function EnterpriseDetail() {
   const { data, isLoading, refetch } = useGetEnterpriseDetailQuery(
     route.params.id,
   )
+  const {
+    data: frequencyData,
+    refetch: refetchFrequency,
+  } = useGetFrequencyQuery(route.params.id)
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       refetch()
+      refetchFrequency()
     })
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
@@ -123,7 +131,16 @@ function EnterpriseDetail() {
             </Flex>
           </Actionsheet.Item>
 
-          <Actionsheet.Item padding="0">
+          <Actionsheet.Item
+            padding="0"
+            onPress={() => {
+              onClose()
+              navigation.navigate('FrequencyUpdateNotice', {
+                id: route.params.id,
+                frequencyData,
+              })
+            }}
+          >
             <Flex
               flexDirection="row"
               paddingX="16px"
