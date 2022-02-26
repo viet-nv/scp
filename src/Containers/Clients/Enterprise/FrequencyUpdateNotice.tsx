@@ -1,9 +1,5 @@
 import { Header, Screen } from '@/Components'
-import {
-  useAddClientReportMutation,
-  useGetFrequencyQuery,
-  useUpdateFequencyMutation,
-} from '@/Services/enterprise'
+import { useUpdateFequencyMutation } from '@/Services/enterprise'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Box, Button, FormControl, Input, VStack } from 'native-base'

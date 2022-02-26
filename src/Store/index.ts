@@ -22,6 +22,7 @@ import onboardedEnterprises from './enterprises/onBoarded'
 import { authApi } from '@/Services/auth'
 import { enterpriseApi } from '@/Services/enterprise'
 import { categoriesApi } from '@/Services/categories'
+import { usersApi } from '@/Services/users'
 
 const reducers = combineReducers({
   theme,
@@ -35,6 +36,7 @@ const reducers = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   [enterpriseApi.reducerPath]: enterpriseApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
+  [usersApi.reducerPath]: usersApi.reducer,
   auth: authReducer,
   allEnterprises: allEnterprisesReducer,
   onboardedEnterprises: onboardedEnterprises,

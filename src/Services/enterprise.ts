@@ -111,6 +111,28 @@ export const enterpriseApi = pcApi.injectEndpoints({
         body,
       }),
     }),
+
+    assignCRM: builder.mutation({
+      query: ({ enterprise_ids, user_id }) => ({
+        url: `/v1/enterprises/assign-crm`,
+        method: 'POST',
+        body: {
+          enterprise_ids,
+          user_id,
+        },
+      }),
+    }),
+
+    assignCA: builder.mutation({
+      query: ({ enterprise_ids, user_id }) => ({
+        url: `/v1/enterprises/assign-ca`,
+        method: 'POST',
+        body: {
+          enterprise_ids,
+          user_id,
+        },
+      }),
+    }),
   }),
 })
 
@@ -128,4 +150,6 @@ export const {
   useDeleteBankAccountMutation,
   useGetFrequencyQuery,
   useUpdateFequencyMutation,
+  useAssignCRMMutation,
+  useAssignCAMutation,
 } = enterpriseApi

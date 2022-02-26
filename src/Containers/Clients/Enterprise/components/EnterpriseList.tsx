@@ -154,7 +154,6 @@ function EnterpriseList({
             marginTop="24px"
             paddingX="16px"
             position="relative"
-            paddingBottom="64px"
           >
             <Text>{t`enterpriseScreen.enterpriseName`}</Text>
             <Input
@@ -228,15 +227,10 @@ function EnterpriseList({
                 setFilters({ ...filters, senior_fullname })
               }
             />
-            <Flex
-              flexDirection="row"
-              position="absolute"
-              bottom="0"
-              left="16px"
-            >
+            <Box flexDirection="row" marginTop="16px" paddingY="12px">
               <Button
                 flex={1}
-                variant="subtle"
+                variant="outline"
                 onPress={() => {
                   setFilters({
                     name: '',
@@ -288,7 +282,7 @@ function EnterpriseList({
                   onClose()
                 }}
               >{t`enterpriseScreen.apply`}</Button>
-            </Flex>
+            </Box>
           </Box>
         </Actionsheet.Content>
       </Actionsheet>

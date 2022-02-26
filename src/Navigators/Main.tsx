@@ -19,6 +19,7 @@ import AddNewClientReport from '@/Containers/Clients/Enterprise/AddNewClientRepo
 import BankAccount from '@/Containers/Clients/Enterprise/BankAccount'
 import AddUpdateBank from '@/Containers/Clients/Enterprise/AddUpdateBank'
 import FrequencyUpdateNotice from '@/Containers/Clients/Enterprise/FrequencyUpdateNotice'
+import AssignedAccount from '@/Containers/Clients/Enterprise/AssignedAccount'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -117,6 +118,7 @@ const MainNavigator = () => {
         name="FrequencyUpdateNotice"
         component={FrequencyUpdateNotice}
       />
+      <Stack.Screen name="AssignedAccount" component={AssignedAccount} />
     </Stack.Navigator>
   )
 }

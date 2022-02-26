@@ -19,6 +19,9 @@ export default {
     update: 'Cập nhật',
     cancel: 'Hủy',
     delete: 'Xóa',
+    name: 'Tên',
+    group: 'Nhóm',
+    change: 'Thay đổi',
   },
 
   home: {
@@ -139,5 +142,11 @@ export default {
       'Cập nhật Thông báo Người Lao Động Đủ Điều kiện',
     updateRetiredEmployee: 'Cập nhật Thông tin Người Lao Động nghỉ việc',
     updateFequencySuccess: 'Cập nhật Tần suât Cập nhật & Thông báo thành công',
+    crmDepartment: 'Bộ phận QHKH',
+    caDepartment: 'Bộ phận thẩm định',
+    enterpriseOriginator: 'Người khởi tạo doanh nghiệp',
   },
+
+  position: 'Chức vụ',
+  role: 'Vai trò',
 }

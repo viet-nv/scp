@@ -19,6 +19,9 @@ export default {
     update: 'Update',
     delete: 'Delete',
     cancel: 'Cancel',
+    name: 'Name',
+    group: 'Group',
+    change: 'Change',
   },
 
   home: {
@@ -137,5 +140,11 @@ export default {
     updateEligibleEmployeeNotice: 'Update Eligible Employee Notice',
     updateRetiredEmployee: 'Update Retired Employee',
     updateFequencySuccess: 'Update Frequency of Update & Notice Successfully',
+    crmDepartment: 'CRM Department',
+    caDepartment: 'CA Department',
+    enterpriseOriginator: 'Enterprise Originator',
   },
+
+  position: 'Position',
+  role: 'Role',
 }

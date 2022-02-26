@@ -53,6 +53,7 @@ function UpdateEnterprise() {
       last_amendment_date: data.last_amendment_date,
       tax_code: data.tax_code,
       phone: data.phone,
+      fax: data.fax,
       tax: data.tax,
       legal_representative: data.legal_representative,
       legal_representative_position: data.legal_representative_position,
