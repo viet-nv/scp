@@ -1,7 +1,6 @@
 import { Header, Screen } from '@/Components'
 import {
   useCreateEnterpriseMutation,
-  useGetEnterpriseQuery,
   useLazyGetEnterpriseQuery,
 } from '@/Services/enterprise'
 import { appendData, reset } from '@/Store/enterprises/all'

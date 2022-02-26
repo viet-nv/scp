@@ -117,7 +117,15 @@ function EnterpriseDetail() {
             </Flex>
           </Actionsheet.Item>
 
-          <Actionsheet.Item padding="0">
+          <Actionsheet.Item
+            padding="0"
+            onPress={() => {
+              onClose()
+              navigation.navigate('LegalDocuments', {
+                id: route.params.id,
+              })
+            }}
+          >
             <Flex
               flexDirection="row"
               paddingX="16px"
@@ -127,6 +135,20 @@ function EnterpriseDetail() {
               <Ionicons color={Colors.text} name="document-outline" size={20} />
               <Text fontWeight="500" fontSize="16px" marginLeft="8px">
                 {t`enterpriseScreen.legalDocuments`}
+              </Text>
+            </Flex>
+          </Actionsheet.Item>
+
+          <Actionsheet.Item padding="0">
+            <Flex
+              flexDirection="row"
+              paddingX="16px"
+              paddingY="12px"
+              alignItems="center"
+            >
+              <Ionicons color={Colors.text} name="contract-outline" size={20} />
+              <Text fontWeight="500" fontSize="16px" marginLeft="8px">
+                {t`enterpriseScreen.contractManagement`}
               </Text>
             </Flex>
           </Actionsheet.Item>

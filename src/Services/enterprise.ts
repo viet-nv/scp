@@ -133,6 +133,31 @@ export const enterpriseApi = pcApi.injectEndpoints({
         },
       }),
     }),
+
+    getLegalType: builder.query({
+      query: id => ({
+        url: `/v1/enterprises/${id}/legal-type`,
+      }),
+    }),
+
+    getLegalStatus: builder.query({
+      query: id => ({
+        url: `/v1/enterprises/${id}/legal`,
+      }),
+    }),
+
+    getLegalDocs: builder.query({
+      query: ({ id, ...params }) => ({
+        url: `/v1/enterprises/${id}/legal-doc`,
+        params,
+      }),
+    }),
+
+    downloadDocument: builder.query({
+      query: key => ({
+        url: `v1/objects/${key}/download`,
+      }),
+    }),
   }),
 })
 
@@ -152,4 +177,8 @@ export const {
   useUpdateFequencyMutation,
   useAssignCRMMutation,
   useAssignCAMutation,
+  useGetLegalTypeQuery,
+  useGetLegalStatusQuery,
+  useLazyGetLegalDocsQuery,
+  useLazyDownloadDocumentQuery,
 } = enterpriseApi

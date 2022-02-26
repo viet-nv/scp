@@ -22,6 +22,10 @@ export default {
     name: 'Tên',
     group: 'Nhóm',
     change: 'Thay đổi',
+    view: 'Xem',
+    review: 'Review',
+    detail: 'Chi tiết',
+    deadline: 'Hạn nộp',
   },
 
   home: {
@@ -145,6 +149,9 @@ export default {
     crmDepartment: 'Bộ phận QHKH',
     caDepartment: 'Bộ phận thẩm định',
     enterpriseOriginator: 'Người khởi tạo doanh nghiệp',
+    documentStatus: 'Trạng thái hồ sơ',
+    full: 'Đủ hồ sơ',
+    missing: 'Thiếu hồ sơ',
   },
 
   position: 'Chức vụ',

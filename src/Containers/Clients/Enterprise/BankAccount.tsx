@@ -13,7 +13,6 @@ import {
   Flex,
   Icon,
   Text,
-  useDisclose,
   Button,
 } from 'native-base'
 import React, { useEffect, useState } from 'react'

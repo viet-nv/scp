@@ -11,7 +11,6 @@ import {
   Actionsheet,
   Box,
   Button,
-  Checkbox,
   Divider,
   Flex,
   Radio,
@@ -21,7 +20,12 @@ import {
 } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Alert, FlatList, TouchableOpacity } from 'react-native'
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 function AssignedAccount() {
@@ -106,6 +110,9 @@ function AssignedAccount() {
                   })
                 })
             }}
+            ListFooterComponent={
+              isLoading || isFetching ? <ActivityIndicator /> : undefined
+            }
           />
 
           <Box

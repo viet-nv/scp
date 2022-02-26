@@ -22,6 +22,10 @@ export default {
     name: 'Name',
     group: 'Group',
     change: 'Change',
+    view: 'View',
+    review: 'Review',
+    detail: 'Detail',
+    deadline: 'Deadline',
   },
 
   home: {
@@ -143,6 +147,9 @@ export default {
     crmDepartment: 'CRM Department',
     caDepartment: 'CA Department',
     enterpriseOriginator: 'Enterprise Originator',
+    documentStatus: 'Document status',
+    full: 'Full',
+    missing: 'Missing',
   },
 
   position: 'Position',
