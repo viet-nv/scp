@@ -16,6 +16,7 @@ import { AutoImage } from '../Components/AutoImage'
 import { Screen } from '@/Components/Screen/screen'
 import { Colors } from '@/Theme/Variables'
 import { useLoginMutation } from '@/Services/auth'
+import { useLazyGetMeQuery } from '@/Services/users'
 
 const logo = require('../Assets/Images/scp-logo.png')
 
@@ -71,6 +72,7 @@ export const LoginScreen = () => {
   const [showPass, setShowPass] = useState(false)
 
   const [login, { isLoading }] = useLoginMutation()
+  const [getMe] = useLazyGetMeQuery()
 
   const handleLogin = async () => {
     if (!username) {
@@ -88,6 +90,7 @@ export const LoginScreen = () => {
 
     const hash = await sha256(password)
     await login({ username, password: hash }).unwrap()
+    await getMe()
   }
 
   const { colors } = useTheme()

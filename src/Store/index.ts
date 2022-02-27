@@ -13,7 +13,7 @@ import {
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
-import { api, pcApi } from '@/Services/api'
+import { api } from '@/Services/api'
 import * as modules from '@/Services/modules'
 import theme from './Theme'
 import authReducer from './auth'
@@ -61,7 +61,8 @@ const store = configureStore({
     })
       .concat(api.middleware as Middleware)
       .concat(authApi.middleware as Middleware)
-      .concat(pcApi.middleware as Middleware)
+      .concat(enterpriseApi.middleware as Middleware)
+      .concat(usersApi.middleware as Middleware)
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default

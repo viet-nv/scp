@@ -13,7 +13,7 @@ import { useLazyFetchOneQuery } from '@/Services/modules/users'
 import { changeTheme, ThemeState } from '@/Store/Theme'
 import { Button, Text } from 'native-base'
 import { useLogoutMutation } from '@/Services/auth'
-import { useAppDispatch } from '@/Store/hooks'
+import { useAppDispatch, useAppSelector } from '@/Store/hooks'
 import { Screen } from '@/Components/Screen/screen'
 import { logout } from '@/Store/auth'
 import { useNavigation } from '@react-navigation/native'
@@ -24,6 +24,7 @@ const ExampleContainer = () => {
   const { t, i18n } = useTranslation()
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const dispatch = useAppDispatch()
+  const auth = useAppSelector(state => state.auth)
 
   const [userId, setUserId] = useState('9')
   const [
@@ -57,6 +58,7 @@ const ExampleContainer = () => {
       >
         <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
           <Brand />
+
           {(isLoading || isFetching) && <ActivityIndicator />}
           {!isSuccess ? (
             <Text style={Fonts.textRegular}>{error}</Text>
@@ -65,6 +67,8 @@ const ExampleContainer = () => {
               {t('example.helloUser', { name: data?.name })}
             </Text>
           )}
+
+          <Text>Hello {auth.user?.fullname}</Text>
         </View>
         <View
           style={[
