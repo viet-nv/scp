@@ -154,4 +154,8 @@ export default {
 
   position: 'Position',
   role: 'Role',
+
+  employeeScreen: {
+    title: 'Employee Management',
+  },
 }

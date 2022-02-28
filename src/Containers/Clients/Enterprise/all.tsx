@@ -1,67 +1,11 @@
-import { Colors } from '@/Theme/Variables'
 import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { ScrollView, View, ViewStyle } from 'react-native'
-import { Text } from 'native-base'
-import {
-  useGetReportSummaryQuery,
-  useLazyGetEnterpriseQuery,
-} from '@/Services/enterprise'
+import { RefreshControl, ScrollView, View } from 'react-native'
+import { useLazyGetEnterpriseQuery } from '@/Services/enterprise'
 import { useAllEnterPrises, useAppDispatch } from '@/Store/hooks'
 import { appendData, reset } from '@/Store/enterprises/all'
 import EnterpriseList from './components/EnterpriseList'
 import Calendar from './components/Calendar'
-
-const SUMMARY: ViewStyle = {
-  backgroundColor: Colors.primary,
-  padding: 8,
-  borderRadius: 8,
-}
-
-const SummaryItem = ({
-  text,
-  count,
-  isWarning,
-  margin = true,
-}: {
-  text: string
-  count: number
-  isWarning?: boolean
-  margin?: boolean
-}) => {
-  return (
-    <View
-      style={{
-        backgroundColor: Colors.white,
-        borderRadius: 8,
-        paddingVertical: 12,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: margin ? 8 : 0,
-      }}
-    >
-      <Text
-        style={{
-          color: isWarning ? Colors.warning : Colors.primary,
-          fontSize: 16,
-          fontWeight: '500',
-        }}
-      >
-        {count}
-      </Text>
-      <Text
-        style={{
-          marginTop: 4,
-          fontSize: 12,
-          fontWeight: '500',
-        }}
-      >
-        {text}
-      </Text>
-    </View>
-  )
-}
+import ReportSummary from './components/ReportSummary'
 
 const isCloseToBottom = ({
   layoutMeasurement,
@@ -76,11 +20,13 @@ const isCloseToBottom = ({
 }
 
 export const AllEnterprise = () => {
-  const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
   const allEnterprises = useAllEnterPrises()
-  const [getEnterprises] = useLazyGetEnterpriseQuery()
+  const [
+    getEnterprises,
+    { isLoading, isFetching },
+  ] = useLazyGetEnterpriseQuery()
 
   useEffect(() => {
     getEnterprises({ page: 1, size: 10 }).then(res => {
@@ -96,8 +42,6 @@ export const AllEnterprise = () => {
       dispatch(reset())
     }
   }, [])
-
-  const { data: reportSummary } = useGetReportSummaryQuery()
 
   const [loadingMore, setLoadingMore] = useState(false)
 
@@ -116,6 +60,22 @@ export const AllEnterprise = () => {
   return (
     <>
       <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={isLoading || isFetching}
+            onRefresh={() => {
+              dispatch(reset())
+              getEnterprises({ page: 1, size: 10 }).then(res => {
+                dispatch(
+                  appendData({
+                    ...res.data.paginate,
+                    data: res.data.data,
+                  }),
+                )
+              })
+            }}
+          />
+        }
         onScroll={async ({ nativeEvent }) => {
           if (isCloseToBottom(nativeEvent)) {
             if (
@@ -147,73 +107,7 @@ export const AllEnterprise = () => {
         <Calendar />
 
         <View style={{ padding: 16 }}>
-          <View style={SUMMARY}>
-            <Text
-              style={{
-                fontSize: 16,
-                textAlign: 'center',
-                color: Colors.white,
-                fontWeight: '500',
-              }}
-            >
-              {' '}
-              {t`enterpriseScreen.reportSummary`}
-            </Text>
-            <View style={{ flexDirection: 'row', marginTop: 10 }}>
-              <SummaryItem
-                text={t`enterpriseScreen.agreedToMeet`}
-                count={
-                  reportSummary?.find(item => item.status === 'AGREED_TO_MEET')
-                    ?.total || 0
-                }
-                margin={false}
-              />
-              <SummaryItem
-                text={t`enterpriseScreen.agreedToJoin`}
-                count={
-                  reportSummary?.find(item => item.status === 'AGREED_TO_JOIN')
-                    ?.total || 0
-                }
-              />
-              <SummaryItem
-                text={t`enterpriseScreen.persuading`}
-                count={
-                  reportSummary?.find(item => item.status === 'PERSUADING')
-                    ?.total || 0
-                }
-              />
-            </View>
-
-            <View style={{ flexDirection: 'row', marginTop: 8 }}>
-              <SummaryItem
-                text={t`enterpriseScreen.inProcessing`}
-                count={
-                  reportSummary?.find(
-                    item => item.status === 'DOCUMENT_REVIEWING',
-                  )?.total || 0
-                }
-                margin={false}
-                isWarning
-              />
-              <SummaryItem
-                text={t`enterpriseScreen.inAssessment`}
-                count={
-                  reportSummary?.find(item => item.status === 'ASSESSMENT')
-                    ?.total || 0
-                }
-                isWarning
-              />
-              <SummaryItem
-                text={t`enterpriseScreen.rejected`}
-                count={
-                  reportSummary?.find(item => item.status === 'REJECTED')
-                    ?.total || 0
-                }
-                isWarning
-              />
-            </View>
-          </View>
-
+          <ReportSummary />
           <EnterpriseList
             loadingMore={loadingMore}
             filters={filters}

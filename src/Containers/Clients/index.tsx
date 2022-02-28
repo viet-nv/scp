@@ -60,7 +60,10 @@ export const ClientScreen: React.FC<
         />
       </TouchableOpacity>
 
-      <TouchableOpacity style={ROW}>
+      <TouchableOpacity
+        style={ROW}
+        onPress={() => navigation.navigate('Employees')}
+      >
         <Icon icon="user-group" style={{ width: 36, height: 36 }} />
         <Text style={ROW_TEXT}>{t`clientScreen.employee`}</Text>
         <Ionicons

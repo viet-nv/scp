@@ -156,4 +156,8 @@ export default {
 
   position: 'Chức vụ',
   role: 'Vai trò',
+
+  employeeScreen: {
+    title: 'Quản lý người lao động',
+  },
 }

@@ -16,6 +16,7 @@ export type RootStackParamList = {
   Menu: undefined
   Enterprise: undefined
   AddNewEnterprise: undefined
+  Employees: undefined
 }
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>()
