@@ -9,3 +9,8 @@ export const useAllEnterPrises = () =>
 
 export const useOnboardedEnterprises = () =>
   useAppSelector(state => state.onboardedEnterprises)
+
+export const useAllEmployees = () => useAppSelector(state => state.allEmployees)
+
+export const useOnboardedEmployees = () =>
+  useAppSelector(state => state.onboardedEmployees)

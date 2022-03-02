@@ -159,5 +159,25 @@ export default {
 
   employeeScreen: {
     title: 'Quản lý người lao động',
+    employeeList: 'Danh sách người lao động',
+    idCardNo: 'Số CMND/CCCD/Hộ chiếu',
+    employeeDetail: 'Chi tiết người lao động',
+    employeeName: 'Tên người lao động',
+    issuanceDate: 'Ngày cấp',
+    permanentAddress: 'Địa chỉ thường trú',
+    contactAddress: 'Địa chỉ liên hệ',
+    birthday: 'Ngày sinh',
+    gender: 'Giới tính',
+    registrationBookNo: 'Sổ hộ khẩu',
+    socialInsuranceBookNo: 'Sổ bảo hiểm XH',
+    designatedAccount: 'Tài khoản chỉ định',
+    payrollTerms: 'Điều kiện ứng lương',
+    ekycInfo: 'Thông tin eKYC',
+    bankAccountOfPaymentReceive: 'Tài khoản nhận thanh toán',
+    updateEmployee: 'Cập nhật thông tin NLĐ',
+    updateEmployeeSuccess: 'Cập nhật thông tin người lao động thành công',
   },
+
+  Mr: 'Ông',
+  Ms: 'Bà',
 }

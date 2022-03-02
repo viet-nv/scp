@@ -22,6 +22,8 @@ import FrequencyUpdateNotice from '@/Containers/Clients/Enterprise/FrequencyUpda
 import AssignedAccount from '@/Containers/Clients/Enterprise/AssignedAccount'
 import LegalDocuments from '@/Containers/Clients/Enterprise/LegalDocuments'
 import { EmployeeScreen } from '@/Containers/Clients/Employees'
+import EmployeeDetail from '@/Containers/Clients/Employees/detail'
+import UpdateEmployee from '@/Containers/Clients/Employees/update'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -124,6 +126,8 @@ const MainNavigator = () => {
       <Stack.Screen name="LegalDocuments" component={LegalDocuments} />
 
       <Stack.Screen name="Employees" component={EmployeeScreen} />
+      <Stack.Screen name="EmployeeDetail" component={EmployeeDetail} />
+      <Stack.Screen name="UpdateEmployee" component={UpdateEmployee} />
     </Stack.Navigator>
   )
 }

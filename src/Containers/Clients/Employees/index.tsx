@@ -13,18 +13,14 @@ import {
   TabBarIndicatorProps,
   Route,
 } from 'react-native-tab-view'
-import { Text, Fab, Icon } from 'native-base'
+import { Text } from 'native-base'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation } from '@react-navigation/native'
-import { useAllEnterPrises, useOnboardedEnterprises } from '@/Store/hooks'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useAllEmployees, useOnboardedEmployees } from '@/Store/hooks'
+import AllEmployees from './all'
 
 const renderScene = SceneMap({
-  first: () => (
-    <View>
-      <Text>sss</Text>
-    </View>
-  ),
+  first: AllEmployees,
   second: () => <Text>bbb</Text>,
 })
 
@@ -45,8 +41,8 @@ export const EmployeeScreen = () => {
   const layout = useWindowDimensions()
   const navigation: any = useNavigation()
 
-  const { total_record: totalEnterprises } = useAllEnterPrises()
-  const { total_record: totalOnboardedEnterprises } = useOnboardedEnterprises()
+  const { total_record: totalEmployees } = useAllEmployees()
+  const { total_record: totalOnboardedEmployees } = useOnboardedEmployees()
 
   const [index, setIndex] = React.useState(0)
   const [routes] = React.useState([
@@ -85,8 +81,8 @@ export const EmployeeScreen = () => {
           style={{ color: Colors.navBackground, fontSize: 10, lineHeight: 16 }}
         >
           {labelProps.route.key === 'first'
-            ? totalEnterprises
-            : totalOnboardedEnterprises}
+            ? totalEmployees
+            : totalOnboardedEmployees}
         </Text>
       </View>
     </View>

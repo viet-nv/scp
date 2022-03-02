@@ -19,10 +19,13 @@ import theme from './Theme'
 import authReducer from './auth'
 import allEnterprisesReducer from './enterprises/all'
 import onboardedEnterprises from './enterprises/onBoarded'
+import allEmployeesReducer from './employees/all'
+import onboardedEmployeesReducer from './employees/onBoarded'
 import { authApi } from '@/Services/auth'
 import { enterpriseApi } from '@/Services/enterprise'
 import { categoriesApi } from '@/Services/categories'
 import { usersApi } from '@/Services/users'
+import { employeeApi } from '@/Services/employee'
 
 const reducers = combineReducers({
   theme,
@@ -37,9 +40,12 @@ const reducers = combineReducers({
   [enterpriseApi.reducerPath]: enterpriseApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [usersApi.reducerPath]: usersApi.reducer,
+  [employeeApi.reducerPath]: employeeApi.reducer,
   auth: authReducer,
   allEnterprises: allEnterprisesReducer,
   onboardedEnterprises: onboardedEnterprises,
+  allEmployees: allEmployeesReducer,
+  onboardedEmployees: onboardedEmployeesReducer,
 })
 
 const persistConfig = {
@@ -63,6 +69,7 @@ const store = configureStore({
       .concat(authApi.middleware as Middleware)
       .concat(enterpriseApi.middleware as Middleware)
       .concat(usersApi.middleware as Middleware)
+      .concat(employeeApi.middleware as Middleware)
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default

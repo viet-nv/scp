@@ -157,5 +157,22 @@ export default {
 
   employeeScreen: {
     title: 'Employee Management',
+    employeeList: 'Employee List',
+    idCardNo: 'ID Card/Passport No.',
+    employeeDetail: 'Employee Detail',
+    employeeName: 'Employee name',
+    issuanceDate: 'Issuance date',
+    permanentAddress: 'Permanent address',
+    contactAddress: 'Contact address',
+    birthday: 'Birthday',
+    gender: 'Gender',
+    registrationBookNo: 'Registration Book No.',
+    socialInsuranceBookNo: 'Social Insurance Book No.',
+    designatedAccount: 'Designated Account',
+    payrollTerms: 'Payroll Terms',
+    ekycInfo: 'eKYC Info',
+    bankAccountOfPaymentReceive: 'Bank account of Payment receive',
+    updateEmployee: 'Update Employee',
+    updateEmployeeSuccess: 'Update employee successfully',
   },
 }
