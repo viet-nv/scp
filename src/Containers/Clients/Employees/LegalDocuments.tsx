@@ -6,7 +6,7 @@ import {
   useGetLegalStatusQuery,
   useGetLegalTypeQuery,
   useLazyGetLegalDocsQuery,
-} from '@/Services/enterprise'
+} from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
@@ -32,7 +32,7 @@ function getUrlExtension(url: string) {
   return url.split(/[#?]/)[0].split('.').pop().trim()
 }
 
-function LegalDocuments() {
+function EmployeeLegalDocuments() {
   const { t, i18n } = useTranslation()
   const navigation: any = useNavigation()
   const route: any = useRoute()
@@ -315,4 +315,4 @@ function LegalDocuments() {
   )
 }
 
-export default LegalDocuments
+export default EmployeeLegalDocuments

@@ -1,5 +1,5 @@
 import { Header, Screen } from '@/Components'
-import { useAddClientReportMutation } from '@/Services/enterprise'
+import { useAddClientReportMutation } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
@@ -17,11 +17,11 @@ import { Controller, SubmitHandler, useForm, useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { getStatusText } from './components/EnterpriseList'
+import { getStatusText } from './components/EmployeeList'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { Alert } from 'react-native'
 
-function ClientReport() {
+function AddNewEmployeeClientReport() {
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
   const navigation: any = useNavigation()
@@ -231,4 +231,4 @@ function ClientReport() {
   )
 }
 
-export default ClientReport
+export default AddNewEmployeeClientReport

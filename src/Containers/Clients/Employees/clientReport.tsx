@@ -1,5 +1,5 @@
 import { Header, Screen } from '@/Components'
-import { useLazyClientReportQuery } from '@/Services/enterprise'
+import { useLazyClientReportQuery } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
@@ -9,9 +9,9 @@ import { useTranslation } from 'react-i18next'
 import { ActivityIndicator } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { getStatusText } from './components/EnterpriseList'
+import { getStatusText } from './components/EmployeeList'
 
-function ClientReport() {
+function EmployeeClientReport() {
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
   const navigation: any = useNavigation()
@@ -80,7 +80,7 @@ function ClientReport() {
         size="sm"
         icon={<Icon as={Ionicons} size="sm" name="add" color="white" />}
         onPress={() =>
-          navigation.navigate('AddNewClientReport', {
+          navigation.navigate('AddNewEmployeeClientReport', {
             id: route.params.id,
             STATUSES: route.params.STATUSES,
           })
@@ -194,4 +194,4 @@ function ClientReport() {
   )
 }
 
-export default ClientReport
+export default EmployeeClientReport

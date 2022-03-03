@@ -14,7 +14,12 @@ import {
 import React from 'react'
 import Tag from '@/Components/Tag'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native'
+import {
+  ActivityIndicator,
+  RefreshControl,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { getStatusColor, getStatusText } from './components/EmployeeList'
 import dayjs from 'dayjs'
@@ -85,7 +90,7 @@ function EmployeeDetail() {
             padding="0"
             onPress={() => {
               onClose()
-              navigation.navigate('ClientReport', {
+              navigation.navigate('EmployeeClientReport', {
                 id: route.params.id,
                 STATUSES: data.to_statuses || [],
               })
@@ -112,7 +117,7 @@ function EmployeeDetail() {
             padding="0"
             onPress={() => {
               onClose()
-              navigation.navigate('LegalDocuments', {
+              navigation.navigate('EmployeeLegalDocuments', {
                 id: route.params.id,
               })
             }}
@@ -180,7 +185,7 @@ function EmployeeDetail() {
             padding="0"
             onPress={() => {
               onClose()
-              navigation.navigate('AssignedAccount', {
+              navigation.navigate('EmployeeAssignedAccount', {
                 id: route.params.id,
               })
             }}
@@ -226,6 +231,12 @@ function EmployeeDetail() {
           <ActivityIndicator size="small" style={{ marginTop: 80 }} />
         ) : (
           <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={isLoading}
+                onRefresh={() => refetch()}
+              />
+            }
             style={{
               marginTop: 56,
               marginBottom: insets.bottom,

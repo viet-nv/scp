@@ -51,20 +51,20 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    // clientReport: builder.query({
-    //   query: ({ id, params }) => ({
-    //     url: `/v1/enterprises/${id}/report`,
-    //     params,
-    //   }),
-    // }),
+    clientReport: builder.query({
+      query: ({ id, params }) => ({
+        url: `/v1/employees/${id}/report`,
+        params,
+      }),
+    }),
 
-    // addClientReport: builder.mutation({
-    //   query: ({ id, ...body }) => ({
-    //     url: `/v1/enterprises/${id}/report`,
-    //     method: 'POST',
-    //     body,
-    //   }),
-    // }),
+    addClientReport: builder.mutation({
+      query: ({ id, ...body }) => ({
+        url: `/v1/employees/${id}/report`,
+        method: 'POST',
+        body,
+      }),
+    }),
 
     // bankAccount: builder.query({
     //   query: ({ id, params }) => ({
@@ -102,52 +102,40 @@ export const employeeApi = pcApi.injectEndpoints({
     //   }),
     // }),
 
-    // assignCRM: builder.mutation({
-    //   query: ({ enterprise_ids, user_id }) => ({
-    //     url: `/v1/enterprises/assign-crm`,
-    //     method: 'POST',
-    //     body: {
-    //       enterprise_ids,
-    //       user_id,
-    //     },
-    //   }),
-    // }),
+    assignCRM: builder.mutation({
+      query: ({ employee_ids, user_id }) => ({
+        url: `/v1/employees/assign-crm`,
+        method: 'POST',
+        body: { employee_ids, user_id },
+      }),
+    }),
 
-    // assignCA: builder.mutation({
-    //   query: ({ enterprise_ids, user_id }) => ({
-    //     url: `/v1/enterprises/assign-ca`,
-    //     method: 'POST',
-    //     body: {
-    //       enterprise_ids,
-    //       user_id,
-    //     },
-    //   }),
-    // }),
+    assignCA: builder.mutation({
+      query: ({ employee_ids, user_id }) => ({
+        url: `/v1/employees/assign-ca`,
+        method: 'POST',
+        body: { employee_ids, user_id },
+      }),
+    }),
 
-    // getLegalType: builder.query({
-    //   query: id => ({
-    //     url: `/v1/enterprises/${id}/legal-type`,
-    //   }),
-    // }),
+    getLegalType: builder.query({
+      query: id => ({
+        url: `/v1/employees/${id}/legal-type`,
+      }),
+    }),
 
-    // getLegalStatus: builder.query({
-    //   query: id => ({
-    //     url: `/v1/enterprises/${id}/legal`,
-    //   }),
-    // }),
+    getLegalStatus: builder.query({
+      query: id => ({
+        url: `/v1/employees/${id}/legal`,
+      }),
+    }),
 
-    // getLegalDocs: builder.query({
-    //   query: ({ id, ...params }) => ({
-    //     url: `/v1/enterprises/${id}/legal-doc`,
-    //     params,
-    //   }),
-    // }),
-
-    // downloadDocument: builder.query({
-    //   query: key => ({
-    //     url: `v1/objects/${key}/download`,
-    //   }),
-    // }),
+    getLegalDocs: builder.query({
+      query: ({ id, ...params }) => ({
+        url: `/v1/employees/${id}/legal-doc`,
+        params,
+      }),
+    }),
   }),
 })
 
@@ -157,4 +145,11 @@ export const {
   useGetReportSummaryQuery,
   useGetEmployeeDetailQuery,
   useUpdateEmployeeMutation,
+  useLazyClientReportQuery,
+  useAddClientReportMutation,
+  useLazyGetLegalDocsQuery,
+  useGetLegalStatusQuery,
+  useGetLegalTypeQuery,
+  useAssignCAMutation,
+  useAssignCRMMutation,
 } = employeeApi

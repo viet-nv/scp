@@ -24,6 +24,10 @@ import LegalDocuments from '@/Containers/Clients/Enterprise/LegalDocuments'
 import { EmployeeScreen } from '@/Containers/Clients/Employees'
 import EmployeeDetail from '@/Containers/Clients/Employees/detail'
 import UpdateEmployee from '@/Containers/Clients/Employees/update'
+import EmployeeClientReport from '@/Containers/Clients/Employees/clientReport'
+import AddNewEmployeeClientReport from '@/Containers/Clients/Employees/AddNewClientReport'
+import EmployeeLegalDocuments from '@/Containers/Clients/Employees/LegalDocuments'
+import EmployeeAssignedAccount from '@/Containers/Clients/Employees/AssignedAccount'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -128,6 +132,22 @@ const MainNavigator = () => {
       <Stack.Screen name="Employees" component={EmployeeScreen} />
       <Stack.Screen name="EmployeeDetail" component={EmployeeDetail} />
       <Stack.Screen name="UpdateEmployee" component={UpdateEmployee} />
+      <Stack.Screen
+        name="EmployeeClientReport"
+        component={EmployeeClientReport}
+      />
+      <Stack.Screen
+        name="AddNewEmployeeClientReport"
+        component={AddNewEmployeeClientReport}
+      />
+      <Stack.Screen
+        name="EmployeeLegalDocuments"
+        component={EmployeeLegalDocuments}
+      />
+      <Stack.Screen
+        name="EmployeeAssignedAccount"
+        component={EmployeeAssignedAccount}
+      />
     </Stack.Navigator>
   )
 }

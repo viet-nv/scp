@@ -91,7 +91,7 @@ function Calendar() {
                         {t`enterpriseScreen.time`}:
                       </Text>{' '}
                       <Text fontWeight="500">
-                        {dayjs(item.meeting_date).format('DD-MM-YYYY hh:mm')}
+                        {dayjs(item.meeting_date).format('DD-MM-YYYY HH:mm')}
                       </Text>
                     </Flex>
                     <Flex flexDirection="row">
