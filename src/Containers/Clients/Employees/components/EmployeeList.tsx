@@ -90,7 +90,7 @@ export const getStatusColor = (key: string): string => {
 
 type Filter = {
   name: string
-  tax_code: string
+  erc_number: string
   senior_fullname: string
   status: string[]
 }
@@ -135,7 +135,7 @@ function EmployeeList({
   const filterCount =
     +!!filters.status.length +
     +!!filters.name +
-    +!!filters.tax_code +
+    +!!filters.erc_number +
     +!!filters.senior_fullname
 
   return (
@@ -152,22 +152,24 @@ function EmployeeList({
             paddingX="16px"
             position="relative"
           >
-            <Text>{t`enterpriseScreen.enterpriseName`}</Text>
+            <Text>{t`employeeScreen.employeeName`}</Text>
             <Input
               marginTop="8px"
-              placeholder={t`enterpriseScreen.enterpriseName`}
+              placeholder={t`employeeScreen.employeeName`}
               width="100%"
               value={filters.name}
               onChangeText={name => setFilters({ ...filters, name })}
             />
 
-            <Text marginTop="24px">{t`enterpriseScreen.tax`}</Text>
+            <Text marginTop="24px">{t`employeeScreen.idCardNo`}</Text>
             <Input
               marginTop="8px"
-              placeholder={t`enterpriseScreen.tax`}
+              placeholder={t`employeeScreen.idCardNo`}
               width="100%"
-              value={filters.tax_code}
-              onChangeText={tax_code => setFilters({ ...filters, tax_code })}
+              value={filters.erc_number}
+              onChangeText={erc_number =>
+                setFilters({ ...filters, erc_number })
+              }
             />
 
             {!isOnboarded && (
@@ -231,7 +233,7 @@ function EmployeeList({
                 onPress={() => {
                   setFilters({
                     name: '',
-                    tax_code: '',
+                    erc_number: '',
                     senior_fullname: '',
                     status: [],
                   })

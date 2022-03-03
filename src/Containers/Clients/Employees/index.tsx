@@ -18,10 +18,11 @@ import { Colors } from '@/Theme/Variables'
 import { useNavigation } from '@react-navigation/native'
 import { useAllEmployees, useOnboardedEmployees } from '@/Store/hooks'
 import AllEmployees from './all'
+import OnboardedEmployee from './onboarded'
 
 const renderScene = SceneMap({
   first: AllEmployees,
-  second: () => <Text>bbb</Text>,
+  second: OnboardedEmployee,
 })
 
 const HEADER: ViewStyle = {

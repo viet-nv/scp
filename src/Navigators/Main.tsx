@@ -28,6 +28,8 @@ import EmployeeClientReport from '@/Containers/Clients/Employees/clientReport'
 import AddNewEmployeeClientReport from '@/Containers/Clients/Employees/AddNewClientReport'
 import EmployeeLegalDocuments from '@/Containers/Clients/Employees/LegalDocuments'
 import EmployeeAssignedAccount from '@/Containers/Clients/Employees/AssignedAccount'
+import EmployeeBankAccount from '@/Containers/Clients/Employees/BankAccount'
+import EmployeeAddUpdateBank from '@/Containers/Clients/Employees/AddUpdateBank'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -147,6 +149,16 @@ const MainNavigator = () => {
       <Stack.Screen
         name="EmployeeAssignedAccount"
         component={EmployeeAssignedAccount}
+      />
+
+      <Stack.Screen
+        name="EmployeeBankAccount"
+        component={EmployeeBankAccount}
+      />
+
+      <Stack.Screen
+        name="EmployeeAddUpdateBank"
+        component={EmployeeAddUpdateBank}
       />
     </Stack.Navigator>
   )

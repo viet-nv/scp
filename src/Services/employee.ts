@@ -8,6 +8,8 @@ export const employeeApi = pcApi.injectEndpoints({
         name?: string
         erc_number?: string
         senior_fullname?: string
+        meeting_date_from?: string
+        meeting_date_to?: string
         status?: string
         size?: number
         page?: number
@@ -66,27 +68,27 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    // bankAccount: builder.query({
-    //   query: ({ id, params }) => ({
-    //     url: `/v1/enterprises/${id}/bank`,
-    //     params,
-    //   }),
-    // }),
+    bankAccount: builder.query({
+      query: ({ id, params }) => ({
+        url: `/v1/employees/${id}/bank`,
+        params,
+      }),
+    }),
 
-    // updateBankAccount: builder.mutation({
-    //   query: body => ({
-    //     url: `/v1/enterprises/${body.enterprise_id}/bank`,
-    //     method: 'POST',
-    //     body,
-    //   }),
-    // }),
+    updateBankAccount: builder.mutation({
+      query: body => ({
+        url: `/v1/employees/${body.employee_id}/bank`,
+        method: 'POST',
+        body,
+      }),
+    }),
 
-    // deleteBankAccount: builder.mutation({
-    //   query: id => ({
-    //     url: `/v1/enterprises/${id}/bank`,
-    //     method: 'DELETE',
-    //   }),
-    // }),
+    deleteBankAccount: builder.mutation({
+      query: id => ({
+        url: `/v1/employees/${id}/bank`,
+        method: 'DELETE',
+      }),
+    }),
 
     // getFrequency: builder.query({
     //   query: id => ({
@@ -152,4 +154,7 @@ export const {
   useGetLegalTypeQuery,
   useAssignCAMutation,
   useAssignCRMMutation,
+  useDeleteBankAccountMutation,
+  useLazyBankAccountQuery,
+  useUpdateBankAccountMutation,
 } = employeeApi

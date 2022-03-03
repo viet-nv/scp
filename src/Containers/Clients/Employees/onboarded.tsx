@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { RefreshControl, ScrollView, View } from 'react-native'
-import { useAllEmployees, useAppDispatch } from '@/Store/hooks'
-import { appendData, reset } from '@/Store/employees/all'
-import EmployeeList from './components/EmployeeList'
-import Calendar from './components/Calendar'
-import ReportSummary from './components/ReportSummary'
+import { ScrollView, View } from 'react-native'
+import { useAppDispatch, useOnboardedEmployees } from '@/Store/hooks'
+import { appendData, reset } from '@/Store/employees/onBoarded'
+import EnterpriseList from './components/EmployeeList'
 import { useLazyGetEmployeesQuery } from '@/Services/employee'
 
 const isCloseToBottom = ({
@@ -19,14 +17,14 @@ const isCloseToBottom = ({
   )
 }
 
-export const AllEmployees = () => {
+export const OnboardedEmployee = () => {
   const dispatch = useAppDispatch()
 
-  const allEnterprises = useAllEmployees()
-  const [getEmployees, { isLoading, isFetching }] = useLazyGetEmployeesQuery()
+  const onboardedEmployees = useOnboardedEmployees()
+  const [getEmployees] = useLazyGetEmployeesQuery()
 
   useEffect(() => {
-    getEmployees({ page: 1, size: 10 }).then(res => {
+    getEmployees({ page: 1, size: 10, status: 'ONBOARDED' }).then(res => {
       dispatch(
         appendData({
           ...res.data.paginate,
@@ -57,34 +55,18 @@ export const AllEmployees = () => {
   return (
     <>
       <ScrollView
-        refreshControl={
-          <RefreshControl
-            refreshing={isLoading || isFetching}
-            onRefresh={() => {
-              dispatch(reset())
-              getEmployees({ page: 1, size: 10 }).then(res => {
-                dispatch(
-                  appendData({
-                    ...res.data.paginate,
-                    data: res.data.data,
-                  }),
-                )
-              })
-            }}
-          />
-        }
         onScroll={async ({ nativeEvent }) => {
           if (isCloseToBottom(nativeEvent)) {
             if (
               !loadingMore &&
-              allEnterprises.data.length < allEnterprises.total_record
+              onboardedEmployees.data.length < onboardedEmployees.total_record
             ) {
               setLoadingMore(true)
               await getEmployees({
-                page: allEnterprises.page + 1,
+                page: onboardedEmployees.page + 1,
                 size: 10,
                 name: filters.name || undefined,
-                status: filters.status.join(',') || undefined,
+                status: 'ONBOARDED',
                 senior_fullname: filters.senior_fullname || undefined,
                 erc_number: filters.erc_number || undefined,
               }).then(res => {
@@ -101,14 +83,12 @@ export const AllEmployees = () => {
         }}
         scrollEventThrottle={100}
       >
-        <Calendar />
-
         <View style={{ padding: 16 }}>
-          <ReportSummary />
-          <EmployeeList
+          <EnterpriseList
             loadingMore={loadingMore}
             filters={filters}
             setFilters={setFilters}
+            isOnboarded
           />
         </View>
       </ScrollView>
@@ -116,4 +96,4 @@ export const AllEmployees = () => {
   )
 }
 
-export default AllEmployees
+export default OnboardedEmployee

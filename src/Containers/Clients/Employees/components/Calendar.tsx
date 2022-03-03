@@ -31,8 +31,8 @@ function Calendar() {
 
       if (!found)
         getEmployees({
-          // meeting_date_from: monday.toISOString(),
-          // meeting_date_to: sunday.toISOString(),
+          meeting_date_from: monday.toISOString(),
+          meeting_date_to: sunday.toISOString(),
           size: 100,
         }).then(res =>
           setClientInWeek([
