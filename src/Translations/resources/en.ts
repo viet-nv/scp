@@ -174,5 +174,6 @@ export default {
     bankAccountOfPaymentReceive: 'Bank account of Payment receive',
     updateEmployee: 'Update Employee',
     updateEmployeeSuccess: 'Update employee successfully',
+    salaryAccount: 'Salary Account',
   },
 }

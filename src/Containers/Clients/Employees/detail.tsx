@@ -24,7 +24,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { getStatusColor, getStatusText } from './components/EmployeeList'
 import dayjs from 'dayjs'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useGetEmployeeDetailQuery } from '@/Services/employee'
+import {
+  useGetEmployeeDetailQuery,
+  useGetWorkingQuery,
+} from '@/Services/employee'
 
 function EmployeeDetail() {
   const navigation: any = useNavigation()
@@ -36,6 +39,8 @@ function EmployeeDetail() {
   const { data, isLoading, refetch } = useGetEmployeeDetailQuery(
     route.params.id,
   )
+
+  const { data: workingData } = useGetWorkingQuery(route.params.id)
   // const {
   //   data: frequencyData,
   //   refetch: refetchFrequency,
@@ -440,7 +445,11 @@ function EmployeeDetail() {
                       {t`employeeScreen.gender`}
                     </Text>
                     <Text flex={3} fontWeight="500" textAlign="right">
-                      {data.gender || '--'}
+                      {data.gender
+                        ? data.gender === 'MALE'
+                          ? t`Mr`
+                          : t`Ms`
+                        : '--'}
                     </Text>
                   </Flex>
 
@@ -503,7 +512,32 @@ function EmployeeDetail() {
               </TouchableOpacity>
 
               {isOpenDesignatedAcc && (
-                <VStack space="2" paddingX="12px" paddingBottom="12px"></VStack>
+                <VStack space="2" paddingX="12px" paddingBottom="12px">
+                  {workingData?.data?.map((item: any, index: number) => (
+                    <React.Fragment key={item.id}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('EmployeeAccount', {
+                            employee_id: route.params.id,
+                            enterprise: item.enterprise,
+                          })
+                        }
+                        style={{
+                          alignItems: 'center',
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Text fontWeight="500">{item.enterprise.name}</Text>
+                        <Ionicons
+                          name="chevron-forward"
+                          color={Colors.subText}
+                        />
+                      </TouchableOpacity>
+                      {index !== workingData?.data?.length - 1 && <Divider />}
+                    </React.Fragment>
+                  ))}
+                </VStack>
               )}
             </Box>
 

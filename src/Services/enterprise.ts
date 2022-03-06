@@ -84,11 +84,13 @@ export const enterpriseApi = pcApi.injectEndpoints({
     }),
 
     updateBankAccount: builder.mutation({
-      query: body => ({
-        url: `/v1/enterprises/${body.enterprise_id}/bank`,
-        method: 'POST',
-        body,
-      }),
+      query: body => {
+        return {
+          url: `/v1/enterprises/${body.enterprise_id}/bank`,
+          method: 'POST',
+          body,
+        }
+      },
     }),
 
     deleteBankAccount: builder.mutation({

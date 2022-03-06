@@ -1,6 +1,6 @@
 import { Header, Screen } from '@/Components'
 import { useGetBanksQuery, useLazyGetBranchQuery } from '@/Services/categories'
-import { useUpdateBankAccountMutation } from '@/Services/enterprise'
+import { useUpdateDesignatedAccountMutation } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Box, Button, FormControl, Input, Select, VStack } from 'native-base'
@@ -10,13 +10,14 @@ import { useTranslation } from 'react-i18next'
 import { Alert } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-function AddUpdateBank() {
+function EmployeeDesignatedAccount() {
   const insets = useSafeAreaInsets()
   const { t } = useTranslation()
   const navigation = useNavigation()
   const route: any = useRoute()
   const bank = route.params?.bank
-  const enterprise_id = route.params?.enterprise_id
+  const employee_id = route.params?.employee_id
+  const id = route.params?.enterprise_id
 
   const { data: banks } = useGetBanksQuery({ page: 1, size: 200 })
 
@@ -62,7 +63,10 @@ function AddUpdateBank() {
     getBranch()
   }, [selectedBank])
 
-  const [updateBankAccount, { isLoading }] = useUpdateBankAccountMutation()
+  const [
+    updateBankAccount,
+    { isLoading },
+  ] = useUpdateDesignatedAccountMutation()
 
   const onSubmit = (data: any) => {
     const { branch_name } = data
@@ -73,8 +77,8 @@ function AddUpdateBank() {
     }
 
     updateBankAccount({
-      id: bank?.id || null,
-      enterprise_id: enterprise_id,
+      id,
+      employee_id: employee_id,
       bank_name: data.bank_name,
       branch_name: data.branch_name,
       account_number: data.account_number,
@@ -238,4 +242,4 @@ function AddUpdateBank() {
   )
 }
 
-export default AddUpdateBank
+export default EmployeeDesignatedAccount

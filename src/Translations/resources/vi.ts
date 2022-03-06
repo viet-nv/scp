@@ -176,6 +176,7 @@ export default {
     bankAccountOfPaymentReceive: 'Tài khoản nhận thanh toán',
     updateEmployee: 'Cập nhật thông tin NLĐ',
     updateEmployeeSuccess: 'Cập nhật thông tin người lao động thành công',
+    salaryAccount: 'Tài khoản nhận lương',
   },
 
   Mr: 'Ông',

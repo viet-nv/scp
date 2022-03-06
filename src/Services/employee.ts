@@ -31,14 +31,6 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    // createEnterprise: builder.mutation({
-    //   query: params => ({
-    //     url: '/v1/enterprises',
-    //     method: 'POST',
-    //     body: params,
-    //   }),
-    // }),
-
     getEmployeeDetail: builder.query({
       query: id => ({
         url: `/v1/employees/${id}`,
@@ -90,20 +82,6 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    // getFrequency: builder.query({
-    //   query: id => ({
-    //     url: `/v1/enterprises/${id}/frequency`,
-    //   }),
-    // }),
-
-    // updateFequency: builder.mutation({
-    //   query: ({ enterprise_id, ...body }) => ({
-    //     url: `/v1/enterprises/${enterprise_id}/frequency`,
-    //     method: 'POST',
-    //     body,
-    //   }),
-    // }),
-
     assignCRM: builder.mutation({
       query: ({ employee_ids, user_id }) => ({
         url: `/v1/employees/assign-crm`,
@@ -138,6 +116,26 @@ export const employeeApi = pcApi.injectEndpoints({
         params,
       }),
     }),
+
+    getWorking: builder.query({
+      query: id => ({
+        url: `/v1/employees/${id}/working?page=1&size=30`,
+      }),
+    }),
+
+    getEmployeeBankAccount: builder.query({
+      query: ({ employee_id, enterprise_id }) => ({
+        url: `/v1/employees/${employee_id}/bank/${enterprise_id}`,
+      }),
+    }),
+
+    updateDesignatedAccount: builder.mutation({
+      query: ({ employee_id, id, ...body }) => ({
+        url: `/v1/employees/${employee_id}/bank/${id}`,
+        body,
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -157,4 +155,7 @@ export const {
   useDeleteBankAccountMutation,
   useLazyBankAccountQuery,
   useUpdateBankAccountMutation,
+  useGetWorkingQuery,
+  useGetEmployeeBankAccountQuery,
+  useUpdateDesignatedAccountMutation,
 } = employeeApi
