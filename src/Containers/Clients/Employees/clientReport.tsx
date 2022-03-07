@@ -1,5 +1,5 @@
 import { Header, Screen } from '@/Components'
-import { useLazyClientReportQuery } from '@/Services/employee'
+import { useLazyClientReportEmployeeQuery } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
@@ -27,7 +27,7 @@ function EmployeeClientReport() {
   const [
     getClientReports,
     { isLoading, isFetching },
-  ] = useLazyClientReportQuery()
+  ] = useLazyClientReportEmployeeQuery()
 
   const init = () => {
     getClientReports({

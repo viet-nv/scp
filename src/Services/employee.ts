@@ -19,7 +19,7 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    getReportSummary: builder.query<
+    getEmployeeReportSummary: builder.query<
       {
         status: 'REJECTED' | 'ASSESSMENT' | 'PERSUADING' | 'AGREED_TO_JOIN'
         total: number
@@ -45,7 +45,7 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    clientReport: builder.query({
+    clientReportEmployee: builder.query({
       query: ({ id, params }) => ({
         url: `/v1/employees/${id}/report`,
         params,
@@ -82,7 +82,7 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    assignCRM: builder.mutation({
+    assignEmployeeCRM: builder.mutation({
       query: ({ employee_ids, user_id }) => ({
         url: `/v1/employees/assign-crm`,
         method: 'POST',
@@ -90,7 +90,7 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    assignCA: builder.mutation({
+    assignEmployeeCA: builder.mutation({
       query: ({ employee_ids, user_id }) => ({
         url: `/v1/employees/assign-ca`,
         method: 'POST',
@@ -98,19 +98,19 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    getLegalType: builder.query({
+    getEmployeeLegalType: builder.query({
       query: id => ({
         url: `/v1/employees/${id}/legal-type`,
       }),
     }),
 
-    getLegalStatus: builder.query({
+    getEmployeeLegalStatus: builder.query({
       query: id => ({
         url: `/v1/employees/${id}/legal`,
       }),
     }),
 
-    getLegalDocs: builder.query({
+    getEmployeeLegalDocs: builder.query({
       query: ({ id, ...params }) => ({
         url: `/v1/employees/${id}/legal-doc`,
         params,
@@ -142,16 +142,16 @@ export const employeeApi = pcApi.injectEndpoints({
 export const {
   useGetEmployeesQuery,
   useLazyGetEmployeesQuery,
-  useGetReportSummaryQuery,
+  useGetEmployeeReportSummaryQuery,
   useGetEmployeeDetailQuery,
   useUpdateEmployeeMutation,
-  useLazyClientReportQuery,
+  useLazyClientReportEmployeeQuery,
   useAddClientReportMutation,
-  useLazyGetLegalDocsQuery,
-  useGetLegalStatusQuery,
-  useGetLegalTypeQuery,
-  useAssignCAMutation,
-  useAssignCRMMutation,
+  useLazyGetEmployeeLegalDocsQuery,
+  useGetEmployeeLegalStatusQuery,
+  useGetEmployeeLegalTypeQuery,
+  useAssignEmployeeCAMutation,
+  useAssignEmployeeCRMMutation,
   useDeleteBankAccountMutation,
   useLazyBankAccountQuery,
   useUpdateBankAccountMutation,

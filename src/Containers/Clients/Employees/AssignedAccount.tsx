@@ -1,7 +1,7 @@
 import { Header, Screen } from '@/Components'
 import {
-  useAssignCAMutation,
-  useAssignCRMMutation,
+  useAssignEmployeeCAMutation,
+  useAssignEmployeeCRMMutation,
   useGetEmployeeDetailQuery,
 } from '@/Services/employee'
 import { useLazyGetUsersQuery } from '@/Services/users'
@@ -51,12 +51,15 @@ function EmployeeAssignedAccount() {
     })
   }, [])
 
-  const [assignCRM, { isLoading: assigningCRM }] = useAssignCRMMutation()
-  const [asignCA, { isLoading: assigningCA }] = useAssignCAMutation()
+  const [
+    assignCRM,
+    { isLoading: assigningCRM },
+  ] = useAssignEmployeeCRMMutation()
+  const [asignCA, { isLoading: assigningCA }] = useAssignEmployeeCAMutation()
 
   const { data, refetch } = useGetEmployeeDetailQuery(route.params.id)
 
-  const { created_user, ca_manager_user, senior_user } = data || {}
+  const { ca_manager_user, senior_user } = data || {}
 
   const [show, setShow] = useState('')
 

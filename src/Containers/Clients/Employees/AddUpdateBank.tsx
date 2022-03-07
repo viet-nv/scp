@@ -74,7 +74,7 @@ function EmployeeAddUpdateBank() {
 
     updateBankAccount({
       id: bank?.id || null,
-      enterprise_id: employee_id,
+      employee_id: employee_id,
       bank_name: data.bank_name,
       branch_name: data.branch_name,
       account_number: data.account_number,

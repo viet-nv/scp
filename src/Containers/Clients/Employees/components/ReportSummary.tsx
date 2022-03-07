@@ -1,4 +1,4 @@
-import { useGetReportSummaryQuery } from '@/Services/employee'
+import { useGetEmployeeReportSummaryQuery } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation } from '@react-navigation/native'
 import { Text } from 'native-base'
@@ -61,7 +61,7 @@ const SummaryItem = ({
 
 function ReportSummary() {
   const { t } = useTranslation()
-  const { data: reportSummary, refetch } = useGetReportSummaryQuery()
+  const { data: reportSummary, refetch } = useGetEmployeeReportSummaryQuery()
   const navigation = useNavigation()
 
   useEffect(() => {

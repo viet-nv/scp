@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import CalendarStrip from 'react-native-calendar-strip'
 import { Colors } from '@/Theme/Variables'
 import { useLazyGetEmployeesQuery } from '@/Services/employee'
+import { useNavigation } from '@react-navigation/native'
 
 function Calendar() {
   const { t } = useTranslation()
@@ -48,9 +49,15 @@ function Calendar() {
     [getEmployees, clientsInWeek],
   )
 
+  const navigation = useNavigation()
   useEffect(() => {
-    getClientInWeekData()
-  }, [])
+    const unsubscribe = navigation.addListener('focus', () => {
+      setClientInWeek([])
+      getClientInWeekData()
+    })
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe
+  }, [navigation])
 
   const clientActive = clientsInWeek.find(
     item => item.start <= date && date <= item.end,

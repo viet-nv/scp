@@ -154,12 +154,6 @@ export const enterpriseApi = pcApi.injectEndpoints({
         params,
       }),
     }),
-
-    downloadDocument: builder.query({
-      query: key => ({
-        url: `v1/objects/${key}/download`,
-      }),
-    }),
   }),
 })
 
@@ -182,5 +176,4 @@ export const {
   useGetLegalTypeQuery,
   useGetLegalStatusQuery,
   useLazyGetLegalDocsQuery,
-  useLazyDownloadDocumentQuery,
 } = enterpriseApi

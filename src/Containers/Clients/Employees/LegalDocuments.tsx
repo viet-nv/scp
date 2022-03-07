@@ -3,9 +3,9 @@ import Tag from '@/Components/Tag'
 import RNFS from 'react-native-fs'
 import FileViewer from 'react-native-file-viewer'
 import {
-  useGetLegalStatusQuery,
-  useGetLegalTypeQuery,
-  useLazyGetLegalDocsQuery,
+  useGetEmployeeLegalStatusQuery,
+  useGetEmployeeLegalTypeQuery,
+  useLazyGetEmployeeLegalDocsQuery,
 } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -37,8 +37,10 @@ function EmployeeLegalDocuments() {
   const navigation: any = useNavigation()
   const route: any = useRoute()
 
-  const { data } = useGetLegalTypeQuery(route.params.id)
-  const { data: legalStatus, refetch } = useGetLegalStatusQuery(route.params.id)
+  const { data } = useGetEmployeeLegalTypeQuery(route.params.id)
+  const { data: legalStatus, refetch } = useGetEmployeeLegalStatusQuery(
+    route.params.id,
+  )
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -56,7 +58,10 @@ function EmployeeLegalDocuments() {
   const { isOpen, onOpen, onClose } = useDisclose()
   const [selectedType, setSelectedType] = useState<any>()
 
-  const [getLegalDocs, { isLoading, isFetching }] = useLazyGetLegalDocsQuery()
+  const [
+    getLegalDocs,
+    { isLoading, isFetching },
+  ] = useLazyGetEmployeeLegalDocsQuery()
   const [documents, setDocuments] = useState({
     page: 1,
     size: 10,
