@@ -175,5 +175,12 @@ export default {
     updateEmployee: 'Update Employee',
     updateEmployeeSuccess: 'Update employee successfully',
     salaryAccount: 'Salary Account',
+    upload: 'Upload',
+    reselect: 'Reselect',
+    uploadSuccess: 'Upload success',
   },
+
+  Mr: 'Mr.',
+  Ms: 'Ms.',
+  selectedFiles: 'Selected Files',
 }

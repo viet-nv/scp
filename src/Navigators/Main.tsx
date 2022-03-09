@@ -32,6 +32,7 @@ import EmployeeBankAccount from '@/Containers/Clients/Employees/BankAccount'
 import EmployeeAddUpdateBank from '@/Containers/Clients/Employees/AddUpdateBank'
 import EmployeeAccount from '@/Containers/Clients/Employees/EmployeeAccount'
 import EmployeeDesignatedAccount from '@/Containers/Clients/Employees/UpdateDesignatedAccount'
+import EmployeeLegalDocumentsViewAndUpload from '@/Containers/Clients/Employees/LegalDocumentsViewAndUpload'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -168,6 +169,11 @@ const MainNavigator = () => {
         name="EmployeeDesignatedAccount"
         component={EmployeeDesignatedAccount}
       />
+
+      <Stack.Screen
+        name="EmployeeLegalDocumentsViewAndUpload"
+        component={EmployeeLegalDocumentsViewAndUpload}
+      ></Stack.Screen>
     </Stack.Navigator>
   )
 }

@@ -60,14 +60,13 @@ export const employeeApi = pcApi.injectEndpoints({
       }),
     }),
 
-    bankAccount: builder.query({
-      query: ({ id, params }) => ({
+    employeeBankAccount: builder.query({
+      query: id => ({
         url: `/v1/employees/${id}/bank`,
-        params,
       }),
     }),
 
-    updateBankAccount: builder.mutation({
+    updateEmployeeBankAccount1: builder.mutation({
       query: body => ({
         url: `/v1/employees/${body.employee_id}/bank`,
         method: 'POST',
@@ -136,6 +135,22 @@ export const employeeApi = pcApi.injectEndpoints({
         method: 'POST',
       }),
     }),
+
+    uploadEmployeeFile: builder.mutation({
+      query: body => ({
+        url: `/v1/objects/upload`,
+        body,
+        method: 'POST',
+      }),
+    }),
+
+    uploadEmployeeLegalDoc: builder.mutation({
+      query: ({ employee_id, ...body }) => ({
+        url: `/v1/employees/${employee_id}/legal-doc`,
+        body,
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -153,9 +168,11 @@ export const {
   useAssignEmployeeCAMutation,
   useAssignEmployeeCRMMutation,
   useDeleteBankAccountMutation,
-  useLazyBankAccountQuery,
-  useUpdateBankAccountMutation,
+  useEmployeeBankAccountQuery,
+  useUpdateEmployeeBankAccount1Mutation,
   useGetWorkingQuery,
   useGetEmployeeBankAccountQuery,
   useUpdateDesignatedAccountMutation,
+  useUploadEmployeeFileMutation,
+  useUploadEmployeeLegalDocMutation,
 } = employeeApi

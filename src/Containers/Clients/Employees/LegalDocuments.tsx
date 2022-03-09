@@ -1,43 +1,25 @@
 import { Header, Screen } from '@/Components'
 import Tag from '@/Components/Tag'
-import RNFS from 'react-native-fs'
-import FileViewer from 'react-native-file-viewer'
 import {
   useGetEmployeeLegalStatusQuery,
   useGetEmployeeLegalTypeQuery,
-  useLazyGetEmployeeLegalDocsQuery,
 } from '@/Services/employee'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
-import { Text, Box, Flex, Modal, useDisclose, Actionsheet } from 'native-base'
-import React, { useEffect, useState } from 'react'
+import { Text, Box, Flex, Modal, useDisclose } from 'native-base'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  ActivityIndicator,
-  Alert,
-  FlatList,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import { Config } from '@/Config'
-import { useAppSelector } from '@/Store/hooks'
-
-// *IMPORTANT*: The correct file extension is always required.
-// You might encounter issues if the file's extension isn't included
-// or if it doesn't match the mime type of the file.
-// https://stackoverflow.com/a/47767860
-function getUrlExtension(url: string) {
-  // @ts-ignore
-  return url.split(/[#?]/)[0].split('.').pop().trim()
-}
+import { TouchableOpacity, View } from 'react-native'
 
 function EmployeeLegalDocuments() {
   const { t, i18n } = useTranslation()
   const navigation: any = useNavigation()
   const route: any = useRoute()
 
-  const { data } = useGetEmployeeLegalTypeQuery(route.params.id)
+  const { data, refetch: refetchLegalType } = useGetEmployeeLegalTypeQuery(
+    route.params.id,
+  )
   const { data: legalStatus, refetch } = useGetEmployeeLegalStatusQuery(
     route.params.id,
   )
@@ -45,6 +27,7 @@ function EmployeeLegalDocuments() {
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       refetch()
+      refetchLegalType()
     })
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
@@ -56,121 +39,9 @@ function EmployeeLegalDocuments() {
   const legalTypes = original.sort((a: any, b: any) => a.id - b.id)
 
   const { isOpen, onOpen, onClose } = useDisclose()
-  const [selectedType, setSelectedType] = useState<any>()
-
-  const [
-    getLegalDocs,
-    { isLoading, isFetching },
-  ] = useLazyGetEmployeeLegalDocsQuery()
-  const [documents, setDocuments] = useState({
-    page: 1,
-    size: 10,
-    total_record: 0,
-    data: [],
-  })
-
-  useEffect(() => {
-    if (selectedType)
-      getLegalDocs({
-        page: 1,
-        id: route.params.id,
-        size: 10,
-        legal_type_id: selectedType.id,
-      }).then(res => {
-        setDocuments({
-          ...res.data.paginate,
-          data: res.data.data,
-        })
-      })
-  }, [selectedType?.id])
-
-  const auth = useAppSelector(state => state.auth)
 
   return (
     <>
-      <Actionsheet
-        isOpen={!!selectedType}
-        onClose={() => {
-          setDocuments({
-            page: 1,
-            size: 10,
-            data: [],
-            total_record: 0,
-          })
-          setSelectedType(undefined)
-        }}
-      >
-        <Actionsheet.Content>
-          <Text fontWeight="500" fontSize={16}>
-            {i18n.language === 'vi'
-              ? selectedType?.vi_content
-              : selectedType?.en_content}
-          </Text>
-
-          <FlatList
-            style={{ width: '100%' }}
-            data={documents.data}
-            renderItem={({ item }: { item: any }) => {
-              return (
-                <Actionsheet.Item
-                  onPress={() => {
-                    const localFile = `${
-                      RNFS.DocumentDirectoryPath
-                    }/temporaryfile.${getUrlExtension(
-                      item.object.original_name,
-                    )}`
-
-                    RNFS.downloadFile({
-                      fromUrl: `${Config.PC_API_URL}/v1/objects/${item.object.key}/download`,
-                      toFile: localFile,
-                      headers: {
-                        Authorization: `Bearer ${auth.accessToken}`,
-                      },
-                    })
-                      .promise.then(() => FileViewer.open(localFile))
-                      .catch(error => {
-                        Alert.alert(t`common.error`, 'Can not view file')
-                      })
-                  }}
-                >
-                  <Text>{item?.object?.original_name}</Text>
-                </Actionsheet.Item>
-              )
-            }}
-            ListEmptyComponent={
-              !isLoading && !isFetching ? (
-                <Text
-                  color={Colors.subText}
-                  textAlign="center"
-                  padding="16px"
-                  fontSize="16px"
-                >{t`common.noDataFound`}</Text>
-              ) : undefined
-            }
-            ListFooterComponent={
-              isLoading || isFetching ? <ActivityIndicator /> : undefined
-            }
-            onEndReached={() => {
-              if (
-                !isLoading &&
-                !isFetching &&
-                documents.data.length < documents.total_record
-              )
-                getLegalDocs({
-                  id: route.params.id,
-                  legal_type_id: selectedType.id,
-                  page: documents.page + 1,
-                  size: 10,
-                }).then(res =>
-                  setDocuments({
-                    ...res.data.paginate,
-                    data: [...documents.data, ...res.data.data],
-                  }),
-                )
-            }}
-          ></FlatList>
-        </Actionsheet.Content>
-      </Actionsheet>
       <Screen
         preset="fixed"
         statusBackgroundColor={Colors.navBackground}
@@ -274,7 +145,12 @@ function EmployeeLegalDocuments() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                 }}
-                onPress={() => setSelectedType(item)}
+                onPress={() =>
+                  navigation.navigate('EmployeeLegalDocumentsViewAndUpload', {
+                    selectedType: item,
+                    id: route.params.id,
+                  })
+                }
               >
                 <Box
                   flexDirection="row"

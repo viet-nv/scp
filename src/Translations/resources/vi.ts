@@ -177,8 +177,12 @@ export default {
     updateEmployee: 'Cập nhật thông tin NLĐ',
     updateEmployeeSuccess: 'Cập nhật thông tin người lao động thành công',
     salaryAccount: 'Tài khoản nhận lương',
+    upload: 'Tải lên',
+    reselect: 'Chọn lại',
+    uploadSuccess: 'Tải lên thành công',
   },
 
   Mr: 'Ông',
   Ms: 'Bà',
+  selectedFiles: 'Tệp đã chọn',
 }
