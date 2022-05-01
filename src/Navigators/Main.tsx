@@ -33,6 +33,8 @@ import EmployeeAddUpdateBank from '@/Containers/Clients/Employees/AddUpdateBank'
 import EmployeeAccount from '@/Containers/Clients/Employees/EmployeeAccount'
 import EmployeeDesignatedAccount from '@/Containers/Clients/Employees/UpdateDesignatedAccount'
 import EmployeeLegalDocumentsViewAndUpload from '@/Containers/Clients/Employees/LegalDocumentsViewAndUpload'
+import { TransactionScreen } from '@/Containers/Transactions'
+import PayingTransaction from '@/Containers/Transactions/PayingTransaction'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -88,7 +90,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Transactions"
-        component={ExampleContainer}
+        component={TransactionScreen}
         options={{ title: t`transactionScreen.title` }}
       />
       <Tab.Screen
@@ -174,6 +176,10 @@ const MainNavigator = () => {
         name="EmployeeLegalDocumentsViewAndUpload"
         component={EmployeeLegalDocumentsViewAndUpload}
       ></Stack.Screen>
+
+      {/*---------------------*/}
+      {/*TransactionScreen*/}
+      <Stack.Screen name="PayingTransaction" component={PayingTransaction} />
     </Stack.Navigator>
   )
 }

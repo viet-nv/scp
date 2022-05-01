@@ -25,7 +25,7 @@ export default function () {
 
   // Get current theme from the store
   const currentTheme = useSelector(
-    (state: { theme: ThemeState }) => state.theme.theme || 'default',
+    (state: { theme: ThemeState }) => state.theme.theme || 'light',
   )
   const isDark = useSelector(
     (state: { theme: ThemeState }) => state.theme.darkMode,

@@ -26,6 +26,7 @@ export default {
     review: 'Review',
     detail: 'Detail',
     deadline: 'Deadline',
+    selectAll: 'Select All',
   },
 
   home: {
@@ -34,6 +35,15 @@ export default {
 
   transactionScreen: {
     title: 'Transactions',
+    headerTitle: 'TRANSACTION & PAYMENT',
+    payingTransaction: 'Paying Transaction',
+    paidTransaction: 'Paid Transaction',
+    waitingForSettlement: 'Waiting for Settlement',
+    settledTransaction: 'Settled Transaction',
+    enterpriseServiceFee: "Enterprise's Service Fee",
+    overdueManagement: 'Overdue Management',
+    makePayment: 'Make payment',
+    transactionCode: 'Transaction Code',
   },
 
   clientScreen: {

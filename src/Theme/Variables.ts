@@ -32,6 +32,7 @@ export const Colors: ThemeColors = {
   success: '#28a745',
   error: '#dc3545',
   warning: '#FBA928',
+  disabledBackground: '#525252',
 }
 
 export const NavigationColors: Partial<ThemeNavigationColors> = {

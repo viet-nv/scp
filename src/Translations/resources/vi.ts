@@ -26,6 +26,7 @@ export default {
     review: 'Review',
     detail: 'Chi tiết',
     deadline: 'Hạn nộp',
+    selectAll: 'Chọn tất cả',
   },
 
   home: {
@@ -34,6 +35,15 @@ export default {
 
   transactionScreen: {
     title: 'Giao Dịch',
+    headerTitle: 'GIAO DỊCH & THANH TOÁN',
+    payingTransaction: 'Giao dịch Chờ Thanh toán',
+    paidTransaction: 'Giao dịch Đã Thanh toán',
+    waitingForSettlement: 'Giao dịch Chờ Tất toán',
+    settledTransaction: 'Giao dịch Đã Tất toán',
+    enterpriseServiceFee: 'Phí Dịch vụ Doanh nghiệp',
+    overdueManagement: 'Quản lý Nợ Quá hạn',
+    makePayment: 'Thanh toán',
+    transactionCode: 'Mã Giao Dịch',
   },
 
   clientScreen: {

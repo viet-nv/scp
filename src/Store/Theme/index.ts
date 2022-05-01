@@ -18,7 +18,8 @@ const slice = createSlice({
     ) => {
       if (!state.theme) {
         state.theme = theme
-        state.darkMode = darkMode
+        // hardcode for disable darkMode
+        state.darkMode = null
       }
     },
   },
