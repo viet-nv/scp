@@ -35,6 +35,7 @@ import EmployeeDesignatedAccount from '@/Containers/Clients/Employees/UpdateDesi
 import EmployeeLegalDocumentsViewAndUpload from '@/Containers/Clients/Employees/LegalDocumentsViewAndUpload'
 import { TransactionScreen } from '@/Containers/Transactions'
 import PayingTransaction from '@/Containers/Transactions/PayingTransaction'
+import TransactionDetail from '@/Containers/Transactions/TransactionDetail'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -180,6 +181,7 @@ const MainNavigator = () => {
       {/*---------------------*/}
       {/*TransactionScreen*/}
       <Stack.Screen name="PayingTransaction" component={PayingTransaction} />
+      <Stack.Screen name="TransactionDetail" component={TransactionDetail} />
     </Stack.Navigator>
   )
 }

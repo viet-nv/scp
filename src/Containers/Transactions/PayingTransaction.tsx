@@ -1,12 +1,23 @@
 import { Header, Screen } from '@/Components'
 import { useLazyGetTransactionsQuery } from '@/Services/transaction'
 import { Colors } from '@/Theme/Variables'
+import { formatNum } from '@/Utils'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import dayjs from 'dayjs'
-import { Box, Button, Checkbox, FlatList, Flex, Text } from 'native-base'
+import {
+  Actionsheet,
+  Box,
+  Button,
+  Checkbox,
+  FlatList,
+  Flex,
+  Input,
+  Text,
+  useDisclose,
+} from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -14,12 +25,11 @@ function PayingTransaction() {
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
   const navigation: any = useNavigation()
-  const route: any = useRoute()
   const [selectedPayments, setSelectedPayments] = useState<number[]>([])
 
   const [filter, setFilter] = useState({
-    page: 1,
-    size: 10,
+    employee_name: '',
+    bank_name: '',
   })
 
   const [
@@ -34,10 +44,12 @@ function PayingTransaction() {
     total_record: 0,
   })
 
+  const statuses = 'paying'
   const init = () => {
     getTransactions({
       page: 1,
       size: 10,
+      statuses,
     }).then(res => {
       setTransactions({
         ...res.data.paginate,
@@ -55,10 +67,95 @@ function PayingTransaction() {
     return unsubscribe
   }, [navigation])
 
-  const filterCount = 0
+  const filterCount = +!!filter.employee_name + +!!filter.bank_name
 
+  const handleMakePayment = () => {
+    //
+  }
+
+  const { isOpen, onOpen, onClose } = useDisclose()
   return (
     <>
+      <Actionsheet isOpen={isOpen} onClose={onClose}>
+        <Actionsheet.Content>
+          <Text
+            fontWeight="500"
+            fontSize={16}
+          >{t`enterpriseScreen.filter`}</Text>
+          <Box
+            width="100%"
+            marginTop="24px"
+            paddingX="16px"
+            position="relative"
+          >
+            <Text>{t`transactionScreen.employee_name`}</Text>
+            <Input
+              marginTop="8px"
+              placeholder={t`transactionScreen.employee_name`}
+              width="100%"
+              value={filter.employee_name}
+              onChangeText={employee_name =>
+                setFilter({ ...filter, employee_name })
+              }
+            />
+
+            <Text marginTop="24px">{t`transactionScreen.bank_name`}</Text>
+            <Input
+              marginTop="8px"
+              placeholder={t`transactionScreen.bank_name`}
+              width="100%"
+              value={filter.bank_name}
+              onChangeText={bank_name => setFilter({ ...filter, bank_name })}
+            />
+
+            <Box flexDirection="row" marginTop="16px" paddingY="12px">
+              <Button
+                flex={1}
+                variant="outline"
+                onPress={() => {
+                  setFilter({
+                    employee_name: '',
+                    bank_name: '',
+                  })
+
+                  getTransactions({
+                    page: 1,
+                    size: 10,
+                    employee_name: '',
+                    bank_name: '',
+                  }).then(res => {
+                    setTransactions({
+                      ...res.data.paginate,
+                      data: res.data.data,
+                    })
+                  })
+                  onClose()
+                }}
+              >{t`enterpriseScreen.clearFilter`}</Button>
+              <Button
+                flex={1}
+                marginLeft="16px"
+                onPress={() => {
+                  getTransactions({
+                    page: 1,
+                    size: 10,
+                    employee_name: filter.employee_name,
+                    bank_name: filter.bank_name,
+                  }).then(res => {
+                    setTransactions({
+                      ...res.data.paginate,
+                      data: res.data.data,
+                    })
+                  })
+
+                  onClose()
+                }}
+              >{t`enterpriseScreen.apply`}</Button>
+            </Box>
+          </Box>
+        </Actionsheet.Content>
+      </Actionsheet>
+
       <Screen
         preset="fixed"
         statusBackgroundColor={Colors.navBackground}
@@ -83,7 +180,29 @@ function PayingTransaction() {
             marginTop: 56,
             marginBottom: insets.bottom,
           }}
+          onRefresh={() => {
+            getTransactions({
+              page: 1,
+              size: 10,
+              ...filter,
+            }).then(res => {
+              setTransactions({
+                ...res.data.paginate,
+                data: res.data.data,
+              })
+            })
+          }}
+          refreshing={isFetching}
           data={transactions.data}
+          ListEmptyComponent={
+            !isLoading && !isFetching ? (
+              <Text
+                textAlign="center"
+                color={Colors.subText}
+                padding="16px"
+              >{t`transactionScreen.noTransactionsFound`}</Text>
+            ) : undefined
+          }
           ListHeaderComponent={
             <>
               <Flex
@@ -102,6 +221,7 @@ function PayingTransaction() {
                     value="all"
                     accessibilityLabel="all"
                     isChecked={
+                      !!transactions.data.length &&
                       selectedPayments.length === transactions.data.length
                     }
                     onChange={selected =>
@@ -120,6 +240,7 @@ function PayingTransaction() {
                 </Flex>
                 <TouchableOpacity
                   style={{ display: 'flex', flexDirection: 'row' }}
+                  onPress={onOpen}
                 >
                   {!!filterCount && (
                     <View
@@ -161,7 +282,11 @@ function PayingTransaction() {
           }
           renderItem={({ item, index }: { item: any; index: number }) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('TransactionDetail', { id: item.id })
+                }
+              >
                 <Flex
                   key={item.id}
                   alignItems="center"
@@ -210,10 +335,7 @@ function PayingTransaction() {
                     </Flex>
                     <Flex justifyContent="space-between" alignItems="flex-end">
                       <Text fontWeight={500} color={Colors.error} fontSize={16}>
-                        {item.request_amount.toLocaleString('it-IT', {
-                          style: 'currency',
-                          currency: 'VND',
-                        })}
+                        {formatNum(item.request_amount)}
                       </Text>
 
                       <Text color={Colors.subText}>
@@ -224,6 +346,26 @@ function PayingTransaction() {
                 </Flex>
               </TouchableOpacity>
             )
+          }}
+          ListFooterComponent={
+            isLoading || isFetching ? <ActivityIndicator /> : undefined
+          }
+          ListFooterComponentStyle={{ padding: 16 }}
+          onEndReached={() => {
+            if (
+              !isLoading &&
+              !isFetching &&
+              transactions.data.length < transactions.total_record
+            )
+              getTransactions({
+                page: transactions.page + 1,
+                size: 10,
+              }).then(res => {
+                setTransactions({
+                  ...res.data.paginate,
+                  data: [...transactions.data, ...res.data.data],
+                })
+              })
           }}
         ></FlatList>
       </Screen>
@@ -242,6 +384,7 @@ function PayingTransaction() {
         bottom={0}
       >
         <Button
+          onPress={handleMakePayment}
           isLoading={false}
           isDisabled={!selectedPayments.length}
           _loading={{

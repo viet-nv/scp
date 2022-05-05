@@ -19,10 +19,16 @@ export const transactionApi = pcApi.injectEndpoints({
         params,
       }),
     }),
+    getTransactionDetail: builder.query({
+      query: (id: string | number) => ({
+        url: `/v1/transactions/${id}`,
+      }),
+    }),
   }),
 })
 
 export const {
   useGetTransactionsQuery,
   useLazyGetTransactionsQuery,
+  useGetTransactionDetailQuery,
 } = transactionApi
