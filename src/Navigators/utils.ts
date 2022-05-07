@@ -19,6 +19,9 @@ export type RootStackParamList = {
   Employees: undefined
 
   PayingTransaction: undefined
+  PaidTransaction: undefined
+  WaitForSettlementTransaction: undefined
+  SettledTransaction: undefined
 }
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>()

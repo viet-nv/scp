@@ -62,12 +62,42 @@ export const TransactionScreen: React.FC<
 
       <TouchableOpacity
         style={ROW}
-        onPress={() => navigation.navigate('Employees')}
+        onPress={() => navigation.navigate('PaidTransaction')}
       >
         <Icon icon="payment-done" style={{ width: 32, height: 32 }} />
         <Text
           style={[ROW_TEXT, { marginLeft: 24 }]}
         >{t`transactionScreen.paidTransaction`}</Text>
+        <Ionicons
+          name="chevron-forward-outline"
+          size={24}
+          color={Colors.subText}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={ROW}
+        onPress={() => navigation.navigate('WaitForSettlementTransaction')}
+      >
+        <Icon icon="settlement" style={{ width: 32, height: 32 }} />
+        <Text
+          style={[ROW_TEXT, { marginLeft: 24 }]}
+        >{t`transactionScreen.waitingForSettlement`}</Text>
+        <Ionicons
+          name="chevron-forward-outline"
+          size={24}
+          color={Colors.subText}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={ROW}
+        onPress={() => navigation.navigate('SettledTransaction')}
+      >
+        <Icon icon="settled" style={{ width: 32, height: 32 }} />
+        <Text
+          style={[ROW_TEXT, { marginLeft: 24 }]}
+        >{t`transactionScreen.settledTransaction`}</Text>
         <Ionicons
           name="chevron-forward-outline"
           size={24}

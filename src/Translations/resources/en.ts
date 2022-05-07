@@ -1,5 +1,6 @@
 export default {
-  welcome: 'Welcome to React Native WageAdvanceApp by TheCodingMachine',
+  hi: 'Hello',
+  welcome: 'Welcome',
   actions: {
     continue: 'Continue',
   },
@@ -9,6 +10,16 @@ export default {
       userId: 'Enter a user id',
     },
   },
+
+  master: 'Master',
+  subMaster: 'subMaster',
+  support: 'Support',
+  seniorCRM: 'Senior CRM',
+  crmStaff: 'CRM Staff',
+  caTeamLead: 'CA Team Lead',
+  creditOfficer: 'Credit Officer',
+  accountingController: 'Accounting Controller',
+  accountant: 'Accountant',
 
   common: {
     error: 'Error',
@@ -27,6 +38,9 @@ export default {
     detail: 'Detail',
     deadline: 'Deadline',
     selectAll: 'Select All',
+    confirmation: 'Confirmation',
+    areYouSure: 'Are you sure?',
+    updateSuccess: 'Update successfully',
   },
 
   home: {
@@ -69,6 +83,7 @@ export default {
     bankFeeAfterTax: 'Bank Fee after tax (VND)',
     paymentAmountToEmployee: 'Payment Amount to Employee (VND)',
     reject: 'Reject',
+    approveTransaction: 'Approve Transaction',
   },
 
   clientScreen: {
@@ -218,4 +233,12 @@ export default {
   Mr: 'Mr.',
   Ms: 'Ms.',
   selectedFiles: 'Selected Files',
+
+  menuScreen: {
+    headerTitle: 'Options',
+    companyInfo: 'Company Information',
+    accountInfo: 'Account Information',
+    changeLanguage: 'Thay đổi ngôn ngữ',
+    logout: 'Logout',
+  },
 }

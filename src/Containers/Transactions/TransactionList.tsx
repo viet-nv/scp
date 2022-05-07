@@ -1,5 +1,8 @@
 import { Header, Screen } from '@/Components'
-import { useLazyGetTransactionsQuery } from '@/Services/transaction'
+import {
+  useLazyGetTransactionsQuery,
+  useUpdateStatusMutation,
+} from '@/Services/transaction'
 import { Colors } from '@/Theme/Variables'
 import { formatNum } from '@/Utils'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -17,11 +20,11 @@ import {
 } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-function PayingTransaction() {
+function TransactionList({ status }: { status: string }) {
   const { t } = useTranslation()
   const insets = useSafeAreaInsets()
   const navigation: any = useNavigation()
@@ -37,6 +40,8 @@ function PayingTransaction() {
     { isLoading, isFetching },
   ] = useLazyGetTransactionsQuery()
 
+  const [updateStatus, { isLoading: updating }] = useUpdateStatusMutation()
+
   const [transactions, setTransactions] = useState({
     data: [],
     page: 1,
@@ -44,12 +49,12 @@ function PayingTransaction() {
     total_record: 0,
   })
 
-  const statuses = 'paying'
   const init = () => {
     getTransactions({
       page: 1,
       size: 10,
-      statuses,
+      statuses: status,
+      ...filter,
     }).then(res => {
       setTransactions({
         ...res.data.paginate,
@@ -70,10 +75,45 @@ function PayingTransaction() {
   const filterCount = +!!filter.employee_name + +!!filter.bank_name
 
   const handleMakePayment = () => {
-    //
+    const newStatus = (() => {
+      switch (status) {
+        case 'PAYING':
+          return 'PAID'
+        case 'PAID':
+          return 'WAIT_SETTLEMENT'
+        default:
+          return ''
+      }
+    })()
+    Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
+      {
+        text: t`common.cancel`,
+        onPress: () => {},
+        style: 'destructive',
+      },
+      {
+        text: t`common.update`,
+        onPress: () => {
+          updateStatus({
+            ids: selectedPayments,
+            note: '',
+            status: newStatus,
+          }).then((res: any) => {
+            if (res?.error) Alert.alert(t`common.error`, t`common.errorMsg`)
+            else {
+              Alert.alert(t`common.success`, t`common.updateSuccess`)
+              init()
+            }
+          })
+        },
+      },
+    ])
   }
 
   const { isOpen, onOpen, onClose } = useDisclose()
+
+  const onlyView = !['PAYING', 'PAID'].includes(status)
+
   return (
     <>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -121,6 +161,7 @@ function PayingTransaction() {
                   getTransactions({
                     page: 1,
                     size: 10,
+                    statuses: status,
                     employee_name: '',
                     bank_name: '',
                   }).then(res => {
@@ -139,6 +180,7 @@ function PayingTransaction() {
                   getTransactions({
                     page: 1,
                     size: 10,
+                    statuses: status,
                     employee_name: filter.employee_name,
                     bank_name: filter.bank_name,
                   }).then(res => {
@@ -162,7 +204,11 @@ function PayingTransaction() {
         backgroundColor={Colors.white}
       >
         <Header
-          title={t`transactionScreen.payingTransaction`}
+          title={
+            status === 'PAID'
+              ? t`transactionScreen.paidTransaction`
+              : t`transactionScreen.payingTransaction`
+          }
           style={{
             backgroundColor: Colors.navBackground,
             position: 'absolute',
@@ -184,6 +230,7 @@ function PayingTransaction() {
             getTransactions({
               page: 1,
               size: 10,
+              statuses: status,
               ...filter,
             }).then(res => {
               setTransactions({
@@ -217,26 +264,32 @@ function PayingTransaction() {
                 }}
               >
                 <Flex flexDirection="row">
-                  <Checkbox
-                    value="all"
-                    accessibilityLabel="all"
-                    isChecked={
-                      !!transactions.data.length &&
-                      selectedPayments.length === transactions.data.length
-                    }
-                    onChange={selected =>
-                      setSelectedPayments(
-                        selected ? transactions.data.map((i: any) => i.id) : [],
-                      )
-                    }
-                  />
+                  {!onlyView && (
+                    <>
+                      <Checkbox
+                        value="all"
+                        accessibilityLabel="all"
+                        isChecked={
+                          !!transactions.data.length &&
+                          selectedPayments.length === transactions.data.length
+                        }
+                        onChange={selected =>
+                          setSelectedPayments(
+                            selected
+                              ? transactions.data.map((i: any) => i.id)
+                              : [],
+                          )
+                        }
+                      />
 
-                  <Text
-                    style={{ fontSize: 16, fontWeight: '500' }}
-                    marginLeft={2}
-                  >
-                    {t`common.selectAll`}
-                  </Text>
+                      <Text
+                        style={{ fontSize: 16, fontWeight: '500' }}
+                        marginLeft={2}
+                      >
+                        {t`common.selectAll`}
+                      </Text>
+                    </>
+                  )}
                 </Flex>
                 <TouchableOpacity
                   style={{ display: 'flex', flexDirection: 'row' }}
@@ -299,19 +352,20 @@ function PayingTransaction() {
                     index % 2 === 0 ? Colors.lightGray : Colors.white
                   }
                 >
-                  <Checkbox
-                    value={item.id}
-                    accessibilityLabel={`${item.id}`}
-                    isChecked={selectedPayments.includes(item.id)}
-                    onChange={selected =>
-                      selected
-                        ? setSelectedPayments(prev => [...prev, item.id])
-                        : setSelectedPayments(prev =>
-                            prev.filter(id => id !== item.id),
-                          )
-                    }
-                  />
-
+                  {!onlyView && (
+                    <Checkbox
+                      value={item.id}
+                      accessibilityLabel={`${item.id}`}
+                      isChecked={selectedPayments.includes(item.id)}
+                      onChange={selected =>
+                        selected
+                          ? setSelectedPayments(prev => [...prev, item.id])
+                          : setSelectedPayments(prev =>
+                              prev.filter(id => id !== item.id),
+                            )
+                      }
+                    />
+                  )}
                   <Flex
                     flex={1}
                     marginLeft={2}
@@ -360,6 +414,8 @@ function PayingTransaction() {
               getTransactions({
                 page: transactions.page + 1,
                 size: 10,
+                statuses: status,
+                ...filter,
               }).then(res => {
                 setTransactions({
                   ...res.data.paginate,
@@ -370,30 +426,50 @@ function PayingTransaction() {
         ></FlatList>
       </Screen>
 
-      <Box
-        position="absolute"
-        padding="16px"
-        style={{
-          paddingBottom: insets.bottom + 16,
-        }}
-        borderTopWidth={1}
-        borderTopColor={Colors.border}
-        backgroundColor={Colors.white}
-        left="0"
-        right="0"
-        bottom={0}
-      >
-        <Button
-          onPress={handleMakePayment}
-          isLoading={false}
-          isDisabled={!selectedPayments.length}
-          _loading={{
-            backgroundColor: Colors.primary,
+      {['PAYING', 'PAID'].includes(status) && (
+        <Box
+          position="absolute"
+          padding="16px"
+          style={{
+            paddingBottom: insets.bottom + 16,
           }}
-        >{t`transactionScreen.makePayment`}</Button>
-      </Box>
+          borderTopWidth={1}
+          borderTopColor={Colors.border}
+          backgroundColor={Colors.white}
+          left="0"
+          right="0"
+          bottom={0}
+        >
+          <Button
+            onPress={handleMakePayment}
+            isLoading={updating}
+            isDisabled={!selectedPayments.length}
+            _loading={{
+              backgroundColor: Colors.primary,
+            }}
+          >
+            {(() => {
+              switch (status) {
+                case 'PAYING':
+                  return t`transactionScreen.makePayment`
+                case 'PAID':
+                  return t`transactionScreen.approveTransaction`
+                default:
+                  return ''
+              }
+            })()}
+          </Button>
+        </Box>
+      )}
     </>
   )
 }
 
-export default PayingTransaction
+export default TransactionList
+
+export const PayingTransaction = () => <TransactionList status="PAYING" />
+export const PaidTransaction = () => <TransactionList status="PAID" />
+export const WaitForSettlementTransaction = () => (
+  <TransactionList status="WAIT_SETTLEMENT" />
+)
+export const SettledTransaction = () => <TransactionList status="SETTLED" />

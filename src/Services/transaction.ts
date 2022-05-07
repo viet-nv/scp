@@ -24,6 +24,25 @@ export const transactionApi = pcApi.injectEndpoints({
         url: `/v1/transactions/${id}`,
       }),
     }),
+    updateStatus: builder.mutation({
+      query: ({
+        ids,
+        status,
+        note,
+      }: {
+        ids: number[]
+        status: string
+        note: string
+      }) => ({
+        url: `/v1/transactions/status`,
+        method: 'POST',
+        body: {
+          status: status,
+          note,
+          ids,
+        },
+      }),
+    }),
   }),
 })
 
@@ -31,4 +50,5 @@ export const {
   useGetTransactionsQuery,
   useLazyGetTransactionsQuery,
   useGetTransactionDetailQuery,
+  useUpdateStatusMutation,
 } = transactionApi

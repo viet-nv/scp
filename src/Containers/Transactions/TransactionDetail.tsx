@@ -246,6 +246,7 @@ function TransactionDetail() {
         bottom={0}
       >
         <Button
+          marginRight="12px"
           flex={1}
           variant="outline"
           isLoading={isLoading}
@@ -255,7 +256,6 @@ function TransactionDetail() {
           onPress={() => {}}
         >{t`transactionScreen.reject`}</Button>
         <Button
-          marginLeft="12px"
           flex={1}
           isLoading={isLoading}
           _loading={{

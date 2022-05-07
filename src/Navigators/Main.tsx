@@ -34,8 +34,14 @@ import EmployeeAccount from '@/Containers/Clients/Employees/EmployeeAccount'
 import EmployeeDesignatedAccount from '@/Containers/Clients/Employees/UpdateDesignatedAccount'
 import EmployeeLegalDocumentsViewAndUpload from '@/Containers/Clients/Employees/LegalDocumentsViewAndUpload'
 import { TransactionScreen } from '@/Containers/Transactions'
-import PayingTransaction from '@/Containers/Transactions/PayingTransaction'
+import {
+  PaidTransaction,
+  PayingTransaction,
+  SettledTransaction,
+  WaitForSettlementTransaction,
+} from '@/Containers/Transactions/TransactionList'
 import TransactionDetail from '@/Containers/Transactions/TransactionDetail'
+import { MenuScreen } from '@/Containers/Menu'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -101,7 +107,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Menu"
-        component={ExampleContainer}
+        component={MenuScreen}
         options={{ title: 'Menu' }}
       />
     </Tab.Navigator>
@@ -181,6 +187,12 @@ const MainNavigator = () => {
       {/*---------------------*/}
       {/*TransactionScreen*/}
       <Stack.Screen name="PayingTransaction" component={PayingTransaction} />
+      <Stack.Screen name="PaidTransaction" component={PaidTransaction} />
+      <Stack.Screen name="SettledTransaction" component={SettledTransaction} />
+      <Stack.Screen
+        name="WaitForSettlementTransaction"
+        component={WaitForSettlementTransaction}
+      />
       <Stack.Screen name="TransactionDetail" component={TransactionDetail} />
     </Stack.Navigator>
   )

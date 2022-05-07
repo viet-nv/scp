@@ -8,12 +8,14 @@ interface Props {
   mode?: 'contain' | 'cover' | 'stretch' | 'repeat' | 'center'
 }
 
+const logo = require('../Assets/Images/scp-logo.png')
+
 const Brand = ({ height, width, mode }: Props) => {
   const { Layout, Images } = useTheme()
 
   return (
     <View style={{ height, width }}>
-      <Image style={Layout.fullSize} source={Images.logo} resizeMode={mode} />
+      <Image style={Layout.fullSize} source={logo} resizeMode={mode} />
     </View>
   )
 }

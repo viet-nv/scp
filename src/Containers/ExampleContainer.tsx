@@ -11,7 +11,7 @@ import { Brand } from '@/Components'
 import { useTheme } from '@/Hooks'
 import { useLazyFetchOneQuery } from '@/Services/modules/users'
 import { changeTheme, ThemeState } from '@/Store/Theme'
-import { Button, Text } from 'native-base'
+import { Avatar, Box, Button, Card, Flex, Text } from 'native-base'
 import { useLogoutMutation } from '@/Services/auth'
 import { useAppDispatch, useAppSelector } from '@/Store/hooks'
 import { Screen } from '@/Components/Screen/screen'
@@ -19,6 +19,21 @@ import { logout } from '@/Store/auth'
 import { useNavigation } from '@react-navigation/native'
 import { RootStackParamList } from '@/Navigators/utils'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { AutoImage } from '@/Components/AutoImage'
+import { t } from 'i18next'
+
+const logo = require('../Assets/Images/scp-logo.png')
+
+const getRoleDisplayText = (role: string = '') => {
+  switch (role) {
+    case 'MASTER':
+      return t`master`
+    case 'SUBMASTER':
+      return t`subMaster`
+    default:
+      return ''
+  }
+}
 
 const ExampleContainer = () => {
   const { t, i18n } = useTranslation()
@@ -50,28 +65,57 @@ const ExampleContainer = () => {
     <Screen preset="scroll" statusBackgroundColor={Colors.navBackground}>
       <ScrollView
         style={Layout.fill}
-        contentContainerStyle={[
-          Layout.fill,
-          Layout.colCenter,
-          Gutters.smallHPadding,
-        ]}
+        contentContainerStyle={[Layout.fill, Layout.colCenter]}
       >
-        <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
-          <Brand />
-
-          {(isLoading || isFetching) && <ActivityIndicator />}
-          {!isSuccess ? (
-            <Text style={Fonts.textRegular}>{error}</Text>
-          ) : (
-            <Text style={Fonts.textRegular}>
-              {t('example.helloUser', { name: data?.name })}
-            </Text>
-          )}
-
-          <Text>Hello {auth.user?.fullname}</Text>
-        </View>
         <View
           style={[
+            [
+              // Layout.colCenter,
+              // Gutters.smallHPadding,
+              {
+                backgroundColor: Colors.navBackground,
+                height: 144,
+                position: 'relative',
+                paddingVertical: 12,
+                paddingHorizontal: 16,
+                justifyContent: 'center',
+                width: '100%',
+                flexDirection: 'row',
+                flex: 1,
+              },
+            ],
+          ]}
+        >
+          <AutoImage source={logo} style={{ height: 54, width: 100 }} />
+
+          <Box
+            shadow={1}
+            style={{
+              position: 'absolute',
+              backgroundColor: Colors.white,
+              left: 12,
+              right: 12,
+              paddingVertical: 16,
+              paddingHorizontal: 16,
+              top: 84,
+              borderRadius: 8,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar size="56px" />
+            <Flex marginLeft="16px">
+              <Text fontSize={18} fontWeight="600">
+                {auth.user?.fullname}
+              </Text>
+              <Text>{getRoleDisplayText(auth.user?.role.name)}</Text>
+            </Flex>
+          </Box>
+        </View>
+
+        <View
+          style={[
+            { marginTop: 90 },
             Layout.row,
             Layout.rowHCenter,
             Gutters.smallHPadding,

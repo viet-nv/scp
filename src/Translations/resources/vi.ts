@@ -1,5 +1,6 @@
 export default {
-  welcome: 'Bienvenue sur le React Native Boilerplate de TheCodingMachine',
+  hi: 'Xin chào',
+  welcome: 'Chào mừng',
   actions: {
     continue: 'Continuer',
   },
@@ -9,6 +10,16 @@ export default {
       userId: "Entrer un id d'utilisateur",
     },
   },
+
+  master: 'Quản trị',
+  subMaster: 'Quản trị viên',
+  support: 'Hỗ trợ',
+  seniorCRM: 'Trưởng Nhóm QHKH',
+  crmStaff: 'Chuyên viên QHKH',
+  caTeamLead: 'Trưởng Nhóm Thẩm định',
+  creditOfficer: 'Chuyên viên Thẩm định',
+  accountingController: 'Kế toán trưởng',
+  accountant: 'Kế toán viên',
 
   common: {
     error: 'Lỗi',
@@ -27,6 +38,9 @@ export default {
     detail: 'Chi tiết',
     deadline: 'Hạn nộp',
     selectAll: 'Chọn tất cả',
+    confirmation: 'Xác nhận',
+    areYouSure: 'Vui lòng xác nhận?',
+    updateSuccess: 'Cập nhật thành công',
   },
 
   home: {
@@ -69,6 +83,7 @@ export default {
     bankFeeAfterTax: 'Phí Giao dịch Ngân hàng sau thuế (VND)',
     paymentAmountToEmployee: 'Số tiền NLĐ thực nhận (VND)',
     reject: 'Từ chối',
+    approveTransaction: 'Duyệt giao dịch',
   },
 
   clientScreen: {
@@ -220,4 +235,12 @@ export default {
   Mr: 'Ông',
   Ms: 'Bà',
   selectedFiles: 'Tệp đã chọn',
+
+  menuScreen: {
+    headerTitle: 'Tùy chọn',
+    companyInfo: 'Thông tin công ty',
+    accountInfo: 'Thông tin tài khoản',
+    changeLanguage: 'Change Language',
+    logout: 'Đăng xuất',
+  },
 }
