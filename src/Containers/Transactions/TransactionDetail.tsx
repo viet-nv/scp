@@ -13,9 +13,12 @@ import {
 } from 'native-base'
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, ScrollView } from 'react-native'
+import { ActivityIndicator, Alert, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useGetTransactionDetailQuery } from '@/Services/transaction'
+import {
+  useGetTransactionDetailQuery,
+  useUpdateStatusMutation,
+} from '@/Services/transaction'
 import { formatNum } from '@/Utils'
 import dayjs from 'dayjs'
 
@@ -47,6 +50,8 @@ function TransactionDetail() {
     route.params.id,
   )
 
+  const [updateStatus, { isLoading: updating }] = useUpdateStatusMutation()
+
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       refetch()
@@ -57,6 +62,42 @@ function TransactionDetail() {
   }, [navigation])
 
   const { isOpen, onOpen, onClose } = useDisclose()
+
+  const handleMakePayment = () => {
+    const newStatus = (() => {
+      switch (data?.status) {
+        case 'PAYING':
+          return 'PAID'
+        case 'PAID':
+          return 'WAIT_SETTLEMENT'
+        default:
+          return ''
+      }
+    })()
+    Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
+      {
+        text: t`common.cancel`,
+        onPress: () => {},
+        style: 'destructive',
+      },
+      {
+        text: t`common.update`,
+        onPress: () => {
+          updateStatus({
+            ids: [route.params.id],
+            note: '',
+            status: newStatus,
+          }).then((res: any) => {
+            if (res?.error) Alert.alert(t`common.error`, t`common.errorMsg`)
+            else {
+              Alert.alert(t`common.success`, t`common.updateSuccess`)
+              refetch()
+            }
+          })
+        },
+      },
+    ])
+  }
 
   return (
     <>
@@ -123,7 +164,13 @@ function TransactionDetail() {
 
                 <Row
                   left={t`transactionScreen.appliedEnterpriseFee`}
-                  right={data?.enterprise_fee_type}
+                  right={
+                    data?.enterprise_fee_type === 'YEAR'
+                      ? t`transactionScreen.feeYear`
+                      : data?.enterprise_fee_type === 'EACHL'
+                      ? t`transactionScreen.singleTransactionFee`
+                      : t`transactionScreen.notApplied`
+                  }
                 />
 
                 <Divider />
@@ -186,13 +233,31 @@ function TransactionDetail() {
                 <Divider />
                 <Row
                   left={t`transactionScreen.numOfEarnedLabour`}
-                  right={data?.earned_labor}
+                  right={data?.corresponding_labor}
                 />
 
                 <Divider />
                 <Row
                   left={t`transactionScreen.appliedDiscountRate`}
                   right={data.applied_discount_rate + '%'}
+                />
+
+                <Divider />
+                <Row
+                  left={t`transactionScreen.earnedDiscountAmount`}
+                  right={formatNum(data.earned_discount_amount)}
+                />
+
+                <Divider />
+                <Row
+                  left={t`transactionScreen.numOfFutureLabor`}
+                  right={data.future_labor}
+                />
+
+                <Divider />
+                <Row
+                  left={t`transactionScreen.futureDiscountRate`}
+                  right={data.future_discount_rate + '%'}
                 />
 
                 <Divider />
@@ -216,13 +281,13 @@ function TransactionDetail() {
                 <Divider />
                 <Row
                   left={t`transactionScreen.bankFeeAfterTax`}
-                  right={data.bank_fee_after_tax_amount}
+                  right={data.bank_transaction_fee}
                 />
 
                 <Divider />
                 <Row
                   left={t`transactionScreen.paymentAmountToEmployee`}
-                  right={data.receive_amount}
+                  right={formatNum(data.payment_amount)}
                 />
               </VStack>
             </Box>
@@ -230,40 +295,84 @@ function TransactionDetail() {
         )}
       </Screen>
 
-      <Box
-        position="absolute"
-        padding="16px"
-        style={{
-          paddingBottom: insets.bottom + 16,
-        }}
-        borderTopWidth={1}
-        display="flex"
-        flexDirection="row"
-        borderTopColor={Colors.border}
-        backgroundColor={Colors.white}
-        left="0"
-        right="0"
-        bottom={0}
-      >
-        <Button
-          marginRight="12px"
-          flex={1}
-          variant="outline"
-          isLoading={isLoading}
-          _loading={{
-            backgroundColor: Colors.primary,
+      {['PAYING', 'PAID'].includes(data?.status) && (
+        <Box
+          position="absolute"
+          padding="16px"
+          style={{
+            paddingBottom: insets.bottom + 16,
           }}
-          onPress={() => {}}
-        >{t`transactionScreen.reject`}</Button>
-        <Button
-          flex={1}
-          isLoading={isLoading}
-          _loading={{
-            backgroundColor: Colors.primary,
-          }}
-          onPress={() => {}}
-        >{t`transactionScreen.makePayment`}</Button>
-      </Box>
+          borderTopWidth={1}
+          display="flex"
+          flexDirection="row"
+          borderTopColor={Colors.border}
+          backgroundColor={Colors.white}
+          left="0"
+          right="0"
+          bottom={0}
+        >
+          {data?.status === 'PAYING' && (
+            <Button
+              marginRight="12px"
+              flex={1}
+              variant="outline"
+              isLoading={updating}
+              _loading={{
+                backgroundColor: Colors.primary,
+              }}
+              onPress={() => {
+                Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
+                  {
+                    text: t`common.cancel`,
+                    onPress: () => {},
+                    style: 'destructive',
+                  },
+                  {
+                    text: t`common.update`,
+                    onPress: () => {
+                      updateStatus({
+                        ids: [route.params.id],
+                        note: '',
+                        status: 'REJECTED',
+                      }).then((res: any) => {
+                        if (res?.error)
+                          Alert.alert(t`common.error`, t`common.errorMsg`)
+                        else {
+                          Alert.alert(
+                            t`common.success`,
+                            t`common.updateSuccess`,
+                          )
+                          refetch()
+                        }
+                      })
+                    },
+                  },
+                ])
+              }}
+            >{t`transactionScreen.reject`}</Button>
+          )}
+          <Button
+            flex={1}
+            isLoading={isLoading}
+            isDisabled={data?.employee_income_notice?.status === 'INIT'}
+            _loading={{
+              backgroundColor: Colors.primary,
+            }}
+            onPress={handleMakePayment}
+          >
+            {(() => {
+              switch (data?.status) {
+                case 'PAYING':
+                  return t`transactionScreen.makePayment`
+                case 'PAID':
+                  return t`transactionScreen.approveTransaction`
+                default:
+                  return ''
+              }
+            })()}
+          </Button>
+        </Box>
+      )}
     </>
   )
 }

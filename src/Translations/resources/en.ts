@@ -20,6 +20,8 @@ export default {
   creditOfficer: 'Credit Officer',
   accountingController: 'Accounting Controller',
   accountant: 'Accountant',
+  employee: 'Employee',
+  enterprise: 'Enterprise',
 
   common: {
     error: 'Error',
@@ -45,6 +47,7 @@ export default {
 
   home: {
     title: 'Home',
+    paymentSchedule: 'Payment Schedule',
   },
 
   transactionScreen: {
@@ -84,6 +87,14 @@ export default {
     paymentAmountToEmployee: 'Payment Amount to Employee (VND)',
     reject: 'Reject',
     approveTransaction: 'Approve Transaction',
+    waitingForSign: 'Waiting for sign',
+    signed: 'Signed',
+    feeYear: 'Annual Fee',
+    singleTransactionFee: 'Single Transaction Fee',
+    notApplied: 'Not Applied',
+    earnedDiscountAmount: 'Earned Discount Amount (VND)',
+    numOfFutureLabor: 'No. of Future Labour',
+    futureDiscountRate: 'Future Discount Rate (APR)',
   },
 
   clientScreen: {

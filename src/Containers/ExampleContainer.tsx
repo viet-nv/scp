@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Brand } from '@/Components'
 import { useTheme } from '@/Hooks'
 import { useLazyFetchOneQuery } from '@/Services/modules/users'
 import { changeTheme, ThemeState } from '@/Store/Theme'
@@ -21,6 +20,8 @@ import { RootStackParamList } from '@/Navigators/utils'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { AutoImage } from '@/Components/AutoImage'
 import { t } from 'i18next'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import CalendarStrip from 'react-native-calendar-strip'
 
 const logo = require('../Assets/Images/scp-logo.png')
 
@@ -30,8 +31,28 @@ const getRoleDisplayText = (role: string = '') => {
       return t`master`
     case 'SUBMASTER':
       return t`subMaster`
+    case 'CA_MANAGER':
+      return t`caTeamLead`
+    case 'CA_SENIOR':
+      return t`CA_SENIOR`
+    case 'CREDIT_OFFICER':
+      return t`creditOfficer`
+    case 'CRM_SENIOR':
+      return t`seniorCRM`
+    case 'CRM':
+      return t`crmStaff`
+    case 'ACC_CONTROLLER':
+      return t`accountingController`
+    case 'ACCOUNTANT':
+      return t`accountant`
+    case 'SUPPORTER':
+      return t`support`
+    case 'ENTERPRISE':
+      return t`enterprise`
+    case 'EMPLOYEE':
+      return t`employee`
     default:
-      return ''
+      return role
   }
 }
 
@@ -103,7 +124,12 @@ const ExampleContainer = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar size="56px" />
+            <Ionicons
+              name="person-circle-outline"
+              size={56}
+              color={Colors.primary}
+            />
+
             <Flex marginLeft="16px">
               <Text fontSize={18} fontWeight="600">
                 {auth.user?.fullname}
@@ -112,6 +138,69 @@ const ExampleContainer = () => {
             </Flex>
           </Box>
         </View>
+
+        <Box width="100%" marginTop="48px">
+          <Text
+            paddingX={'12px'}
+            marginBottom="8px"
+            fontWeight="500"
+            fontSize={16}
+          >{t`home.paymentSchedule`}</Text>
+          <CalendarStrip
+            calendarAnimation={{ type: 'sequence', duration: 10 }}
+            daySelectionAnimation={{
+              type: 'border',
+              duration: 200,
+              borderWidth: 1,
+              borderHighlightColor: Colors.primary,
+            }}
+            style={{
+              marginHorizontal: 12,
+              padding: 12,
+              paddingBottom: 0,
+              height: 90,
+              borderRadius: 8,
+              borderWidth: 1,
+              borderColor: Colors.border,
+            }}
+            calendarHeaderStyle={{
+              color: Colors.text,
+              fontWeight: '500',
+              fontSize: 14,
+            }}
+            calendarColor={Colors.white}
+            dateNumberStyle={{
+              color: Colors.text,
+              fontWeight: '500',
+              fontSize: 14,
+            }}
+            dateNameStyle={{ color: Colors.subText }}
+            highlightDateNumberStyle={{ color: Colors.primary }}
+            highlightDateNameStyle={{ color: Colors.primary }}
+            onDateSelected={date => {
+              // setSelectedDate(date.toISOString())
+            }}
+            onWeekChanged={monday => {
+              const d = new Date(monday.toISOString())
+              d.setDate(d.getDate() + 3)
+              // getClientInWeekData(d.toISOString())
+            }}
+            markedDates={
+              undefined
+              // clientActive?.data?.map(
+              // (item: any) => ({
+              //   date: dayjs(item.meeting_date).format('YYYY-MM-DD'),
+              //   lines: [
+              //     {
+              //       color: Colors.primary,
+              //     },
+              //   ],
+              // }),
+              // {},
+              // )
+            }
+          />
+        </Box>
 
         <View
           style={[

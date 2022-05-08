@@ -20,6 +20,8 @@ export default {
   creditOfficer: 'Chuyên viên Thẩm định',
   accountingController: 'Kế toán trưởng',
   accountant: 'Kế toán viên',
+  employee: 'Người lao động',
+  enterprise: 'Doanh nghiệp',
 
   common: {
     error: 'Lỗi',
@@ -45,6 +47,7 @@ export default {
 
   home: {
     title: 'Trang Chủ',
+    paymentSchedule: 'Lịch thanh toán',
   },
 
   transactionScreen: {
@@ -84,6 +87,14 @@ export default {
     paymentAmountToEmployee: 'Số tiền NLĐ thực nhận (VND)',
     reject: 'Từ chối',
     approveTransaction: 'Duyệt giao dịch',
+    waitingForSign: 'Chờ ký',
+    signed: 'Đã ký',
+    feeYear: 'Phí Cố định Năm',
+    singleTransactionFee: 'Phí Giao dịch Từng lần',
+    notApplied: 'Không áp dụng',
+    earnedDiscountAmount: 'Chi phí Ứng lương đã thực hiện (VND)',
+    numOfFutureLabor: 'Số ngày công tương lai tương ứng',
+    futureDiscountRate: 'Tỷ suất Chiết khấu Tương lai',
   },
 
   clientScreen: {

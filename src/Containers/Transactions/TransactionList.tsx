@@ -5,7 +5,7 @@ import {
 } from '@/Services/transaction'
 import { Colors } from '@/Theme/Variables'
 import { formatNum } from '@/Utils'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import dayjs from 'dayjs'
 import {
   Actionsheet,
@@ -18,7 +18,7 @@ import {
   Text,
   useDisclose,
 } from 'native-base'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ActivityIndicator, Alert, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -113,6 +113,9 @@ function TransactionList({ status }: { status: string }) {
   const { isOpen, onOpen, onClose } = useDisclose()
 
   const onlyView = !['PAYING', 'PAID'].includes(status)
+  const selectableTxs = transactions.data.filter(
+    (item: any) => item?.employee_income_notice?.status !== 'INIT',
+  )
 
   return (
     <>
@@ -270,14 +273,12 @@ function TransactionList({ status }: { status: string }) {
                         value="all"
                         accessibilityLabel="all"
                         isChecked={
-                          !!transactions.data.length &&
-                          selectedPayments.length === transactions.data.length
+                          !!selectableTxs.length &&
+                          selectedPayments.length === selectableTxs.length
                         }
                         onChange={selected =>
                           setSelectedPayments(
-                            selected
-                              ? transactions.data.map((i: any) => i.id)
-                              : [],
+                            selected ? selectableTxs.map((i: any) => i.id) : [],
                           )
                         }
                       />
@@ -355,6 +356,9 @@ function TransactionList({ status }: { status: string }) {
                   {!onlyView && (
                     <Checkbox
                       value={item.id}
+                      isDisabled={
+                        item.employee_income_notice?.status === 'INIT'
+                      }
                       accessibilityLabel={`${item.id}`}
                       isChecked={selectedPayments.includes(item.id)}
                       onChange={selected =>
@@ -366,36 +370,52 @@ function TransactionList({ status }: { status: string }) {
                       }
                     />
                   )}
-                  <Flex
-                    flex={1}
-                    marginLeft={2}
-                    flexDirection="row"
-                    justifyContent="space-between"
-                  >
-                    <Flex>
+                  <Flex flex={1} marginLeft={2}>
+                    <Flex
+                      width="100%"
+                      flexDirection="row"
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
                       <Text fontWeight={500}>{item.employee.name}</Text>
-                      <Flex flexDirection="row">
-                        <Text color={Colors.subText}>
-                          {t`enterpriseScreen.accNo`}{' '}
-                          <Text fontWeight={500} color={Colors.text}>
-                            {item.bank_account_number}
-                          </Text>
-                        </Text>
-                      </Flex>
+                      <Text fontWeight={500} color={Colors.error} fontSize={16}>
+                        {formatNum(item.request_amount)}
+                      </Text>
+                    </Flex>
+                    <Text color={Colors.subText}>
+                      {t`enterpriseScreen.accNo`}{' '}
+                      <Text fontWeight={500} color={Colors.text}>
+                        {item.bank_account_number}
+                      </Text>{' '}
+                      {item.bank_name && `(${item.bank_name})`}
+                    </Text>
+
+                    <Flex justifyContent="space-between" flexDirection="row">
                       <Text color={Colors.subText}>
                         {t`transactionScreen.transactionCode`}:{' '}
                         <Text>{item.code}</Text>
-                      </Text>
-                    </Flex>
-                    <Flex justifyContent="space-between" alignItems="flex-end">
-                      <Text fontWeight={500} color={Colors.error} fontSize={16}>
-                        {formatNum(item.request_amount)}
                       </Text>
 
                       <Text color={Colors.subText}>
                         {dayjs(item.transaction_date).format('DD-MM-YYYY')}
                       </Text>
                     </Flex>
+
+                    <Text>
+                      {t`enterpriseScreen.status`}:{' '}
+                      <Text
+                        fontWeight="500"
+                        color={
+                          item.employee_income_notice?.status === 'INIT'
+                            ? Colors.error
+                            : Colors.primary
+                        }
+                      >
+                        {item.employee_income_notice?.status === 'INIT'
+                          ? t`transactionScreen.waitingForSign`
+                          : t`transactionScreen.signed`}
+                      </Text>
+                    </Text>
                   </Flex>
                 </Flex>
               </TouchableOpacity>
