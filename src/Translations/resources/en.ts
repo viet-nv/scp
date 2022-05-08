@@ -48,6 +48,8 @@ export default {
   home: {
     title: 'Home',
     paymentSchedule: 'Payment Schedule',
+    transactionAmountInMonth: 'TRANSACTION AMOUNT IN MONTH',
+    averageBalanceInMonth: 'AVERAGE BALANCE IN MONTH',
   },
 
   transactionScreen: {

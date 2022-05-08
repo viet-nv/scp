@@ -48,6 +48,8 @@ export default {
   home: {
     title: 'Trang Chủ',
     paymentSchedule: 'Lịch thanh toán',
+    transactionAmountInMonth: 'GIÁ TRỊ GIAO DỊCH THÁNG',
+    averageBalanceInMonth: 'SỐ DƯ BÌNH QUÂN THÁNG',
   },
 
   transactionScreen: {

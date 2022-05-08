@@ -22,6 +22,7 @@ import { AutoImage } from '@/Components/AutoImage'
 import { t } from 'i18next'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CalendarStrip from 'react-native-calendar-strip'
+import { formatNum } from '@/Utils'
 
 const logo = require('../Assets/Images/scp-logo.png')
 
@@ -202,75 +203,93 @@ const ExampleContainer = () => {
           />
         </Box>
 
-        <View
-          style={[
-            { marginTop: 90 },
-            Layout.row,
-            Layout.rowHCenter,
-            Gutters.smallHPadding,
-            Gutters.largeVMargin,
-            Common.backgroundPrimary,
-          ]}
-        >
-          <Text style={[Layout.fill, Fonts.textCenter, Fonts.textSmall]}>
-            {t('example.labels.userId')}
-          </Text>
-          <TextInput
-            onChangeText={setUserId}
-            editable={!isLoading}
-            keyboardType={'number-pad'}
-            maxLength={1}
-            value={userId}
-            selectTextOnFocus
-            style={[Layout.fill, Common.textInput]}
-          />
+        <Flex flexDirection="row" alignItems="center" padding="12px">
+          <View
+            style={{
+              borderColor: Colors.primary,
+              marginRight: 12,
+              borderRadius: 4,
+              borderWidth: 1,
+              flex: 1,
+              padding: 12,
+            }}
+          >
+            <Text
+              fontSize={12}
+              fontWeight="500"
+              textAlign="center"
+            >{t`home.transactionAmountInMonth`}</Text>
+            <Text
+              textAlign="center"
+              marginTop="8px"
+              color={Colors.error}
+              fontWeight="500"
+            >
+              {formatNum(100000000)}
+            </Text>
+          </View>
+          <View
+            style={{
+              borderColor: Colors.primary,
+              borderRadius: 4,
+              borderWidth: 1,
+              flex: 1,
+              padding: 12,
+            }}
+          >
+            <Text
+              fontSize={12}
+              fontWeight="500"
+              textAlign="center"
+            >{t`home.averageBalanceInMonth`}</Text>
+            <Text
+              textAlign="center"
+              marginTop="8px"
+              color={Colors.error}
+              fontWeight="500"
+            >
+              {formatNum(100000000)}
+            </Text>
+          </View>
+        </Flex>
+
+        <View style={{ padding: 12, width: '100%' }}>
+          <View
+            style={{
+              padding: 12,
+              borderRadius: 4,
+              borderWidth: 1,
+              borderColor: Colors.border,
+            }}
+          >
+            <Text>{t`home.onboardedClient`}</Text>
+          </View>
         </View>
-        <Text style={[Fonts.textRegular, Gutters.smallBMargin]}>
-          DarkMode :
-        </Text>
+        {/* <Text style={[Fonts.textRegular, Gutters.smallBMargin]}> */}
 
-        <TouchableOpacity
-          style={[Common.button.rounded, Gutters.regularBMargin]}
-          onPress={() => onChangeTheme({ darkMode: null })}
-        >
-          <Text style={Fonts.textRegular}>Auto</Text>
-        </TouchableOpacity>
+        {/*   DarkMode : */}
+        {/* </Text> */}
 
-        <TouchableOpacity
-          style={[Common.button.outlineRounded, Gutters.regularBMargin]}
-          onPress={() => onChangeTheme({ darkMode: true })}
-        >
-          <Text style={Fonts.textRegular}>Dark</Text>
-        </TouchableOpacity>
+        {/* <TouchableOpacity */}
+        {/*   style={[Common.button.rounded, Gutters.regularBMargin]} */}
+        {/*   onPress={() => onChangeTheme({ darkMode: null })} */}
+        {/* > */}
+        {/*   <Text style={Fonts.textRegular}>Auto</Text> */}
+        {/* </TouchableOpacity> */}
 
-        <TouchableOpacity
-          style={[Common.button.outline, Gutters.regularBMargin]}
-          onPress={() => onChangeTheme({ darkMode: false })}
-        >
-          <Text style={Fonts.textRegular}>Light</Text>
-        </TouchableOpacity>
+        {/* <TouchableOpacity */}
+        {/*   style={[Common.button.outlineRounded, Gutters.regularBMargin]} */}
+        {/*   onPress={() => onChangeTheme({ darkMode: true })} */}
+        {/* > */}
+        {/*   <Text style={Fonts.textRegular}>Dark</Text> */}
+        {/* </TouchableOpacity> */}
 
-        <Button
-          onPress={() => {
-            i18n.changeLanguage(i18n.language === 'vi' ? 'en' : 'vi')
-          }}
-        >
-          Change Languages
-        </Button>
-        <Button
-          onPress={async () => {
-            try {
-              await logoutServer()
-            } catch (e) {
-              console.log('Call logout api failed', e)
-            }
-            dispatch(logout())
-          }}
-        >
-          Logout
-        </Button>
-
-        <Button onPress={() => navigation.navigate('Clients')}>navigate</Button>
+        {/* <TouchableOpacity */}
+        {/*   style={[Common.button.outline, Gutters.regularBMargin]} */}
+        {/*   onPress={() => onChangeTheme({ darkMode: false })} */}
+        {/* > */}
+        {/*   <Text style={Fonts.textRegular}>Light</Text> */}
+        {/* </TouchableOpacity> */}
       </ScrollView>
     </Screen>
   )
