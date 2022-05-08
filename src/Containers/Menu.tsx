@@ -10,7 +10,7 @@ import { Header, Icon, Screen } from '@/Components'
 
 import { Actionsheet, Text, useDisclose } from 'native-base'
 import { logout } from '@/Store/auth'
-import { useAppDispatch } from '@/Store/hooks'
+import { useAppDispatch, useAppSelector } from '@/Store/hooks'
 import { useLogoutMutation } from '@/Services/auth'
 
 const HEADER: ViewStyle = {
@@ -37,6 +37,8 @@ export const MenuScreen: React.FC<
   StackScreenProps<RootStackParamList, 'Transactions'>
 > = ({ navigation }) => {
   const { t, i18n } = useTranslation()
+
+  const { user } = useAppSelector(state => state.auth)
 
   const dispatch = useAppDispatch()
   const [logoutServer] = useLogoutMutation()
@@ -73,41 +75,68 @@ export const MenuScreen: React.FC<
         style={HEADER}
         titleStyle={{ color: Colors.white }}
       />
-      <TouchableOpacity
-        style={ROW}
-        // onPress={() => navigation.navigate('PayingTransaction')}
-      >
-        <Icon
-          icon="enterprise"
-          style={{ width: 30, height: 30, marginRight: 2 }}
-        />
-        <Text style={ROW_TEXT}>{t`menuScreen.companyInfo`}</Text>
+      {user?.role.name !== 'EMPLOYEE' && (
+        <>
+          <TouchableOpacity
+            style={ROW}
+            // onPress={() => navigation.navigate('PayingTransaction')}
+          >
+            <Icon
+              icon="enterprise"
+              style={{ width: 30, height: 30, marginRight: 2 }}
+            />
+            <Text style={ROW_TEXT}>{t`menuScreen.companyInfo`}</Text>
 
-        <Ionicons
-          name="chevron-forward-outline"
-          size={24}
-          color={Colors.subText}
-        />
-      </TouchableOpacity>
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color={Colors.subText}
+            />
+          </TouchableOpacity>
 
-      <TouchableOpacity
-        style={ROW}
-        // onPress={() => navigation.navigate('PaidTransaction')}
-      >
-        <Ionicons
-          name="person-circle-outline"
-          size={32}
-          color={Colors.primary}
-        />
-        <Text
-          style={[ROW_TEXT, { marginLeft: 20 }]}
-        >{t`menuScreen.accountInfo`}</Text>
-        <Ionicons
-          name="chevron-forward-outline"
-          size={24}
-          color={Colors.subText}
-        />
-      </TouchableOpacity>
+          <TouchableOpacity
+            style={ROW}
+            // onPress={() => navigation.navigate('PaidTransaction')}
+          >
+            <Ionicons
+              name="person-circle-outline"
+              size={32}
+              color={Colors.primary}
+            />
+            <Text
+              style={[ROW_TEXT, { marginLeft: 20 }]}
+            >{t`menuScreen.accountInfo`}</Text>
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color={Colors.subText}
+            />
+          </TouchableOpacity>
+        </>
+      )}
+
+      {user?.role.name === 'EMPLOYEE' && (
+        <>
+          <TouchableOpacity
+            style={ROW}
+            // onPress={() => onOpen()}
+          >
+            <Ionicons
+              name="chatbubble-ellipses-outline"
+              size={30}
+              color={Colors.primary}
+            />
+            <Text
+              style={[ROW_TEXT, { marginLeft: 24 }]}
+            >{t`menuScreen.faqs`}</Text>
+            <Ionicons
+              name="chevron-forward-outline"
+              size={24}
+              color={Colors.subText}
+            />
+          </TouchableOpacity>
+        </>
+      )}
 
       <TouchableOpacity style={ROW} onPress={() => onOpen()}>
         <Ionicons name="language" size={30} color={Colors.primary} />

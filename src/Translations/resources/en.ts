@@ -30,6 +30,7 @@ export default {
     fieldIsRequire: 'Field is required, can not empty',
     noDataFound: 'No Data Found',
     update: 'Update',
+    confirm: 'Confirm',
     delete: 'Delete',
     cancel: 'Cancel',
     name: 'Name',
@@ -253,5 +254,23 @@ export default {
     accountInfo: 'Account Information',
     changeLanguage: 'Thay đổi ngôn ngữ',
     logout: 'Logout',
+    faqs: 'FAQs',
   },
+
+  employeeApp: {
+    payroll: 'Payroll',
+    contract: 'Contract',
+    account: 'Account',
+    maxPaymentOfAdvance: 'Max Payment of Advance',
+    maxLabourOfAdvance: 'Max Labour of Advance',
+    youStillHave: 'You still have',
+    inYourPayrollAccount: 'in your payroll account!',
+    continueToAdvance: 'Continue to advance',
+    pendingTransaction: 'Pending transaction',
+    amount: 'Amount',
+    notice: 'Notice',
+    transactionNotice: 'TRANSACTION NOTICE',
+  },
+
+  days: 'Day',
 }

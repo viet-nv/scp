@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import {
-  View,
-  ActivityIndicator,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
 import { useLazyFetchOneQuery } from '@/Services/modules/users'
 import { changeTheme, ThemeState } from '@/Store/Theme'
-import { Avatar, Box, Button, Card, Flex, Text } from 'native-base'
+import { Box, Flex, Text } from 'native-base'
 import { useLogoutMutation } from '@/Services/auth'
 import { useAppDispatch, useAppSelector } from '@/Store/hooks'
 import { Screen } from '@/Components/Screen/screen'
-import { logout } from '@/Store/auth'
 import { useNavigation } from '@react-navigation/native'
 import { RootStackParamList } from '@/Navigators/utils'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -62,22 +55,6 @@ const ExampleContainer = () => {
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const dispatch = useAppDispatch()
   const auth = useAppSelector(state => state.auth)
-
-  const [userId, setUserId] = useState('9')
-  const [
-    fetchOne,
-    { data, isSuccess, isLoading, isFetching, error },
-  ] = useLazyFetchOneQuery()
-
-  useEffect(() => {
-    fetchOne(userId)
-  }, [fetchOne, userId])
-
-  const onChangeTheme = ({ theme, darkMode }: Partial<ThemeState>) => {
-    dispatch(changeTheme({ theme, darkMode }))
-  }
-
-  const [logoutServer] = useLogoutMutation()
 
   const navigation = useNavigation<
     StackNavigationProp<RootStackParamList, 'Home'>

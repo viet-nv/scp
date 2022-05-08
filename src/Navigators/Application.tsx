@@ -10,6 +10,7 @@ import {
 } from 'react-native-safe-area-context'
 import { useAppSelector } from '@/Store/hooks'
 import { LoginScreen } from '@/Containers/Login'
+import EmployeeNavigator from './Employee'
 
 const AuthStackNavigator = createStackNavigator<{ login: undefined }>()
 
@@ -31,13 +32,23 @@ const Stack = createStackNavigator()
 // @refresh reset
 const ApplicationNavigator = () => {
   const { NavigationTheme } = useTheme()
-  const { accessToken } = useAppSelector(state => state.auth)
+  const { accessToken, user } = useAppSelector(state => state.auth)
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
-        {!accessToken ? (
+        {!accessToken || !user ? (
           <AuthStack />
+        ) : user?.role.name === 'EMPLOYEE' ? (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="EmployeeApp"
+              component={EmployeeNavigator}
+              options={{
+                animationEnabled: false,
+              }}
+            />
+          </Stack.Navigator>
         ) : (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen

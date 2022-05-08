@@ -30,6 +30,7 @@ export default {
     fieldIsRequire: 'Trường bắt buộc, không được để trống',
     noDataFound: 'Không có dữ liệu',
     update: 'Cập nhật',
+    confirm: 'Xác nhận',
     cancel: 'Hủy',
     delete: 'Xóa',
     name: 'Tên',
@@ -255,5 +256,23 @@ export default {
     accountInfo: 'Thông tin tài khoản',
     changeLanguage: 'Change Language',
     logout: 'Đăng xuất',
+    faqs: 'Câu hỏi thường gặp',
   },
+
+  employeeApp: {
+    payroll: 'Ứng lương',
+    contract: 'Hợp đồng',
+    account: 'Tài khoản',
+    maxPaymentOfAdvance: 'Số tiền được ứng tối đa',
+    maxLabourOfAdvance: 'Số công được ứng tối đa',
+    youStillHave: 'Bạn vẫn còn',
+    inYourPayrollAccount: 'trong tài khoản ứng lương của bạn!',
+    continueToAdvance: 'Tiếp tục Ứng lương',
+    pendingTransaction: 'Giao dịch chờ xử lý',
+    amount: 'Số tiền',
+    notice: 'Thông báo',
+    transactionNotice: 'THÔNG BÁO GIAO DỊCH',
+  },
+
+  days: 'Ngày',
 }

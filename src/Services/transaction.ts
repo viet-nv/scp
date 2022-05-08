@@ -43,6 +43,31 @@ export const transactionApi = pcApi.injectEndpoints({
         },
       }),
     }),
+
+    getTransactionLimit: builder.query<
+      {
+        available_advance_amount: number
+        max_advance_amount: number
+        max_advance_labor: number
+      },
+      void
+    >({
+      query: () => ({
+        url: `/v1/transactions/limit`,
+      }),
+    }),
+
+    getEmployeeIncomeNoticeFile: builder.query({
+      query: (txId: number) => ({
+        url: `/v1/transactions/${txId}/employee-income-notice`,
+      }),
+    }),
+
+    getWorkingEnterprise: builder.query({
+      query: (id: number) => ({
+        url: `/v1/employees/${id}/working`,
+      }),
+    }),
   }),
 })
 
@@ -51,4 +76,7 @@ export const {
   useLazyGetTransactionsQuery,
   useGetTransactionDetailQuery,
   useUpdateStatusMutation,
+  useGetTransactionLimitQuery,
+  useGetEmployeeIncomeNoticeFileQuery,
+  useGetWorkingEnterpriseQuery,
 } = transactionApi
