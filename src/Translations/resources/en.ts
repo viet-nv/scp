@@ -270,6 +270,7 @@ export default {
     amount: 'Amount',
     notice: 'Notice',
     transactionNotice: 'TRANSACTION NOTICE',
+    viewFile: 'View Transaction Notice File',
   },
 
   days: 'Day',

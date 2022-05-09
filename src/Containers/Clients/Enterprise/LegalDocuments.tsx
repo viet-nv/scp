@@ -122,7 +122,11 @@ function LegalDocuments() {
                         Authorization: `Bearer ${auth.accessToken}`,
                       },
                     })
-                      .promise.then(() => FileViewer.open(localFile))
+                      .promise.then(() =>
+                        FileViewer.open(localFile, {
+                          showOpenWithDialog: true,
+                        }),
+                      )
                       .catch(error => {
                         Alert.alert(t`common.error`, 'Can not view file')
                       })

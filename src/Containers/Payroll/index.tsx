@@ -8,13 +8,14 @@ import { Colors } from '@/Theme/Variables'
 import { formatNum } from '@/Utils'
 import { useNavigation } from '@react-navigation/native'
 import dayjs from 'dayjs'
-import { t } from 'i18next'
 import { Flex, View, Text, Button, Divider } from 'native-base'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { ScrollView, TouchableOpacity } from 'react-native'
 
 const Row = ({ item }: { item: any }) => {
   const navigation: any = useNavigation()
+  const { t } = useTranslation()
 
   return (
     <React.Fragment key={item.id}>
@@ -67,6 +68,8 @@ const Row = ({ item }: { item: any }) => {
 function Payroll() {
   const navigation: any = useNavigation()
   const { Layout, Colors } = useTheme()
+
+  const { t } = useTranslation()
 
   const { data } = useGetTransactionLimitQuery()
 

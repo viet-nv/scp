@@ -1,15 +1,17 @@
 import { Header, Screen } from '@/Components'
+import RNFS from 'react-native-fs'
+import FileViewer from 'react-native-file-viewer'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Box, Button, useDisclose } from 'native-base'
+import { Box, Button, Flex, useDisclose } from 'native-base'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { ActivityIndicator, Alert, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
+  useConfirmTransactionMutation,
   useGetEmployeeIncomeNoticeFileQuery,
-  useGetTransactionDetailQuery,
-  useUpdateStatusMutation,
+  useRejectTransactionMutation,
 } from '@/Services/transaction'
 
 function TransactionNotice() {
@@ -23,7 +25,8 @@ function TransactionNotice() {
     route.params.id,
   )
 
-  const [updateStatus, { isLoading: updating }] = useUpdateStatusMutation()
+  const [confirm, { isLoading: confirming }] = useConfirmTransactionMutation()
+  const [reject, { isLoading: rejecting }] = useRejectTransactionMutation()
 
   const handleMakePayment = () => {}
 
@@ -51,51 +54,93 @@ function TransactionNotice() {
         {isLoading ? (
           <ActivityIndicator size="large" style={{ marginTop: 80 }} />
         ) : (
-          <ScrollView
-            style={{
-              marginTop: 56,
-              marginBottom: insets.bottom + 80,
-            }}
-          ></ScrollView>
+          <Flex
+            marginY="56px"
+            flex={1}
+            alignItems="center"
+            justifyContent="center"
+            padding="24px"
+          >
+            <Button
+              onPress={() => {
+                const localFile = `${RNFS.DocumentDirectoryPath}/${data.name}`
+                RNFS.writeFile(localFile, `${data.data}`, 'base64').then(() => {
+                  FileViewer.open(localFile, {
+                    showOpenWithDialog: true,
+                  })
+                })
+              }}
+            >
+              {t`employeeApp.viewFile`}
+            </Button>
+          </Flex>
         )}
       </Screen>
 
-      <Box
-        position="absolute"
-        padding="16px"
-        style={{
-          paddingBottom: insets.bottom + 16,
-        }}
-        borderTopWidth={1}
-        display="flex"
-        flexDirection="row"
-        borderTopColor={Colors.border}
-        backgroundColor={Colors.white}
-        left="0"
-        right="0"
-        bottom={0}
-      >
-        <Button
-          marginRight="12px"
-          flex={1}
-          variant="outline"
-          isLoading={updating}
-          _loading={{
-            backgroundColor: Colors.primary,
+      {data?.data && (
+        <Box
+          position="absolute"
+          padding="16px"
+          style={{
+            paddingBottom: insets.bottom + 16,
           }}
-          onPress={() => {}}
-        >{t`transactionScreen.reject`}</Button>
-        <Button
-          flex={1}
-          isLoading={isLoading}
-          _loading={{
-            backgroundColor: Colors.primary,
-          }}
-          onPress={handleMakePayment}
+          borderTopWidth={1}
+          display="flex"
+          flexDirection="row"
+          borderTopColor={Colors.border}
+          backgroundColor={Colors.white}
+          left="0"
+          right="0"
+          bottom={0}
         >
-          {t`common.confirm`}
-        </Button>
-      </Box>
+          <Button
+            marginRight="12px"
+            flex={1}
+            variant="outline"
+            _loading={{
+              backgroundColor: Colors.primary,
+            }}
+            isLoading={rejecting}
+            onPress={() => {
+              Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
+                {
+                  text: t`common.cancel`,
+                  style: 'destructive',
+                },
+                {
+                  text: t`common.confirm`,
+                  onPress: () => {
+                    reject(route.params.id)
+                  },
+                },
+              ])
+            }}
+          >{t`transactionScreen.reject`}</Button>
+          <Button
+            flex={1}
+            isLoading={confirming}
+            _loading={{
+              backgroundColor: Colors.primary,
+            }}
+            onPress={() => {
+              Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
+                {
+                  text: t`common.cancel`,
+                  style: 'destructive',
+                },
+                {
+                  text: t`common.confirm`,
+                  onPress: () => {
+                    confirm(route.params.id)
+                  },
+                },
+              ])
+            }}
+          >
+            {t`common.confirm`}
+          </Button>
+        </Box>
+      )}
     </>
   )
 }

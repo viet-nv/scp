@@ -12,14 +12,13 @@ import { useNavigation } from '@react-navigation/native'
 import { RootStackParamList } from '@/Navigators/utils'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { AutoImage } from '@/Components/AutoImage'
-import { t } from 'i18next'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CalendarStrip from 'react-native-calendar-strip'
 import { formatNum } from '@/Utils'
 
 const logo = require('../Assets/Images/scp-logo.png')
 
-const getRoleDisplayText = (role: string = '') => {
+const getRoleDisplayText = (role: string = '', t: any) => {
   switch (role) {
     case 'MASTER':
       return t`master`
@@ -51,9 +50,8 @@ const getRoleDisplayText = (role: string = '') => {
 }
 
 const ExampleContainer = () => {
-  const { t, i18n } = useTranslation()
-  const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
-  const dispatch = useAppDispatch()
+  const { t } = useTranslation()
+  const { Layout, Colors } = useTheme()
   const auth = useAppSelector(state => state.auth)
 
   const navigation = useNavigation<
@@ -112,7 +110,7 @@ const ExampleContainer = () => {
               <Text fontSize={18} fontWeight="600">
                 {auth.user?.fullname}
               </Text>
-              <Text>{getRoleDisplayText(auth.user?.role.name)}</Text>
+              <Text>{getRoleDisplayText(auth.user?.role.name, t)}</Text>
             </Flex>
           </Box>
         </View>

@@ -68,6 +68,20 @@ export const transactionApi = pcApi.injectEndpoints({
         url: `/v1/employees/${id}/working`,
       }),
     }),
+
+    confirmTransaction: builder.mutation({
+      query: id => ({
+        url: `/v1/transactions/${id}/confirm`,
+        method: 'POST',
+      }),
+    }),
+
+    rejectTransaction: builder.mutation({
+      query: id => ({
+        url: `/v1/transactions/${id}/reject`,
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -79,4 +93,6 @@ export const {
   useGetTransactionLimitQuery,
   useGetEmployeeIncomeNoticeFileQuery,
   useGetWorkingEnterpriseQuery,
+  useConfirmTransactionMutation,
+  useRejectTransactionMutation,
 } = transactionApi

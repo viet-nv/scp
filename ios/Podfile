@@ -1,3 +1,4 @@
+pod 'RNFileViewer', :path => '../node_modules/react-native-file-viewer'
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 pod 'RNSha256', :path => '../node_modules/react-native-sha256'
 

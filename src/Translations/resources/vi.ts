@@ -272,6 +272,7 @@ export default {
     amount: 'Số tiền',
     notice: 'Thông báo',
     transactionNotice: 'THÔNG BÁO GIAO DỊCH',
+    viewFile: 'Xem thông báo giao dịch',
   },
 
   days: 'Ngày',
