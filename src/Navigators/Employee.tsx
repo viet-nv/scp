@@ -4,7 +4,7 @@ import { ExampleContainer } from '@/Containers'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
-import { Platform } from 'react-native'
+import { Platform, Text } from 'react-native'
 import { ClientScreen } from '@/Containers/Clients'
 import {
   CardStyleInterpolators,
@@ -85,7 +85,9 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Contract"
-        component={ClientScreen}
+        component={() => (
+          <Text style={{ textAlign: 'center', marginTop: 100 }}>Contract</Text>
+        )}
         options={{ title: t`employeeApp.contract` }}
       />
       <Tab.Screen

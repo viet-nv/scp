@@ -50,10 +50,10 @@ export const transactionApi = pcApi.injectEndpoints({
         max_advance_amount: number
         max_advance_labor: number
       },
-      void
+      { enterprise_id: number | string }
     >({
-      query: () => ({
-        url: `/v1/transactions/limit`,
+      query: ({ enterprise_id }) => ({
+        url: `/v1/transactions/limit?enterprise_id=${enterprise_id}`,
       }),
     }),
 
@@ -65,7 +65,7 @@ export const transactionApi = pcApi.injectEndpoints({
 
     getWorkingEnterprise: builder.query({
       query: (id: number) => ({
-        url: `/v1/employees/${id}/working`,
+        url: `/v1/employees/${id}/working?size=1000`,
       }),
     }),
 
@@ -82,6 +82,24 @@ export const transactionApi = pcApi.injectEndpoints({
         method: 'POST',
       }),
     }),
+
+    getPromotions: builder.query({
+      query: id => ({
+        url: `v1/transactions/promotions?enterprise_id=${id}`,
+      }),
+    }),
+
+    calculateTransaction: builder.mutation({
+      query: (body: {
+        amount: number
+        enterprise_id: number
+        promotion_id?: number
+      }) => ({
+        url: `v1/transactions/calculate`,
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -91,8 +109,11 @@ export const {
   useGetTransactionDetailQuery,
   useUpdateStatusMutation,
   useGetTransactionLimitQuery,
+  useLazyGetTransactionLimitQuery,
   useGetEmployeeIncomeNoticeFileQuery,
   useGetWorkingEnterpriseQuery,
   useConfirmTransactionMutation,
   useRejectTransactionMutation,
+  useLazyGetPromotionsQuery,
+  useCalculateTransactionMutation,
 } = transactionApi

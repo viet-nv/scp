@@ -44,6 +44,7 @@ export default {
     confirmation: 'Xác nhận',
     areYouSure: 'Vui lòng xác nhận?',
     updateSuccess: 'Cập nhật thành công',
+    ok: 'Đồng ý',
   },
 
   home: {
@@ -276,4 +277,12 @@ export default {
   },
 
   days: 'Ngày',
+
+  pleaseSelectEnterprise: 'Vui lòng chọn doanh nghiệp',
+  transactionDate: 'Ngày giao dịch',
+  salaryPaymentDate: 'Ngày trả lương',
+  requestAmount: 'Số tiền yêu cầu',
+  'Please input your request amount': 'Vui lòng nhập số tiền',
+  requestAmountExceedAvailable:
+    'Số tiền yêu cầu phải nhỏ hơn số tiền có thể ứng tối đa',
 }

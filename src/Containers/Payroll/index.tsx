@@ -71,7 +71,7 @@ function Payroll() {
 
   const { t } = useTranslation()
 
-  const { data } = useGetTransactionLimitQuery()
+  const { data } = useGetTransactionLimitQuery({ enterprise_id: '' })
 
   const { data: pendingData } = useGetTransactionsQuery({
     statuses: 'PAYING',

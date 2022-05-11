@@ -44,6 +44,7 @@ export default {
     confirmation: 'Confirmation',
     areYouSure: 'Are you sure?',
     updateSuccess: 'Update successfully',
+    ok: 'Ok',
   },
 
   home: {
@@ -274,4 +275,12 @@ export default {
   },
 
   days: 'Day',
+
+  pleaseSelectEnterprise: 'Please select an enterprise',
+  transactionDate: 'Transaction Date',
+  salaryPaymentDate: 'Salary Payment Date',
+  requestAmount: 'Số tiền yêu cầu',
+  'Please input your request amount': 'Please input your request amount',
+  requestAmountExceedAvailable:
+    'Request amount must less than or equal max payment of advance',
 }
