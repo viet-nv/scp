@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { View, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
-import { useLazyFetchOneQuery } from '@/Services/modules/users'
-import { changeTheme, ThemeState } from '@/Store/Theme'
 import { Box, Flex, Text } from 'native-base'
 import { useLogoutMutation } from '@/Services/auth'
 import { useAppDispatch, useAppSelector } from '@/Store/hooks'
@@ -83,7 +81,7 @@ const ExampleContainer = () => {
             ],
           ]}
         >
-          <AutoImage source={logo} style={{ height: 54, width: 100 }} />
+          <AutoImage source={logo} style={{ height: 54, width: 113 }} />
 
           <Box
             shadow={1}

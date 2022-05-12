@@ -7,6 +7,7 @@ import ApplicationNavigator from '@/Navigators/Application'
 import './Translations'
 import { extendTheme, NativeBaseProvider } from 'native-base'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import StartupContainer from './Containers/Startup'
 Ionicons.loadFont()
 
 const customTheme = extendTheme({
@@ -48,7 +49,7 @@ const App = () => {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<StartupContainer />} persistor={persistor}>
           <ApplicationNavigator />
         </PersistGate>
       </Provider>

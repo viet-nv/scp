@@ -1,6 +1,8 @@
 import { authApi } from '@/Services/auth'
 import { User, usersApi } from '@/Services/users'
 import { createSlice } from '@reduxjs/toolkit'
+import { t } from 'i18next'
+import { Alert } from 'react-native'
 
 type AuthState = {
   refreshToken: string | null
@@ -23,6 +25,9 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addMatcher(authApi.endpoints.login.matchRejected, () => {
+        Alert.alert(t`common.error`, t`common.errorMsg`)
+      })
       .addMatcher(
         authApi.endpoints.login.matchFulfilled,
         (state, { payload }) => {

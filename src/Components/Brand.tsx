@@ -11,7 +11,7 @@ interface Props {
 const logo = require('../Assets/Images/scp-logo.png')
 
 const Brand = ({ height, width, mode }: Props) => {
-  const { Layout, Images } = useTheme()
+  const { Layout } = useTheme()
 
   return (
     <View style={{ height, width }}>
@@ -23,7 +23,7 @@ const Brand = ({ height, width, mode }: Props) => {
 Brand.defaultProps = {
   height: 200,
   mode: 'contain',
-  width: 200,
+  width: 300,
 }
 
 export default Brand

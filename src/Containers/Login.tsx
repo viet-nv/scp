@@ -10,7 +10,7 @@ import {
 import { sha256 } from 'react-native-sha256'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { Text, Button, useTheme } from 'native-base'
+import { Input, Text, Button, useTheme, Icon } from 'native-base'
 
 import { AutoImage } from '../Components/AutoImage'
 import { Screen } from '@/Components/Screen/screen'
@@ -26,25 +26,21 @@ const ROOT: ViewStyle = {
 }
 
 const HEADER: ViewStyle = {
-  flex: 1,
+  flex: 2,
   justifyContent: 'center',
   alignItems: 'center',
-  paddingBottom: 20,
 }
 
 const BODY: ViewStyle = {
-  flex: 3,
-  borderTopLeftRadius: 30,
-  borderTopRightRadius: 30,
+  flex: 5,
   paddingHorizontal: 20,
-  paddingVertical: 30,
-  backgroundColor: 'white',
+  // backgroundColor: 'white',
 }
 
 const LOGO: ImageStyle = {
   alignSelf: 'center',
-  width: 200,
-  height: 108,
+  width: 250,
+  height: 120,
 }
 
 const INPUT_ROW: ViewStyle = {
@@ -52,7 +48,6 @@ const INPUT_ROW: ViewStyle = {
   alignItems: 'center',
   marginTop: 10,
   borderBottomWidth: 1,
-  borderBottomColor: Colors.border,
   paddingBottom: 8,
 }
 
@@ -89,7 +84,7 @@ export const LoginScreen = () => {
     }
 
     const hash = await sha256(password)
-    await login({ username, password: hash }).unwrap()
+    await login({ username, password: hash })
     await getMe()
   }
 
@@ -103,6 +98,7 @@ export const LoginScreen = () => {
 
       <View style={BODY}>
         <Text
+          color={Colors.white}
           style={{
             marginBottom: 24,
             fontWeight: '500',
@@ -112,42 +108,63 @@ export const LoginScreen = () => {
         >
           Login to continue
         </Text>
-        <Text>Username</Text>
-        <View style={INPUT_ROW}>
-          <Ionicons name="md-person-outline" size={20} color={colors.text} />
-          <TextInput
-            style={TEXT_INPUT}
-            placeholder="Enter your username..."
-            autoCapitalize="none"
-            placeholderTextColor={colors.subText}
-            value={username}
-            onChangeText={setUsername}
-          />
-        </View>
+        <Text marginBottom="10px" color={Colors.white}>
+          Username
+        </Text>
+        <Input
+          placeholder="Enter your username..."
+          autoCapitalize="none"
+          backgroundColor={Colors.white}
+          placeholderTextColor={colors.subText}
+          value={username}
+          onChangeText={setUsername}
+          InputLeftElement={
+            <Icon
+              as={<Ionicons name="person-outline" />}
+              size={5}
+              ml="2"
+              color={Colors.subText}
+            />
+          }
+        />
 
-        <Text style={{ marginTop: 24 }}>Password</Text>
-        <View style={INPUT_ROW}>
-          <Ionicons name="lock-closed-outline" size={20} color={colors.text} />
-          <TextInput
-            style={TEXT_INPUT}
-            placeholder="Enter your password..."
-            autoCapitalize="none"
-            placeholderTextColor={'gray'}
-            secureTextEntry={!showPass}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TouchableOpacity onPress={() => setShowPass(prev => !prev)}>
-            {!showPass ? (
-              <Ionicons name="eye-off" color={colors.subText} size={20} />
-            ) : (
-              <Ionicons name="eye" color={colors.subText} size={20} />
-            )}
-          </TouchableOpacity>
-        </View>
+        <Text style={{ marginTop: 24, marginBottom: 10 }} color={Colors.white}>
+          Password
+        </Text>
+        <Input
+          style={TEXT_INPUT}
+          placeholder="Enter your password..."
+          autoCapitalize="none"
+          placeholderTextColor={colors.subText}
+          secureTextEntry={!showPass}
+          value={password}
+          backgroundColor={Colors.white}
+          onChangeText={setPassword}
+          InputLeftElement={
+            <Icon
+              as={<Ionicons name="lock-closed-outline" color={colors.text} />}
+              size={5}
+              ml="2"
+              color={Colors.subText}
+            />
+          }
+          InputRightElement={
+            <Icon
+              as={<Ionicons name={showPass ? 'eye' : 'eye-off'} />}
+              size={6}
+              mr="2"
+              color="muted.400"
+              onPress={() => setShowPass(prev => !prev)}
+            />
+          }
+        />
 
         <TouchableOpacity>
-          <Text style={{ color: colors.primary['500'], marginTop: 16 }}>
+          <Text
+            fontWeight="600"
+            style={{ color: Colors.white, marginTop: 16 }}
+            textAlign="right"
+          >
             Forgot password?
           </Text>
         </TouchableOpacity>

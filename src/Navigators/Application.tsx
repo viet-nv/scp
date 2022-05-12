@@ -11,8 +11,12 @@ import {
 import { useAppSelector } from '@/Store/hooks'
 import { LoginScreen } from '@/Containers/Login'
 import EmployeeNavigator from './Employee'
+import StartupContainer from '@/Containers/Startup'
 
-const AuthStackNavigator = createStackNavigator<{ login: undefined }>()
+const AuthStackNavigator = createStackNavigator<{
+  login: undefined
+  startup: undefined
+}>()
 
 const AuthStack = () => {
   return (
