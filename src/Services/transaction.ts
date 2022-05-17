@@ -100,6 +100,24 @@ export const transactionApi = pcApi.injectEndpoints({
         body,
       }),
     }),
+
+    postTransaction: builder.mutation({
+      query: body => ({
+        url: `v1/transactions`,
+        method: 'POST',
+        body,
+      }),
+    }),
+
+    transactionOtp: builder.mutation({
+      query: ({ id, otp }: { id: number; otp: string }) => ({
+        url: `v1/transactions/${id}/otp`,
+        body: {
+          otp,
+        },
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -116,4 +134,6 @@ export const {
   useRejectTransactionMutation,
   useLazyGetPromotionsQuery,
   useCalculateTransactionMutation,
+  usePostTransactionMutation,
+  useTransactionOtpMutation,
 } = transactionApi

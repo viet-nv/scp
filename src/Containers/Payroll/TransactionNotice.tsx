@@ -28,8 +28,6 @@ function TransactionNotice() {
   const [confirm, { isLoading: confirming }] = useConfirmTransactionMutation()
   const [reject, { isLoading: rejecting }] = useRejectTransactionMutation()
 
-  const handleMakePayment = () => {}
-
   return (
     <>
       <Screen
@@ -131,7 +129,11 @@ function TransactionNotice() {
                 {
                   text: t`common.confirm`,
                   onPress: () => {
-                    confirm(route.params.id)
+                    confirm(route.params.id).then(res => {
+                      navigation.navigate('ConfirmRequest', {
+                        id: route.params.id,
+                      })
+                    })
                   },
                 },
               ])

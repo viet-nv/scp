@@ -1,6 +1,8 @@
 app_identifier("com.scp.uongluong") # The bundle identifier of your app
 apple_id("vietnv1304@gmail.com") # Your Apple email address
 
+itc_team_id("125001180") # App Store Connect Team ID
+team_id("TM4W3XU825") # Developer Portal Team ID
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile

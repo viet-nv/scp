@@ -285,4 +285,10 @@ export default {
   'Please input your request amount': 'Vui lòng nhập số tiền',
   requestAmountExceedAvailable:
     'Số tiền yêu cầu phải nhỏ hơn số tiền có thể ứng tối đa',
+
+  'Corresponding Labours': 'Số ngày công tương ứng',
+  'No. of earned labour': 'Số ngày công đã thực hiện',
+  'No. of future labour': 'Số ngày công tương lai',
+  Request: 'Yêu cầu',
+  'CONFIRM INFORMATION': 'XÁC NHẬN THÔNG TIN',
 }

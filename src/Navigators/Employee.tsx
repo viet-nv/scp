@@ -5,7 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
 import { Platform, Text } from 'react-native'
-import { ClientScreen } from '@/Containers/Clients'
 import {
   CardStyleInterpolators,
   createStackNavigator,
@@ -15,6 +14,7 @@ import { Icon } from '@/Components'
 import Payroll from '@/Containers/Payroll'
 import TransactionNotice from '@/Containers/Payroll/TransactionNotice'
 import RequestPayroll from '@/Containers/Payroll/Request'
+import ConfirmRequest from '@/Containers/Payroll/Confirm'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -112,6 +112,7 @@ const EmployeeNavigator = () => {
       <Stack.Screen name="EmployeeMain" component={TabNavigator} />
       <Stack.Screen name="TransactionNotice" component={TransactionNotice} />
       <Stack.Screen name="RequestPayroll" component={RequestPayroll} />
+      <Stack.Screen name="ConfirmRequest" component={ConfirmRequest} />
     </Stack.Navigator>
   )
 }

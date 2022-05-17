@@ -5,11 +5,8 @@ import {
   Box,
   Button,
   ChevronDownIcon,
-  ChevronRightIcon,
   Flex,
-  Select,
   Text,
-  useDisclose,
   View,
   Actionsheet,
   Input,
@@ -30,11 +27,13 @@ import {
   useGetWorkingEnterpriseQuery,
   useLazyGetPromotionsQuery,
   useLazyGetTransactionLimitQuery,
+  usePostTransactionMutation,
 } from '@/Services/transaction'
 
 import { useAppSelector } from '@/Store/hooks'
 import { formatNum } from '@/Utils'
 import dayjs from 'dayjs'
+import { useDebounce } from '@/Hooks'
 
 function RequestPayroll() {
   const navigation: any = useNavigation()
@@ -76,6 +75,8 @@ function RequestPayroll() {
   const [requestAmount, setRequestAmount] = useState('')
   const [rqAmountErr, setRqAmountErr] = useState('')
 
+  const amount = useDebounce(requestAmount, 300)
+
   useEffect(() => {
     if (selectedEnterprise) {
       getTransactionLimit({ enterprise_id: selectedEnterprise }).then(res => {
@@ -87,18 +88,34 @@ function RequestPayroll() {
     }
   }, [selectedEnterprise])
 
+  const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
-    if (requestAmount && selectedEnterprise) {
+    if (!rqAmountErr && amount && selectedEnterprise) {
       calculateTransaction({
-        amount: Number(requestAmount.replace(/\./g, '')),
+        amount: Number(amount.replace(/\./g, '')),
         enterprise_id: selectedEnterprise,
-      }).then(res => {
-        console.log(res)
+      }).then((res: any) => {
+        setPostData(res.data)
       })
     }
-  }, [requestAmount, selectedEnterprise])
+  }, [rqAmountErr, amount, selectedEnterprise])
 
-  const handleMakePayment = () => {}
+  const [
+    postTransaction,
+    { isLoading: creating },
+  ] = usePostTransactionMutation()
+  const handleRequest = async () => {
+    const res: any = await postTransaction({
+      ...postData,
+      amount: postData.request_amount,
+    })
+
+    if (res.error) {
+      Alert.alert('', t`common.errorMsg`)
+    } else {
+      navigation.navigate('TransactionNotice', { id: res.data.id })
+    }
+  }
 
   return (
     <>
@@ -275,6 +292,39 @@ function RequestPayroll() {
                 </FormControl>
 
                 <Divider />
+
+                {calculating ? (
+                  <ActivityIndicator style={{ marginTop: 24 }} />
+                ) : (
+                  <View
+                    padding="8px"
+                    borderWidth={1}
+                    borderColor={Colors.border}
+                    marginTop="16px"
+                    borderRadius="8px"
+                  >
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <Text
+                        color={Colors.subText}
+                      >{t`Corresponding Labours`}</Text>
+                      <Text>{postData?.corresponding_labor}</Text>
+                    </Flex>
+
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <Text
+                        color={Colors.subText}
+                      >{t`No. of earned labour`}</Text>
+                      <Text>{postData?.earned_labor}</Text>
+                    </Flex>
+
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <Text
+                        color={Colors.subText}
+                      >{t`No. of future labour`}</Text>
+                      <Text>{postData?.future_labor}</Text>
+                    </Flex>
+                  </View>
+                )}
               </View>
             </View>
           </ScrollView>
@@ -297,23 +347,15 @@ function RequestPayroll() {
         bottom={0}
       >
         <Button
-          marginRight="12px"
           flex={1}
-          variant="outline"
+          isDisabled={!postData}
+          isLoading={creating}
           _loading={{
             backgroundColor: Colors.primary,
           }}
-          onPress={() => {}}
-        >{t`transactionScreen.reject`}</Button>
-        <Button
-          flex={1}
-          isLoading={isLoading}
-          _loading={{
-            backgroundColor: Colors.primary,
-          }}
-          onPress={handleMakePayment}
+          onPress={handleRequest}
         >
-          {t`common.confirm`}
+          {t`Request`}
         </Button>
       </Box>
     </>
