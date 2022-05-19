@@ -291,4 +291,12 @@ export default {
   'No. of future labour': 'Số ngày công tương lai',
   Request: 'Yêu cầu',
   'CONFIRM INFORMATION': 'XÁC NHẬN THÔNG TIN',
+  'Total Transaction Cost': 'Tổng Chi phí Ứng lương',
+  'Bank Transaction Fee': 'Phí Giao dịch Ngân hàng',
+  'Payment Amount': 'Số tiền thực nhận',
+  sendOtpMsg:
+    'Vui lòng nhập mã OTP được gửi về số điện thoại {{phone}} để xác nhận',
+  'Account Holder': 'Chủ Tài khoản',
+  Company: 'Công ty',
+  'Account number': 'Số Tài khoản',
 }

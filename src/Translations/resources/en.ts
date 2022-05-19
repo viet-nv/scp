@@ -283,4 +283,5 @@ export default {
   'Please input your request amount': 'Please input your request amount',
   requestAmountExceedAvailable:
     'Request amount must less than or equal max payment of advance',
+  sendOtpMsg: 'Please enter the OTP sent to {{phone}} to confirm',
 }

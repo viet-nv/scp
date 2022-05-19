@@ -323,6 +323,22 @@ function RequestPayroll() {
                       >{t`No. of future labour`}</Text>
                       <Text>{postData?.future_labor}</Text>
                     </Flex>
+
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <Text
+                        color={Colors.subText}
+                      >{t`Total Transaction Cost`}</Text>
+                      <Text>{formatNum(postData?.cost_amount || 0)}</Text>
+                    </Flex>
+
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <Text
+                        color={Colors.subText}
+                      >{t`Bank Transaction Fee`}</Text>
+                      <Text>
+                        {formatNum(postData?.bank_transaction_fee || 0)}
+                      </Text>
+                    </Flex>
                   </View>
                 )}
               </View>
@@ -339,13 +355,20 @@ function RequestPayroll() {
         }}
         borderTopWidth={1}
         display="flex"
-        flexDirection="row"
         borderTopColor={Colors.border}
         backgroundColor={Colors.white}
         left="0"
         right="0"
         bottom={0}
       >
+        <Flex
+          flexDirection="row"
+          justifyContent="space-between"
+          marginBottom="16px"
+        >
+          <Text>{t`Payment Amount`}</Text>
+          <Text>{formatNum(postData?.payment_amount || 0)}</Text>
+        </Flex>
         <Button
           flex={1}
           isDisabled={!postData}
