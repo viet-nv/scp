@@ -12,6 +12,7 @@ import {
   Input,
   FormControl,
   Divider,
+  VStack,
 } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -75,6 +76,9 @@ function RequestPayroll() {
   const [requestAmount, setRequestAmount] = useState('')
   const [rqAmountErr, setRqAmountErr] = useState('')
 
+  const [promotions, setPromotions] = useState<any>([])
+  const [selectedPromotionId, setSelectedPromotionId] = useState('')
+
   const amount = useDebounce(requestAmount, 300)
 
   useEffect(() => {
@@ -82,23 +86,33 @@ function RequestPayroll() {
       getTransactionLimit({ enterprise_id: selectedEnterprise }).then(res => {
         setInfo(res.data as any)
       })
-      getPromotions(selectedEnterprise).then(res => {
-        console.log(res)
+      getPromotions(selectedEnterprise).then((res: any) => {
+        setPromotions(res?.data?.promotions || [])
       })
     }
   }, [selectedEnterprise])
 
   const [postData, setPostData] = useState<any>(null)
   useEffect(() => {
-    if (!rqAmountErr && amount && selectedEnterprise) {
+    if (amount && selectedEnterprise) {
       calculateTransaction({
         amount: Number(amount.replace(/\./g, '')),
         enterprise_id: selectedEnterprise,
-      }).then((res: any) => {
-        setPostData(res.data)
+        promotion_id: selectedPromotionId
+          ? Number(selectedPromotionId)
+          : undefined,
       })
+        .then((res: any) => {
+          setPostData(res.data)
+          if (res?.error?.data?.error_message)
+            setRqAmountErr(res.error.data.error_message)
+          else setRqAmountErr('')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
-  }, [rqAmountErr, amount, selectedEnterprise])
+  }, [amount, selectedEnterprise, selectedPromotionId])
 
   const [
     postTransaction,
@@ -117,8 +131,32 @@ function RequestPayroll() {
     }
   }
 
+  const [showPromotion, setShowPromotion] = useState(false)
+
   return (
     <>
+      <Actionsheet
+        isOpen={showPromotion}
+        onClose={() => setShowPromotion(false)}
+      >
+        <Actionsheet.Content>
+          {!promotions.length && (
+            <Text color={Colors.subText}>{t`common.noDataFound`}</Text>
+          )}
+          {promotions?.map((item: any) => {
+            return (
+              <Actionsheet.Item
+                onPress={() => {
+                  setShowPromotion(false)
+                  setSelectedPromotionId(item.id)
+                }}
+              >
+                {item.promotion_name}
+              </Actionsheet.Item>
+            )
+          })}
+        </Actionsheet.Content>
+      </Actionsheet>
       <Actionsheet
         isOpen={showSelect}
         onClose={() => {
@@ -176,7 +214,7 @@ function RequestPayroll() {
           <ScrollView
             style={{
               marginTop: 56,
-              marginBottom: insets.bottom + 80,
+              marginBottom: insets.bottom + 120,
             }}
           >
             <View backgroundColor={Colors.navBackground}>
@@ -216,7 +254,7 @@ function RequestPayroll() {
                 <Text color={Colors.white} fontSize="14px">
                   {t`employeeApp.maxPaymentOfAdvance`}
                 </Text>
-                <Text color={Colors.white} fontWeight="500" fontSize={16}>
+                <Text color={Colors.primary} fontWeight="500" fontSize={16}>
                   {formatNum(info.max_advance_amount)}
                 </Text>
               </Flex>
@@ -239,7 +277,7 @@ function RequestPayroll() {
               </Flex>
             </View>
 
-            <View padding="16px">
+            <View padding="8px">
               <Flex
                 flexDirection="row"
                 justifyContent="space-between"
@@ -296,50 +334,166 @@ function RequestPayroll() {
                 {calculating ? (
                   <ActivityIndicator style={{ marginTop: 24 }} />
                 ) : (
-                  <View
-                    padding="8px"
-                    borderWidth={1}
-                    borderColor={Colors.border}
-                    marginTop="16px"
-                    borderRadius="8px"
-                  >
-                    <Flex flexDirection="row" justifyContent="space-between">
-                      <Text
-                        color={Colors.subText}
-                      >{t`Corresponding Labours`}</Text>
-                      <Text>{postData?.corresponding_labor}</Text>
-                    </Flex>
+                  <>
+                    {!selectedPromotionId && (
+                      <Flex alignItems="flex-end">
+                        <Button
+                          width="30%"
+                          marginTop="16px"
+                          onPress={() => {
+                            setShowPromotion(true)
+                          }}
+                        >{t`Promotion`}</Button>
+                      </Flex>
+                    )}
 
-                    <Flex flexDirection="row" justifyContent="space-between">
-                      <Text
-                        color={Colors.subText}
-                      >{t`No. of earned labour`}</Text>
-                      <Text>{postData?.earned_labor}</Text>
-                    </Flex>
+                    {!!selectedPromotionId && (
+                      <Flex
+                        marginTop="16px"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
+                        <Text>{t`Selected Promotion`}</Text>
+                        <Flex flexDirection="row" alignItems="center">
+                          <Text marginRight="4px">
+                            {
+                              promotions.find(
+                                (item: any) => item.id === selectedPromotionId,
+                              )?.promotion_name
+                            }
+                          </Text>
+                          <Button
+                            variant="ghost"
+                            onPress={() => setSelectedPromotionId('')}
+                            size="sm"
+                          >{t`common.delete`}</Button>
+                        </Flex>
+                      </Flex>
+                    )}
+                    <VStack
+                      space={2}
+                      padding="8px"
+                      borderWidth={1}
+                      borderColor={Colors.border}
+                      marginTop="16px"
+                      borderRadius="8px"
+                    >
+                      <Flex flexDirection="row" justifyContent="space-between">
+                        <Text
+                          color={Colors.subText}
+                        >{t`Corresponding Labours`}</Text>
+                        <Text>{postData?.corresponding_labor}</Text>
+                      </Flex>
 
-                    <Flex flexDirection="row" justifyContent="space-between">
-                      <Text
-                        color={Colors.subText}
-                      >{t`No. of future labour`}</Text>
-                      <Text>{postData?.future_labor}</Text>
-                    </Flex>
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`No. of earned labour`}</Text>
+                        <Text>{postData?.earned_labor}</Text>
+                      </Flex>
 
-                    <Flex flexDirection="row" justifyContent="space-between">
-                      <Text
-                        color={Colors.subText}
-                      >{t`Total Transaction Cost`}</Text>
-                      <Text>{formatNum(postData?.cost_amount || 0)}</Text>
-                    </Flex>
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`No. of future labour`}</Text>
+                        <Text>{postData?.future_labor}</Text>
+                      </Flex>
 
-                    <Flex flexDirection="row" justifyContent="space-between">
-                      <Text
-                        color={Colors.subText}
-                      >{t`Bank Transaction Fee`}</Text>
-                      <Text>
-                        {formatNum(postData?.bank_transaction_fee || 0)}
-                      </Text>
-                    </Flex>
-                  </View>
+                      <Flex flexDirection="row" justifyContent="space-between">
+                        <Text
+                          color={Colors.subText}
+                        >{t`Total Transaction Cost`}</Text>
+                        <Text>{formatNum(postData?.cost_amount || 0)}</Text>
+                      </Flex>
+
+                      {/* */}
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`Earned Discount Rate (% day)`}</Text>
+                        <Text>{postData?.earned_discount_rate}%</Text>
+                      </Flex>
+
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`Earned Discount Amount`}</Text>
+                        <Text>
+                          {formatNum(postData?.earned_discount_amount)}
+                        </Text>
+                      </Flex>
+
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`Future Discount Rate (% day)`}</Text>
+                        <Text>{postData?.future_discount_rate}%</Text>
+                      </Flex>
+
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`Future Discount Amount`}</Text>
+                        <Text>
+                          {formatNum(postData?.future_discount_amount)}
+                        </Text>
+                      </Flex>
+
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        paddingX="8px"
+                      >
+                        <Text
+                          fontStyle="italic"
+                          color={Colors.subText}
+                        >{t`Promotion`}</Text>
+                        <Text>{formatNum(postData?.promotion_amount)}</Text>
+                      </Flex>
+
+                      {/* */}
+
+                      <Flex flexDirection="row" justifyContent="space-between">
+                        <Text
+                          color={Colors.subText}
+                        >{t`Bank Transaction Fee`}</Text>
+                        <Text>
+                          {formatNum(postData?.bank_transaction_fee || 0)}
+                        </Text>
+                      </Flex>
+                    </VStack>
+                  </>
                 )}
               </View>
             </View>
@@ -365,9 +519,12 @@ function RequestPayroll() {
           flexDirection="row"
           justifyContent="space-between"
           marginBottom="16px"
+          alignItems="center"
         >
           <Text>{t`Payment Amount`}</Text>
-          <Text>{formatNum(postData?.payment_amount || 0)}</Text>
+          <Text fontWeight="500" fontSize={18} color={Colors.primary}>
+            {formatNum(postData?.payment_amount || 0)}
+          </Text>
         </Flex>
         <Button
           flex={1}

@@ -109,6 +109,12 @@ export const transactionApi = pcApi.injectEndpoints({
       }),
     }),
 
+    getOtp: builder.query({
+      query: (id: string | number) => ({
+        url: `v1/transactions/${id}/otp`,
+      }),
+    }),
+
     transactionOtp: builder.mutation({
       query: ({ id, otp }: { id: number; otp: string }) => ({
         url: `v1/transactions/${id}/otp`,
@@ -136,4 +142,5 @@ export const {
   useCalculateTransactionMutation,
   usePostTransactionMutation,
   useTransactionOtpMutation,
+  useGetOtpQuery,
 } = transactionApi

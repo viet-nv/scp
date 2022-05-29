@@ -11,7 +11,7 @@ import dayjs from 'dayjs'
 import { Flex, View, Text, Button, Divider } from 'native-base'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { RefreshControl, ScrollView, TouchableOpacity } from 'react-native'
 
 const Row = ({ item }: { item: any }) => {
   const navigation: any = useNavigation()
@@ -71,23 +71,56 @@ function Payroll() {
 
   const { t } = useTranslation()
 
-  const { data } = useGetTransactionLimitQuery({ enterprise_id: '' })
+  const { data, isFetching, isLoading, refetch } = useGetTransactionLimitQuery({
+    enterprise_id: '',
+  })
 
-  const { data: pendingData } = useGetTransactionsQuery({
+  const {
+    data: pendingData,
+    refetch: refetch1,
+    isLoading: loading1,
+  } = useGetTransactionsQuery({
     statuses: 'PAYING',
     size: 100,
   })
 
-  const { data: paidData } = useGetTransactionsQuery({
+  const {
+    data: paidData,
+    refetch: refetch2,
+    isLoading: loading2,
+  } = useGetTransactionsQuery({
     statuses: 'PAID,WAIT_SETTLEMENT',
     size: 100,
   })
+
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      refetch()
+      refetch2()
+      refetch1()
+    })
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe
+  }, [navigation])
 
   return (
     <Screen preset="scroll" statusBackgroundColor={Colors.navBackground}>
       <ScrollView
         style={Layout.fill}
         contentContainerStyle={[Layout.fill, Layout.colCenter]}
+        onScroll={() => {}}
+        refreshControl={
+          <RefreshControl
+            refreshing={isLoading || isFetching || loading1 || loading2}
+            onRefresh={() => {
+              console.log('xxx')
+              refetch()
+              refetch1()
+              refetch2()
+            }}
+          />
+        }
       >
         <View
           padding="16px"
@@ -147,9 +180,9 @@ function Payroll() {
 
           <Text marginTop="16px" fontWeight="500" fontSize={16}>
             {t`employeeApp.pendingTransaction`}{' '}
-            <Text>({pendingData?.data.length})</Text>
+            <Text>({pendingData?.data?.length || 0})</Text>
           </Text>
-          {!pendingData?.data.length ? (
+          {!pendingData?.data?.length ? (
             <Text
               textAlign="center"
               color={Colors.subText}
@@ -163,9 +196,9 @@ function Payroll() {
 
           <Text fontWeight="500" fontSize={16}>
             {t`transactionScreen.paidTransaction`}{' '}
-            <Text>({paidData?.data.length})</Text>
+            <Text>({paidData?.data?.length || 0})</Text>
           </Text>
-          {!paidData?.data.length ? (
+          {!paidData?.data?.length ? (
             <Text
               textAlign="center"
               color={Colors.subText}
