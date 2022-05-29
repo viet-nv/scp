@@ -75,7 +75,7 @@ function TransactionNotice() {
         )}
       </Screen>
 
-      {data?.data && (
+      {data?.data && route.params.paid !== true && (
         <Box
           position="absolute"
           padding="16px"

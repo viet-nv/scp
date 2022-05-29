@@ -317,9 +317,6 @@ function TransactionDetail() {
               flex={1}
               variant="outline"
               isLoading={updating}
-              _loading={{
-                backgroundColor: Colors.primary,
-              }}
               onPress={() => {
                 Alert.alert(t`common.confirmation`, t`common.areYouSure`, [
                   {
@@ -353,7 +350,7 @@ function TransactionDetail() {
           )}
           <Button
             flex={1}
-            isLoading={isLoading}
+            isLoading={updating}
             isDisabled={data?.employee_income_notice?.status === 'INIT'}
             _loading={{
               backgroundColor: Colors.primary,

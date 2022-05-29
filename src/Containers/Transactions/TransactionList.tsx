@@ -113,7 +113,7 @@ function TransactionList({ status }: { status: string }) {
   const { isOpen, onOpen, onClose } = useDisclose()
 
   const onlyView = !['PAYING', 'PAID'].includes(status)
-  const selectableTxs = transactions.data.filter(
+  const selectableTxs = transactions?.data?.filter(
     (item: any) => item?.employee_income_notice?.status !== 'INIT',
   )
 

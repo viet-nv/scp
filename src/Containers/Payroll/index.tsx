@@ -51,7 +51,10 @@ const Row = ({ item }: { item: any }) => {
         {item.status !== 'PAYING' && (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('TransactionNotice', { id: item.id })
+              navigation.navigate('TransactionNotice', {
+                id: item.id,
+                paid: true,
+              })
             }
           >
             <Text color={Colors.primary} textAlign="right" paddingY="4px">
