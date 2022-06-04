@@ -11,6 +11,13 @@ export default {
     },
   },
 
+  'Login to continue': 'Đăng nhập để tiếp tục',
+  Password: 'Mật khẩu',
+  Username: 'Tên đăng nhập',
+  'Enter your username...': 'Vui lòng nhập tên đăng nhập...',
+  'Enter your password...': 'Vui lòng nhập mật khẩu...',
+  Login: 'Đăng nhập',
+
   master: 'Quản trị',
   subMaster: 'Quản trị viên',
   support: 'Hỗ trợ',

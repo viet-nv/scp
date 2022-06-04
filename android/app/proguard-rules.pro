@@ -8,3 +8,5 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+	 -keep class ai.icenter.face3d.native_lib.Face3DConfig { *; }
+

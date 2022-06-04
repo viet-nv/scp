@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Image } from 'react-native'
 import { useTheme } from '@/Hooks'
+import { Config } from '@/Config'
 
 interface Props {
   height?: number | string
@@ -9,13 +10,18 @@ interface Props {
 }
 
 const logo = require('../Assets/Images/scp-logo.png')
+const epayzGray = require('../Assets/Images/epayz-gray.png')
 
 const Brand = ({ height, width, mode }: Props) => {
   const { Layout } = useTheme()
 
   return (
     <View style={{ height, width }}>
-      <Image style={Layout.fullSize} source={logo} resizeMode={mode} />
+      <Image
+        style={Layout.fullSize}
+        source={Config.APP === 'epayz' ? epayzGray : logo}
+        resizeMode={mode}
+      />
     </View>
   )
 }

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {
   Alert,
   ImageStyle,
-  TextInput,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -17,8 +16,11 @@ import { Screen } from '@/Components/Screen/screen'
 import { Colors } from '@/Theme/Variables'
 import { useLoginMutation } from '@/Services/auth'
 import { useLazyGetMeQuery } from '@/Services/users'
+import { Config } from '@/Config'
+import { useTranslation } from 'react-i18next'
 
 const logo = require('../Assets/Images/scp-logo.png')
+const epayzGray = require('../Assets/Images/epayz-gray.png')
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -39,8 +41,8 @@ const BODY: ViewStyle = {
 
 const LOGO: ImageStyle = {
   alignSelf: 'center',
-  width: 250,
-  height: 120,
+  width: Config.APP === 'epayz' ? 300 : 250,
+  height: Config.APP === 'epayz' ? 100 : 120,
 }
 
 const INPUT_ROW: ViewStyle = {
@@ -59,6 +61,7 @@ const TEXT_INPUT = {
 
 const LOGIN_BTN = {
   marginTop: 36,
+  backgroundColor: Config.APP === 'epayz' ? Colors.white : undefined,
 }
 
 export const LoginScreen = () => {
@@ -89,16 +92,26 @@ export const LoginScreen = () => {
   }
 
   const { colors } = useTheme()
+  const { t } = useTranslation()
 
   return (
-    <Screen style={ROOT} preset="fixed" backgroundColor={colors.navBackground}>
+    <Screen
+      style={ROOT}
+      preset="fixed"
+      backgroundColor={
+        Config.APP === 'epayz' ? Colors.primary : colors.navBackground
+      }
+    >
       <View style={HEADER}>
-        <AutoImage source={logo} style={LOGO} />
+        <AutoImage
+          source={Config.APP === 'epayz' ? epayzGray : logo}
+          style={LOGO}
+        />
       </View>
 
       <View style={BODY}>
         <Text
-          color={Colors.white}
+          color={colors.white}
           style={{
             marginBottom: 24,
             fontWeight: '500',
@@ -106,13 +119,13 @@ export const LoginScreen = () => {
             fontSize: 18,
           }}
         >
-          Login to continue
+          {t`Login to continue`}
         </Text>
-        <Text marginBottom="10px" color={Colors.white}>
-          Username
+        <Text marginBottom="10px" color={colors.white} fontWeight="500">
+          {t`Username `}
         </Text>
         <Input
-          placeholder="Enter your username..."
+          placeholder={t`Enter your username...`}
           autoCapitalize="none"
           backgroundColor={Colors.white}
           placeholderTextColor={colors.subText}
@@ -128,12 +141,16 @@ export const LoginScreen = () => {
           }
         />
 
-        <Text style={{ marginTop: 24, marginBottom: 10 }} color={Colors.white}>
-          Password
+        <Text
+          fontWeight="500"
+          style={{ marginTop: 24, marginBottom: 10 }}
+          color={colors.white}
+        >
+          {t`Password`}
         </Text>
         <Input
           style={TEXT_INPUT}
-          placeholder="Enter your password..."
+          placeholder={t`Enter your password...`}
           autoCapitalize="none"
           placeholderTextColor={colors.subText}
           secureTextEntry={!showPass}
@@ -162,7 +179,10 @@ export const LoginScreen = () => {
         <TouchableOpacity>
           <Text
             fontWeight="600"
-            style={{ color: Colors.white, marginTop: 16 }}
+            style={{
+              color: Colors.white,
+              marginTop: 16,
+            }}
             textAlign="right"
           >
             Forgot password?
@@ -175,7 +195,10 @@ export const LoginScreen = () => {
           style={LOGIN_BTN}
           isLoading={isLoading}
         >
-          Login
+          <Text
+            color={Config.APP === 'epayz' ? '#000000' : ''}
+            fontWeight="600"
+          >{t`Login`}</Text>
         </Button>
       </View>
     </Screen>

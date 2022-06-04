@@ -5,6 +5,7 @@
  * That allows to change them more easily later on.
  */
 
+import { Config } from '@/Config'
 import {
   ThemeColors,
   ThemeFontSize,
@@ -20,11 +21,11 @@ export const Colors: ThemeColors = {
   transparent: 'rgba(0,0,0,0)',
   inputBackground: '#FFFFFF',
   white: '#ffffff',
-  primary: '#25bec3',
+  primary: Config.APP === 'epayz' ? '#ed1c24' : '#25bec3',
   border: '#E7E7E9',
   subText: '#6E6D7A',
   text: '#333333',
-  navBackground: '#1c2b4d',
+  navBackground: Config.APP === 'epayz' ? '#ed1c24' : '#1c2b4d',
   background: '#E6E6E6',
   lightGray: '#F7F8FA',
   link: '#1890FF',

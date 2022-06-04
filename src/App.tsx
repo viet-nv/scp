@@ -8,26 +8,27 @@ import './Translations'
 import { extendTheme, NativeBaseProvider } from 'native-base'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import StartupContainer from './Containers/Startup'
+import { Config } from './Config'
 Ionicons.loadFont()
 
 const customTheme = extendTheme({
   colors: {
     primary: {
-      50: '#dcfdff',
-      100: '#b7f3f5',
-      200: '#8fe9ec',
-      300: '#66dfe3',
-      400: '#3ed5da',
-      500: '#25bcc1',
-      600: '#149296',
-      700: '#04696c',
-      800: '#004041',
-      900: '#001717',
+      50: Config.APP === 'epayz' ? '#ff5f4e' : '#dcfdff',
+      100: Config.APP === 'epayz' ? '#ff5f4e' : '#b7f3f5',
+      200: Config.APP === 'epayz' ? '#ff5f4e' : '#8fe9ec',
+      300: Config.APP === 'epayz' ? '#ff5f4e' : '#66dfe3',
+      400: Config.APP === 'epayz' ? '#ff5f4e' : '#3ed5da',
+      500: Config.APP === 'epayz' ? '#ed1c24' : '#25bcc1',
+      600: Config.APP === 'epayz' ? '#b20000' : '#149296',
+      700: Config.APP === 'epayz' ? '#ff5f4e' : '#04696c',
+      800: Config.APP === 'epayz' ? '#ff5f4e' : '#004041',
+      900: Config.APP === 'epayz' ? '#ff5f4e' : '#001717',
     },
     border: '#E7E7E9',
     subText: '#6E6D7A',
     text: '#333333',
-    navBackground: '#1c2b4d',
+    navBackground: Config.APP === 'epayz' ? '#ed1c24' : '#1c2b4d',
     while: '#ffffff',
   },
 })

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, NativeModules } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
-import { Box, Flex, Text } from 'native-base'
+import { Box, Button, Flex, Text } from 'native-base'
 import { useLogoutMutation } from '@/Services/auth'
 import { useAppDispatch, useAppSelector } from '@/Store/hooks'
 import { Screen } from '@/Components/Screen/screen'
@@ -13,8 +13,12 @@ import { AutoImage } from '@/Components/AutoImage'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CalendarStrip from 'react-native-calendar-strip'
 import { formatNum } from '@/Utils'
+import { Config } from '@/Config'
 
-const logo = require('../Assets/Images/scp-logo.png')
+const logo =
+  Config.APP === 'epayz'
+    ? require('../Assets/Images/epayz-gray.png')
+    : require('../Assets/Images/scp-logo.png')
 
 const getRoleDisplayText = (role: string = '', t: any) => {
   switch (role) {
@@ -81,7 +85,10 @@ const ExampleContainer = () => {
             ],
           ]}
         >
-          <AutoImage source={logo} style={{ height: 54, width: 113 }} />
+          <AutoImage
+            source={logo}
+            style={{ height: 54, width: Config.APP === 'epayz' ? 150 : 113 }}
+          />
 
           <Box
             shadow={1}
@@ -263,6 +270,18 @@ const ExampleContainer = () => {
         {/* > */}
         {/*   <Text style={Fonts.textRegular}>Light</Text> */}
         {/* </TouchableOpacity> */}
+        <Button
+          onPress={() => {
+            console.log(NativeModules.VnptEkyc.ekyc('FullFlow', console.log))
+            // console.log(
+            //   NativeModules.VnptEkyc.ekyc('FullFlow', (result: any) => {
+            //     console.log('')
+            //   }),
+            // )
+          }}
+        >
+          test
+        </Button>
       </ScrollView>
     </Screen>
   )
