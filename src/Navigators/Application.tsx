@@ -12,6 +12,9 @@ import { useAppSelector } from '@/Store/hooks'
 import { LoginScreen } from '@/Containers/Login'
 import EmployeeNavigator from './Employee'
 import StartupContainer from '@/Containers/Startup'
+import { FormControl, Input, Modal } from 'native-base'
+import { useTranslation } from 'react-i18next'
+import ChangePassword from '@/Components/ChangePassword'
 
 const AuthStackNavigator = createStackNavigator<{
   login: undefined
@@ -33,6 +36,8 @@ const AuthStack = () => {
 
 const Stack = createStackNavigator()
 
+const RequireChangePassword = () => <ChangePassword hideCancel />
+
 // @refresh reset
 const ApplicationNavigator = () => {
   const { NavigationTheme } = useTheme()
@@ -43,6 +48,13 @@ const ApplicationNavigator = () => {
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         {!accessToken || !user ? (
           <AuthStack />
+        ) : user.require_change_password ? (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="RequireChangePass"
+              component={RequireChangePassword}
+            />
+          </Stack.Navigator>
         ) : user?.role.name === 'EMPLOYEE' ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen

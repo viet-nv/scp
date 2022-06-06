@@ -17,7 +17,7 @@ import { Config } from '@/Config'
 
 const logo =
   Config.APP === 'epayz'
-    ? require('../Assets/Images/epayz-gray.png')
+    ? require('../Assets/Images/epayz-gray-old.png')
     : require('../Assets/Images/scp-logo.png')
 
 const getRoleDisplayText = (role: string = '', t: any) => {

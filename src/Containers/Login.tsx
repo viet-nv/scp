@@ -9,7 +9,7 @@ import {
 import { sha256 } from 'react-native-sha256'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { Input, Text, Button, useTheme, Icon } from 'native-base'
+import { Input, Text, Button, useTheme, Icon, Flex } from 'native-base'
 
 import { AutoImage } from '../Components/AutoImage'
 import { Screen } from '@/Components/Screen/screen'
@@ -41,8 +41,8 @@ const BODY: ViewStyle = {
 
 const LOGO: ImageStyle = {
   alignSelf: 'center',
-  width: Config.APP === 'epayz' ? 300 : 250,
-  height: Config.APP === 'epayz' ? 100 : 120,
+  width: Config.APP === 'epayz' ? 100 : 250,
+  height: Config.APP === 'epayz' ? 140 : 120,
 }
 
 const INPUT_ROW: ViewStyle = {
@@ -62,6 +62,8 @@ const TEXT_INPUT = {
 const LOGIN_BTN = {
   marginTop: 36,
   backgroundColor: Config.APP === 'epayz' ? Colors.white : undefined,
+  width: Config.APP === 'epayz' ? '50%' : undefined,
+  borderRadius: 999,
 }
 
 export const LoginScreen = () => {
@@ -114,7 +116,7 @@ export const LoginScreen = () => {
           color={colors.white}
           style={{
             marginBottom: 24,
-            fontWeight: '500',
+            fontWeight: '600',
             textAlign: 'center',
             fontSize: 18,
           }}
@@ -122,7 +124,7 @@ export const LoginScreen = () => {
           {t`Login to continue`}
         </Text>
         <Text marginBottom="10px" color={colors.white} fontWeight="500">
-          {t`Username `}
+          {t`Username`}
         </Text>
         <Input
           placeholder={t`Enter your username...`}
@@ -185,21 +187,23 @@ export const LoginScreen = () => {
             }}
             textAlign="right"
           >
-            Forgot password?
+            {t`Forgot password?`}
           </Text>
         </TouchableOpacity>
 
-        <Button
-          testID="next-screen-button"
-          onPress={handleLogin}
-          style={LOGIN_BTN}
-          isLoading={isLoading}
-        >
-          <Text
-            color={Config.APP === 'epayz' ? '#000000' : ''}
-            fontWeight="600"
-          >{t`Login`}</Text>
-        </Button>
+        <Flex justifyContent={'center'} alignItems="center">
+          <Button
+            testID="next-screen-button"
+            onPress={handleLogin}
+            style={LOGIN_BTN}
+            isLoading={isLoading}
+          >
+            <Text
+              color={Config.APP === 'epayz' ? '#000000' : ''}
+              fontWeight="600"
+            >{t`Login`}</Text>
+          </Button>
+        </Flex>
       </View>
     </Screen>
   )

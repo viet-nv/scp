@@ -12,6 +12,7 @@ export interface User {
   role: { name: string; permissions: Array<string> }
   status: string
   username: string
+  require_change_password?: boolean
 }
 export const usersApi = pcApi.injectEndpoints({
   overrideExisting: true,
@@ -35,6 +36,14 @@ export const usersApi = pcApi.injectEndpoints({
         params,
       }),
     }),
+
+    changePassword: builder.mutation({
+      query: (body: any) => ({
+        url: '/v1/users/change-password',
+        method: 'PUT',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -43,4 +52,5 @@ export const {
   useLazyGetMeQuery,
   useGetUsersQuery,
   useLazyGetUsersQuery,
+  useChangePasswordMutation,
 } = usersApi

@@ -13,10 +13,14 @@ export default {
 
   'Login to continue': 'Đăng nhập để tiếp tục',
   Password: 'Mật khẩu',
+  'Current Password': 'Mật khẩu hiện tại',
+  'New Password': 'Mật khẩu mới',
+  'Confirm Password': 'Xác nhận mật khẩu',
   Username: 'Tên đăng nhập',
   'Enter your username...': 'Vui lòng nhập tên đăng nhập...',
   'Enter your password...': 'Vui lòng nhập mật khẩu...',
   Login: 'Đăng nhập',
+  'Forgot password?': 'Quên mật khẩu?',
 
   master: 'Quản trị',
   subMaster: 'Quản trị viên',
