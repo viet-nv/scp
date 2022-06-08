@@ -35,6 +35,7 @@ import { useAppSelector } from '@/Store/hooks'
 import { formatNum } from '@/Utils'
 import dayjs from 'dayjs'
 import { useDebounce } from '@/Hooks'
+import { Config } from '@/Config'
 
 function RequestPayroll() {
   const navigation: any = useNavigation()
@@ -44,7 +45,9 @@ function RequestPayroll() {
   const { t } = useTranslation()
   const { user } = useAppSelector(state => state.auth)
 
-  const { data, isLoading } = useGetWorkingEnterpriseQuery(user?.id || 0)
+  const { data, isLoading } = useGetWorkingEnterpriseQuery(
+    user?.enterprise.id || 0,
+  )
   const [
     getTransactionLimit,
     // { isLoading: isLoadingTxLimit },
@@ -254,7 +257,11 @@ function RequestPayroll() {
                 <Text color={Colors.white} fontSize="14px">
                   {t`employeeApp.maxPaymentOfAdvance`}
                 </Text>
-                <Text color={Colors.primary} fontWeight="500" fontSize={16}>
+                <Text
+                  color={Config.APP === 'epayz' ? Colors.white : Colors.primary}
+                  fontWeight="500"
+                  fontSize={16}
+                >
                   {formatNum(info.max_advance_amount)}
                 </Text>
               </Flex>

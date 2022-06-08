@@ -64,7 +64,7 @@ export const transactionApi = pcApi.injectEndpoints({
     }),
 
     getWorkingEnterprise: builder.query({
-      query: (id: number) => ({
+      query: (id: number | string) => ({
         url: `/v1/employees/${id}/working?size=1000`,
       }),
     }),

@@ -151,6 +151,12 @@ export const employeeApi = pcApi.injectEndpoints({
         method: 'POST',
       }),
     }),
+
+    getEmployeeContracts: builder.query({
+      query: (enterprise_id: number | string) => ({
+        url: `/v1/employees/${enterprise_id}/contracts?states=WAITING_PARTNER,COMPLETED,OUTDATED`,
+      }),
+    }),
   }),
 })
 
@@ -175,4 +181,5 @@ export const {
   useUpdateDesignatedAccountMutation,
   useUploadEmployeeFileMutation,
   useUploadEmployeeLegalDocMutation,
+  useGetEmployeeContractsQuery,
 } = employeeApi

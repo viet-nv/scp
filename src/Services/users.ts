@@ -13,6 +13,12 @@ export interface User {
   status: string
   username: string
   require_change_password?: boolean
+  enterprise: {
+    id: string | number
+    address: string
+    createdAt: string
+    name: string
+  }
 }
 export const usersApi = pcApi.injectEndpoints({
   overrideExisting: true,

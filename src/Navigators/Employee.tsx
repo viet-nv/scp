@@ -4,7 +4,7 @@ import { ExampleContainer } from '@/Containers'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
-import { Platform, Text } from 'react-native'
+import { Platform } from 'react-native'
 import {
   CardStyleInterpolators,
   createStackNavigator,
@@ -15,6 +15,7 @@ import Payroll from '@/Containers/Payroll'
 import TransactionNotice from '@/Containers/Payroll/TransactionNotice'
 import RequestPayroll from '@/Containers/Payroll/Request'
 import ConfirmRequest from '@/Containers/Payroll/Confirm'
+import Contract from '@/Containers/Contract'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -85,9 +86,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Contract"
-        component={() => (
-          <Text style={{ textAlign: 'center', marginTop: 100 }}>Contract</Text>
-        )}
+        component={Contract}
         options={{ title: t`employeeApp.contract` }}
       />
       <Tab.Screen

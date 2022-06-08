@@ -1,4 +1,5 @@
 import { Screen } from '@/Components'
+import { Config } from '@/Config'
 import { useTheme } from '@/Hooks'
 import {
   useGetTransactionLimitQuery,
@@ -139,7 +140,11 @@ function Payroll() {
               fontSize={16}
               color={Colors.white}
             >{t`employeeApp.maxPaymentOfAdvance`}</Text>
-            <Text color={Colors.primary} fontWeight="600" fontSize={18}>
+            <Text
+              color={Config.APP === 'epayz' ? Colors.white : Colors.primary}
+              fontWeight="600"
+              fontSize={18}
+            >
               {formatNum(data?.max_advance_amount || 0)}
             </Text>
           </Flex>
