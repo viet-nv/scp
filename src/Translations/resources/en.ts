@@ -284,4 +284,7 @@ export default {
   requestAmountExceedAvailable:
     'Request amount must less than or equal max payment of advance',
   sendOtpMsg: 'Please enter the OTP sent to {{phone}} to confirm',
+  COMMITMENT_AGREEMENT: 'Commitment Agreement',
+  MASTER_CONTRACT: 'Master Contract',
+  OUTDATED: 'Expired',
 }

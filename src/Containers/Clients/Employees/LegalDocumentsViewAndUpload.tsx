@@ -69,6 +69,12 @@ function EmployeeLegalDocumentsViewAndUpload() {
   const [upload, { isLoading: isUploading }] = useUploadEmployeeFileMutation()
 
   const [linkDocs] = useUploadEmployeeLegalDocMutation()
+
+  function getUrlExtension(url: string) {
+    // @ts-ignore
+    return url.split(/[#?]/)[0].split('.').pop().trim()
+  }
+
   return (
     <>
       <Actionsheet

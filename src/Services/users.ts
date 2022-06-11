@@ -50,6 +50,14 @@ export const usersApi = pcApi.injectEndpoints({
         body,
       }),
     }),
+
+    smartCA: builder.mutation({
+      query: (body: { contract_id: number; object_id: number }) => ({
+        url: '/v1/smart-ca/sign',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -59,4 +67,5 @@ export const {
   useGetUsersQuery,
   useLazyGetUsersQuery,
   useChangePasswordMutation,
+  useSmartCAMutation,
 } = usersApi

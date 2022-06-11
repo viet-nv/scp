@@ -153,8 +153,14 @@ export const employeeApi = pcApi.injectEndpoints({
     }),
 
     getEmployeeContracts: builder.query({
-      query: (enterprise_id: number | string) => ({
-        url: `/v1/employees/${enterprise_id}/contracts?states=WAITING_PARTNER,COMPLETED,OUTDATED`,
+      query: ({
+        enterprise_id,
+        states,
+      }: {
+        enterprise_id: number | string
+        states: string
+      }) => ({
+        url: `/v1/employees/${enterprise_id}/contracts?states=${states}`,
       }),
     }),
   }),

@@ -320,4 +320,12 @@ export default {
   'Successful!': 'Yêu cầu thành công!',
   'We has received your request': 'Yêu cầu của bạn đã được tiếp nhận',
   Complete: 'Hoàn tất',
+
+  'Waiting to sign': 'Chờ ký',
+  'Contract No.': 'Số hợp đồng',
+  'View contract': 'Chi tiết',
+  Sign: 'Ký',
+  COMMITMENT_AGREEMENT: 'Văn bản Cam kết',
+  MASTER_CONTRACT: 'Hợp đồng Khung',
+  OUTDATED: 'Hết hạn',
 }
