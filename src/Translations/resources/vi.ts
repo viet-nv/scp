@@ -328,4 +328,5 @@ export default {
   COMMITMENT_AGREEMENT: 'Văn bản Cam kết',
   MASTER_CONTRACT: 'Hợp đồng Khung',
   OUTDATED: 'Hết hạn',
+  Status: 'Trạng thái',
 }

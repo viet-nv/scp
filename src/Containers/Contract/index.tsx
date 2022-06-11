@@ -138,13 +138,17 @@ function Contract() {
         />
         {!!uri ? (
           <WebView
+            thirdPartyCookiesEnabled
+            originWhitelist={['*']}
             source={{ uri }}
             style={{ marginTop: 56, width: '100%', height: '100%' }}
             onShouldStartLoadWithRequest={request => {
               if (request.url.includes('/smart-ca')) {
-                setWebviewUri('')
-                handleSign()
-                return false
+                setTimeout(() => {
+                  setWebviewUri('')
+                  handleSign()
+                }, 3000)
+                return true
               }
 
               return true
@@ -248,7 +252,7 @@ function Contract() {
                     variant="outline"
                     marginRight="12px"
                     marginTop="12px"
-                    onPress={() => hanldeViewFile(item.objects)}
+                    onPress={() => hanldeViewFile(item.object)}
                   >{t`View contract`}</Button>
                 </Box>
               ))}
