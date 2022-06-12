@@ -16,6 +16,7 @@ import TransactionNotice from '@/Containers/Payroll/TransactionNotice'
 import RequestPayroll from '@/Containers/Payroll/Request'
 import ConfirmRequest from '@/Containers/Payroll/Confirm'
 import Contract from '@/Containers/Contract'
+import { UserInfo } from '@/Containers/UserInfo'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -112,6 +113,7 @@ const EmployeeNavigator = () => {
       <Stack.Screen name="TransactionNotice" component={TransactionNotice} />
       <Stack.Screen name="RequestPayroll" component={RequestPayroll} />
       <Stack.Screen name="ConfirmRequest" component={ConfirmRequest} />
+      <Stack.Screen name="UserInfo" component={UserInfo} />
     </Stack.Navigator>
   )
 }

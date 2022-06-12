@@ -34,6 +34,7 @@ export const icons = {
     Config.APP === 'epayz'
       ? require('./dollar-circle-epayz.png')
       : require('./dollar-circle.png'),
+  kyc: require('./kyc.png'),
 }
 
 export type IconTypes = keyof typeof icons

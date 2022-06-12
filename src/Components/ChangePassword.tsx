@@ -2,8 +2,15 @@ import { useChangePasswordMutation, useLazyGetMeQuery } from '@/Services/users'
 import { Button, FormControl, Input, Modal } from 'native-base'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Alert } from 'react-native'
 
-function ChangePassword({ hideCancel }: { hideCancel?: boolean }) {
+function ChangePassword({
+  hideCancel,
+  onCancel,
+}: {
+  hideCancel?: boolean
+  onCancel?: any
+}) {
   const { t } = useTranslation()
   const [state, setState] = useState({
     password: '',
@@ -92,7 +99,7 @@ function ChangePassword({ hideCancel }: { hideCancel?: boolean }) {
                 variant="ghost"
                 colorScheme="blueGray"
                 onPress={() => {
-                  //
+                  onCancel()
                 }}
               >
                 {t`common.cancel`}
@@ -121,9 +128,16 @@ function ChangePassword({ hideCancel }: { hideCancel?: boolean }) {
                 }
 
                 if (!Object.values(error).some(Boolean)) {
-                  const res = await changePassword(state)
-                  console.log(res)
+                  const res: any = await changePassword(state)
                   await getMe()
+
+                  if (res.error) {
+                    console.log(res)
+                    Alert.alert(
+                      t``,
+                      res?.error?.data?.error_message || t`common.errorMsg`,
+                    )
+                  }
                 }
               }}
             >

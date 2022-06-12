@@ -329,4 +329,12 @@ export default {
   MASTER_CONTRACT: 'Hợp đồng Khung',
   OUTDATED: 'Hết hạn',
   Status: 'Trạng thái',
+  'Account Management': 'Tài Khoản',
+  'User Information': 'Thông tin tài khoản',
+  'ID Card No.': 'Số CMND',
+  'eKYC verification': 'Xác thực eKYC',
+  'Bank Account': 'Tài khoản Ngân hàng',
+  'Contact Us': 'Liên hệ',
+  'Terms of Use': 'Điều khoản sử dụng',
+  'Change password': 'Thay đổi mật khẩu',
 }
