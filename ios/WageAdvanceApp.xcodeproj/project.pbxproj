@@ -11,6 +11,22 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		233EFDBE2860D76F00AF2B01 /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB25285B9B86008A74B7 /* Base58Swift.framework */; };
+		233EFDBF2860D76F00AF2B01 /* Base58Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB25285B9B86008A74B7 /* Base58Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDC02860D76F00AF2B01 /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2E285B9BA3008A74B7 /* BigInt.framework */; };
+		233EFDC12860D76F00AF2B01 /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2E285B9BA3008A74B7 /* BigInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDC22860D76F00AF2B01 /* FinalSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */; };
+		233EFDC32860D76F00AF2B01 /* FinalSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDC42860D76F00AF2B01 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */; };
+		233EFDC52860D76F00AF2B01 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDC62860D76F00AF2B01 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB28285B9BA3008A74B7 /* SipHash.framework */; };
+		233EFDC72860D76F00AF2B01 /* SipHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB28285B9BA3008A74B7 /* SipHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDC82860D76F00AF2B01 /* SWMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB29285B9BA3008A74B7 /* SWMessages.framework */; };
+		233EFDC92860D76F00AF2B01 /* SWMessages.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB29285B9BA3008A74B7 /* SWMessages.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDCA2860D76F00AF2B01 /* TensorFlowLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2B285B9BA3008A74B7 /* TensorFlowLite.framework */; };
+		233EFDCB2860D76F00AF2B01 /* TensorFlowLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2B285B9BA3008A74B7 /* TensorFlowLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		233EFDD02860D76F00AF2B01 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233EFDCF2860D76F00AF2B01 /* Alamofire.framework */; };
+		233EFDD12860D76F00AF2B01 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 233EFDCF2860D76F00AF2B01 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -37,6 +53,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		233EFDCE2860D76F00AF2B01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				233EFDC92860D76F00AF2B01 /* SWMessages.framework in Embed Frameworks */,
+				233EFDD12860D76F00AF2B01 /* Alamofire.framework in Embed Frameworks */,
+				233EFDCB2860D76F00AF2B01 /* TensorFlowLite.framework in Embed Frameworks */,
+				233EFDC32860D76F00AF2B01 /* FinalSDK.framework in Embed Frameworks */,
+				233EFDBF2860D76F00AF2B01 /* Base58Swift.framework in Embed Frameworks */,
+				233EFDC72860D76F00AF2B01 /* SipHash.framework in Embed Frameworks */,
+				233EFDC52860D76F00AF2B01 /* ObjectMapper.framework in Embed Frameworks */,
+				233EFDC12860D76F00AF2B01 /* BigInt.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* WageAdvanceAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WageAdvanceAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +85,16 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WageAdvanceApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WageAdvanceApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WageAdvanceApp/main.m; sourceTree = "<group>"; };
+		231FFB20285B97E2008A74B7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		231FFB25285B9B86008A74B7 /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Base58Swift.framework; sourceTree = "<group>"; };
+		231FFB28285B9BA3008A74B7 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SipHash.framework; sourceTree = "<group>"; };
+		231FFB29285B9BA3008A74B7 /* SWMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SWMessages.framework; sourceTree = "<group>"; };
+		231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		231FFB2B285B9BA3008A74B7 /* TensorFlowLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlowLite.framework; sourceTree = "<group>"; };
+		231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FinalSDK.framework; sourceTree = "<group>"; };
+		231FFB2D285B9BA3008A74B7 /* TensorFlowLiteC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlowLiteC.framework; sourceTree = "<group>"; };
+		231FFB2E285B9BA3008A74B7 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
+		233EFDCF2860D76F00AF2B01 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WageAdvanceApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WageAdvanceApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WageAdvanceApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WageAdvanceApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WageAdvanceApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,7 +121,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				233EFDBE2860D76F00AF2B01 /* Base58Swift.framework in Frameworks */,
+				233EFDC02860D76F00AF2B01 /* BigInt.framework in Frameworks */,
+				233EFDD02860D76F00AF2B01 /* Alamofire.framework in Frameworks */,
+				233EFDC42860D76F00AF2B01 /* ObjectMapper.framework in Frameworks */,
+				233EFDC82860D76F00AF2B01 /* SWMessages.framework in Frameworks */,
+				233EFDC22860D76F00AF2B01 /* FinalSDK.framework in Frameworks */,
+				233EFDCA2860D76F00AF2B01 /* TensorFlowLite.framework in Frameworks */,
 				F558C3C38F5774352BA845E4 /* libPods-WageAdvanceApp.a in Frameworks */,
+				233EFDC62860D76F00AF2B01 /* SipHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +195,16 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				233EFDCF2860D76F00AF2B01 /* Alamofire.framework */,
+				231FFB2E285B9BA3008A74B7 /* BigInt.framework */,
+				231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */,
+				231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */,
+				231FFB28285B9BA3008A74B7 /* SipHash.framework */,
+				231FFB29285B9BA3008A74B7 /* SWMessages.framework */,
+				231FFB2B285B9BA3008A74B7 /* TensorFlowLite.framework */,
+				231FFB2D285B9BA3008A74B7 /* TensorFlowLiteC.framework */,
+				231FFB25285B9B86008A74B7 /* Base58Swift.framework */,
+				231FFB20285B97E2008A74B7 /* Accelerate.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				9890556E3CBC2BA59B9BE2B1 /* libPods-WageAdvanceApp.a */,
@@ -217,6 +282,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C2CE97665AB66FD6DAB59E86 /* [CP] Embed Pods Frameworks */,
 				AE217AB861F20CD25C562A8A /* [CP] Copy Pods Resources */,
+				233EFDCE2860D76F00AF2B01 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -715,9 +781,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WageAdvanceApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -732,6 +802,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "com.scp.uongluong AppStore";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -745,8 +816,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WageAdvanceApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

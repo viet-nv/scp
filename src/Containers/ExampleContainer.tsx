@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, NativeModules } from 'react-native'
+import { View, ScrollView, NativeModules, Platform } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
 import { Box, Button, Flex, Text } from 'native-base'
@@ -15,6 +15,7 @@ import CalendarStrip from 'react-native-calendar-strip'
 import { formatNum } from '@/Utils'
 import { Config } from '@/Config'
 
+const { RNEkycVnptSdk } = NativeModules
 const logo =
   Config.APP === 'epayz'
     ? require('../Assets/Images/epayz-gray-old.png')
@@ -272,12 +273,15 @@ const ExampleContainer = () => {
         {/* </TouchableOpacity> */}
         <Button
           onPress={() => {
-            console.log(NativeModules.VnptEkyc.ekyc('FullFlow', console.log))
-            // console.log(
-            //   NativeModules.VnptEkyc.ekyc('FullFlow', (result: any) => {
-            //     console.log('')
-            //   }),
-            // )
+            if (Platform.OS == 'ios') {
+              RNEkycVnptSdk.initVnptEkyc('0')
+                .then((result: any) => {
+                  console.log('result ekyc:' + result)
+                })
+                .catch((err: any) => {
+                  console.log('err ekyc:' + err)
+                })
+            }
           }}
         >
           test

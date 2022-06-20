@@ -3,6 +3,7 @@ import { Button, FormControl, Input, Modal } from 'native-base'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Alert } from 'react-native'
+import { sha256 } from 'react-native-sha256'
 
 function ChangePassword({
   hideCancel,
@@ -27,6 +28,42 @@ function ChangePassword({
     confirm_password: '',
   })
 
+  const handleUpdatePass = async () => {
+    if (!state.password || !state.confirm_password || !state.old_password) {
+      setError({
+        password: !state.password ? t`common.fieldIsRequire` : '',
+        old_password: !state.old_password ? t`common.fieldIsRequire` : '',
+        confirm_password: !state.confirm_password
+          ? t`common.fieldIsRequire`
+          : '',
+      })
+      return
+    }
+
+    if (!Object.values(error).some(Boolean)) {
+      const [password, confirm_password, old_password] = await Promise.all([
+        sha256(state.password),
+        sha256(state.confirm_password),
+        sha256(state.old_password),
+      ])
+
+      const res: any = await changePassword({
+        password,
+        old_password,
+        confirm_password,
+      })
+
+      await getMe()
+
+      if (res.error) {
+        Alert.alert(t``, res?.error?.data?.error_message || t`common.errorMsg`)
+      } else {
+        Alert.alert(t``, t`Update password successfully`)
+        onCancel && onCancel()
+      }
+    }
+  }
+
   return (
     <Modal isOpen size="full">
       <Modal.Content>
@@ -35,6 +72,7 @@ function ChangePassword({
           <FormControl isInvalid={!!error.old_password}>
             <FormControl.Label>{t`Current Password`}</FormControl.Label>
             <Input
+              autoCapitalize="none"
               secureTextEntry
               value={state.old_password}
               onChangeText={value => {
@@ -51,6 +89,7 @@ function ChangePassword({
           <FormControl mt="3" isInvalid={!!error.password}>
             <FormControl.Label>{t`New Password`}</FormControl.Label>
             <Input
+              autoCapitalize="none"
               secureTextEntry
               value={state.password}
               onChangeText={value => {
@@ -69,6 +108,7 @@ function ChangePassword({
           <FormControl mt="3" isInvalid={!!error.confirm_password}>
             <FormControl.Label>{t`Confirm Password`}</FormControl.Label>
             <Input
+              autoCapitalize="none"
               secureTextEntry
               value={state.confirm_password}
               onChangeText={value => {
@@ -85,6 +125,8 @@ function ChangePassword({
                   })
                 else setError({ ...error, confirm_password: '' })
               }}
+              returnKeyType="send"
+              onSubmitEditing={handleUpdatePass}
             />
 
             <FormControl.ErrorMessage>
@@ -107,40 +149,7 @@ function ChangePassword({
             ) : (
               <></>
             )}
-            <Button
-              isLoading={isLoading}
-              onPress={async () => {
-                if (
-                  !state.password ||
-                  !state.confirm_password ||
-                  !state.old_password
-                ) {
-                  setError({
-                    password: !state.password ? t`common.fieldIsRequire` : '',
-                    old_password: !state.old_password
-                      ? t`common.fieldIsRequire`
-                      : '',
-                    confirm_password: !state.confirm_password
-                      ? t`common.fieldIsRequire`
-                      : '',
-                  })
-                  return
-                }
-
-                if (!Object.values(error).some(Boolean)) {
-                  const res: any = await changePassword(state)
-                  await getMe()
-
-                  if (res.error) {
-                    console.log(res)
-                    Alert.alert(
-                      t``,
-                      res?.error?.data?.error_message || t`common.errorMsg`,
-                    )
-                  }
-                }
-              }}
-            >
+            <Button isLoading={isLoading} onPress={handleUpdatePass}>
               {t`common.update`}
             </Button>
           </Button.Group>

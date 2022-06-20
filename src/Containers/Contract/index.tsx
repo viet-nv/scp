@@ -1,19 +1,7 @@
 import { Header, Screen } from '@/Components'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import {
-  Box,
-  Button,
-  ChevronDownIcon,
-  Flex,
-  Text,
-  View,
-  Actionsheet,
-  Input,
-  FormControl,
-  Divider,
-  VStack,
-} from 'native-base'
+import { Box, Button, Flex, Text, VStack } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -23,13 +11,6 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import {
-  useCalculateTransactionMutation,
-  useGetWorkingEnterpriseQuery,
-  useLazyGetPromotionsQuery,
-  useLazyGetTransactionLimitQuery,
-  usePostTransactionMutation,
-} from '@/Services/transaction'
 import RNFS from 'react-native-fs'
 import FileViewer from 'react-native-file-viewer'
 
@@ -82,7 +63,7 @@ function Contract() {
   const auth = useAppSelector(state => state.auth)
 
   const hanldeViewFile = (object: any) => {
-    const localFile = `${RNFS.DocumentDirectoryPath}/temporaryfile`
+    const localFile = `${RNFS.DocumentDirectoryPath}/temporaryfile.pdf`
 
     RNFS.downloadFile({
       fromUrl: `${Config.PC_API_URL}/v1/objects/${object.key}/download`,

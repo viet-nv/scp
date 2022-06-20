@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { useTheme } from '@/Hooks'
@@ -15,6 +15,7 @@ import StartupContainer from '@/Containers/Startup'
 import { FormControl, Input, Modal } from 'native-base'
 import { useTranslation } from 'react-i18next'
 import ChangePassword from '@/Components/ChangePassword'
+import { useLazyGetMeQuery } from '@/Services/users'
 
 const AuthStackNavigator = createStackNavigator<{
   login: undefined
@@ -42,6 +43,11 @@ const RequireChangePassword = () => <ChangePassword hideCancel />
 const ApplicationNavigator = () => {
   const { NavigationTheme } = useTheme()
   const { accessToken, user } = useAppSelector(state => state.auth)
+  const [getMe] = useLazyGetMeQuery()
+
+  useEffect(() => {
+    if (accessToken) getMe()
+  }, [])
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>

@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { Alert, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
+import {
+  Alert,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+  NativeModules,
+} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { useTranslation } from 'react-i18next'
@@ -119,6 +125,7 @@ export const MenuScreen = () => {
           <TouchableOpacity
             style={ROW}
             onPress={() => {
+              NativeModules.VnptEkyc.ekyc('FullFlow', console.log)
               // navigation.navigate('UserInfo')
             }}
           >

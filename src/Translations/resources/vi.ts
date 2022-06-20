@@ -337,4 +337,5 @@ export default {
   'Contact Us': 'Liên hệ',
   'Terms of Use': 'Điều khoản sử dụng',
   'Change password': 'Thay đổi mật khẩu',
+  'Update password successfully': 'Cập nhập mật khẩu thành công',
 }
