@@ -32,8 +32,8 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WageAdvanceAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WageAdvanceAppTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F35C81EEEC5EABE39FF5FB9C /* libPods-WageAdvanceApp-WageAdvanceAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7DF79FE903F515F788B7FB /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */; };
-		F558C3C38F5774352BA845E4 /* libPods-WageAdvanceApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9890556E3CBC2BA59B9BE2B1 /* libPods-WageAdvanceApp.a */; };
+		CD03E8DBC0E73EBB49A7BB59 /* libPods-WageAdvanceApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C1057EB0B68252F7EACBBF /* libPods-WageAdvanceApp.a */; };
+		DAC7F48873E26DA791F6FAFE /* libPods-WageAdvanceApp-WageAdvanceAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEADD0E857D4F803A8A4CC9D /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +85,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WageAdvanceApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WageAdvanceApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WageAdvanceApp/main.m; sourceTree = "<group>"; };
+		20C1057EB0B68252F7EACBBF /* libPods-WageAdvanceApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageAdvanceApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		231FFB20285B97E2008A74B7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		231FFB25285B9B86008A74B7 /* Base58Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Base58Swift.framework; sourceTree = "<group>"; };
 		231FFB28285B9BA3008A74B7 /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SipHash.framework; sourceTree = "<group>"; };
@@ -97,13 +98,12 @@
 		233EFDCF2860D76F00AF2B01 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WageAdvanceApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WageAdvanceApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WageAdvanceApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WageAdvanceApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BA34C3BE357B242F24FE0C0 /* Pods-WageAdvanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp.debug.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7FDF01340A9DD8725EE27EC2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WageAdvanceApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9890556E3CBC2BA59B9BE2B1 /* libPods-WageAdvanceApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageAdvanceApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3C33EE53EC6EB46984EB82A /* Pods-WageAdvanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp.debug.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C3A82F7459B144D832DA23D2 /* Pods-WageAdvanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp.release.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp.release.xcconfig"; sourceTree = "<group>"; };
-		E38FAF183D4C225BFF01B8D2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E6598812EC66165D0E029532 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		EB7DF79FE903F515F788B7FB /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageAdvanceApp-WageAdvanceAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B18EB7817D0A8051FB9001 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB681EC76D82014F106D01D0 /* Pods-WageAdvanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp.release.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp.release.xcconfig"; sourceTree = "<group>"; };
+		DEADD0E857D4F803A8A4CC9D /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WageAdvanceApp-WageAdvanceAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F35C81EEEC5EABE39FF5FB9C /* libPods-WageAdvanceApp-WageAdvanceAppTests.a in Frameworks */,
+				DAC7F48873E26DA791F6FAFE /* libPods-WageAdvanceApp-WageAdvanceAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +128,8 @@
 				233EFDC82860D76F00AF2B01 /* SWMessages.framework in Frameworks */,
 				233EFDC22860D76F00AF2B01 /* FinalSDK.framework in Frameworks */,
 				233EFDCA2860D76F00AF2B01 /* TensorFlowLite.framework in Frameworks */,
-				F558C3C38F5774352BA845E4 /* libPods-WageAdvanceApp.a in Frameworks */,
 				233EFDC62860D76F00AF2B01 /* SipHash.framework in Frameworks */,
+				CD03E8DBC0E73EBB49A7BB59 /* libPods-WageAdvanceApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,10 +184,10 @@
 		18A06528071B6FFBBA9372E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A3C33EE53EC6EB46984EB82A /* Pods-WageAdvanceApp.debug.xcconfig */,
-				C3A82F7459B144D832DA23D2 /* Pods-WageAdvanceApp.release.xcconfig */,
-				E38FAF183D4C225BFF01B8D2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */,
-				E6598812EC66165D0E029532 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */,
+				7BA34C3BE357B242F24FE0C0 /* Pods-WageAdvanceApp.debug.xcconfig */,
+				CB681EC76D82014F106D01D0 /* Pods-WageAdvanceApp.release.xcconfig */,
+				7FDF01340A9DD8725EE27EC2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */,
+				B3B18EB7817D0A8051FB9001 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -207,8 +207,8 @@
 				231FFB20285B97E2008A74B7 /* Accelerate.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				9890556E3CBC2BA59B9BE2B1 /* libPods-WageAdvanceApp.a */,
-				EB7DF79FE903F515F788B7FB /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */,
+				20C1057EB0B68252F7EACBBF /* libPods-WageAdvanceApp.a */,
+				DEADD0E857D4F803A8A4CC9D /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -253,12 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "WageAdvanceAppTests" */;
 			buildPhases = (
-				1AAE0B2EDE5AC7451E236257 /* [CP] Check Pods Manifest.lock */,
+				0458BCFA9C75385BBB425EC4 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				73F7BAA74A45E43EE4A6CDCB /* [CP] Embed Pods Frameworks */,
-				BE058E797734A09C853A4CED /* [CP] Copy Pods Resources */,
+				CB00DEAFFB6BA6930A80A956 /* [CP] Embed Pods Frameworks */,
+				25A5D70EA35C34EEDA13FB81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,15 +274,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WageAdvanceApp" */;
 			buildPhases = (
-				10CFD6CD9CE329AC63450302 /* [CP] Check Pods Manifest.lock */,
+				9AF49204A17EE949CCBD3C08 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C2CE97665AB66FD6DAB59E86 /* [CP] Embed Pods Frameworks */,
-				AE217AB861F20CD25C562A8A /* [CP] Copy Pods Resources */,
 				233EFDCE2860D76F00AF2B01 /* Embed Frameworks */,
+				DCFEA3EB7267ABB22CC40457 /* [CP] Embed Pods Frameworks */,
+				181D22B56EA188D2F7AF90C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -431,29 +431,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		10CFD6CD9CE329AC63450302 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WageAdvanceApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1AAE0B2EDE5AC7451E236257 /* [CP] Check Pods Manifest.lock */ = {
+		0458BCFA9C75385BBB425EC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -475,43 +453,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		73F7BAA74A45E43EE4A6CDCB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AE217AB861F20CD25C562A8A /* [CP] Copy Pods Resources */ = {
+		181D22B56EA188D2F7AF90C5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -561,7 +503,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BE058E797734A09C853A4CED /* [CP] Copy Pods Resources */ = {
+		25A5D70EA35C34EEDA13FB81 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -611,7 +553,65 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2CE97665AB66FD6DAB59E86 /* [CP] Embed Pods Frameworks */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		9AF49204A17EE949CCBD3C08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WageAdvanceApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB00DEAFFB6BA6930A80A956 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WageAdvanceApp-WageAdvanceAppTests/Pods-WageAdvanceApp-WageAdvanceAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCFEA3EB7267ABB22CC40457 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -726,7 +726,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E38FAF183D4C225BFF01B8D2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */;
+			baseConfigurationReference = 7FDF01340A9DD8725EE27EC2 /* Pods-WageAdvanceApp-WageAdvanceAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
@@ -750,7 +750,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6598812EC66165D0E029532 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */;
+			baseConfigurationReference = B3B18EB7817D0A8051FB9001 /* Pods-WageAdvanceApp-WageAdvanceAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -773,7 +773,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3C33EE53EC6EB46984EB82A /* Pods-WageAdvanceApp.debug.xcconfig */;
+			baseConfigurationReference = 7BA34C3BE357B242F24FE0C0 /* Pods-WageAdvanceApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -809,7 +809,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A82F7459B144D832DA23D2 /* Pods-WageAdvanceApp.release.xcconfig */;
+			baseConfigurationReference = CB681EC76D82014F106D01D0 /* Pods-WageAdvanceApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;

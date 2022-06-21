@@ -1,6 +1,5 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { ExampleContainer } from '@/Containers'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
@@ -17,6 +16,7 @@ import RequestPayroll from '@/Containers/Payroll/Request'
 import ConfirmRequest from '@/Containers/Payroll/Confirm'
 import Contract from '@/Containers/Contract'
 import { UserInfo } from '@/Containers/UserInfo'
+import EmployeeHome from '@/Containers/EmployeeHome'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -77,7 +77,7 @@ const TabNavigator = () => {
     >
       <Tab.Screen
         name="Home"
-        component={ExampleContainer}
+        component={EmployeeHome}
         options={{ title: t`home.title` }}
       />
       <Tab.Screen

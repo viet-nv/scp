@@ -338,4 +338,7 @@ export default {
   'Terms of Use': 'Điều khoản sử dụng',
   'Change password': 'Thay đổi mật khẩu',
   'Update password successfully': 'Cập nhập mật khẩu thành công',
+  'Hello, ': 'Xin chào, ',
+  'Request now!': 'Ứng lương ngay!',
+  'Attendance Detail': 'Chi tiết Bảng công',
 }

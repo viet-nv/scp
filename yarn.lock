@@ -7593,6 +7593,11 @@ react-native-calendar-strip@^2.2.5:
     prop-types "^15.6.0"
     recyclerlistview "^3.0.0"
 
+react-native-circular-progress-indicator@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-circular-progress-indicator/-/react-native-circular-progress-indicator-4.2.0.tgz#db4cbedfac3273298e6cf2e2f22dc1deb97895a5"
+  integrity sha512-EEBmEWzof78CVHr4/fAAamCKoFO5IqShvGvPCIH9HznsMBhAfgbU5C/yRYESWlh7Lzy4wwULiv8vnoSYG5UAjw==
+
 react-native-codegen@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.7.tgz#86651c5c5fec67a8077ef7f4e36f7ed459043e14"
