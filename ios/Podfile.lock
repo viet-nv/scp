@@ -415,6 +415,13 @@ PODS:
     - React
   - RNVectorIcons (9.0.0):
     - React-Core
+  - TensorFlowLiteC (2.9.1):
+    - TensorFlowLiteC/Core (= 2.9.1)
+  - TensorFlowLiteC/Core (2.9.1)
+  - TensorFlowLiteObjC (2.9.1):
+    - TensorFlowLiteObjC/Core (= 2.9.1)
+  - TensorFlowLiteObjC/Core (2.9.1):
+    - TensorFlowLiteC (= 2.9.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -492,6 +499,7 @@ DEPENDENCIES:
   - RNSha256 (from `../node_modules/react-native-sha256`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - TensorFlowLiteObjC
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -510,6 +518,8 @@ SPEC REPOS:
     - hermes-engine
     - libevent
     - OpenSSL-Universal
+    - TensorFlowLiteC
+    - TensorFlowLiteObjC
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -672,9 +682,11 @@ SPEC CHECKSUMS:
   RNSha256: bf2c90a9e0cec6dcbcc4100e4e19715ae7feaa34
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
+  TensorFlowLiteC: 0a765860195fae345ca7398e33b07c80104c4b61
+  TensorFlowLiteObjC: 07e4d51379877026f8c979842cb86b208580f670
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 0843b677a9d9df791fadab82fb9d6d9c0409bc85
+PODFILE CHECKSUM: 8bc2f521818d750b362b975d7c216a784930518d
 
 COCOAPODS: 1.11.3

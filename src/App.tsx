@@ -19,7 +19,7 @@ const customTheme = extendTheme({
       200: Config.APP === 'epayz' ? '#ff5f4e' : '#8fe9ec',
       300: Config.APP === 'epayz' ? '#ff5f4e' : '#66dfe3',
       400: Config.APP === 'epayz' ? '#ff5f4e' : '#3ed5da',
-      500: Config.APP === 'epayz' ? '#ed1c24' : '#25bcc1',
+      500: Config.APP === 'epayz' ? '#B11116' : '#25bcc1',
       600: Config.APP === 'epayz' ? '#b20000' : '#149296',
       700: Config.APP === 'epayz' ? '#ff5f4e' : '#04696c',
       800: Config.APP === 'epayz' ? '#ff5f4e' : '#004041',
@@ -28,7 +28,7 @@ const customTheme = extendTheme({
     border: '#E7E7E9',
     subText: '#6E6D7A',
     text: '#333333',
-    navBackground: Config.APP === 'epayz' ? '#ed1c24' : '#1c2b4d',
+    navBackground: Config.APP === 'epayz' ? '#B11116' : '#1c2b4d',
     while: '#ffffff',
   },
 })
