@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,26 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2340D4A7286393CA004416B1 /* FinalSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2340D4A128638C44004416B1 /* FinalSDK.xcframework */; };
-		2340D4A8286393CA004416B1 /* FinalSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2340D4A128638C44004416B1 /* FinalSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2340D4AC28639545004416B1 /* TensorFlowLiteC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2D285B9BA3008A74B7 /* TensorFlowLiteC.framework */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WageAdvanceAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WageAdvanceAppTests.m */; };
+		5B006D78286B513D00A2703C /* TensorFlowLiteC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2D285B9BA3008A74B7 /* TensorFlowLiteC.framework */; };
+		5B006D7B286B545800A2703C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233EFDCF2860D76F00AF2B01 /* Alamofire.framework */; };
+		5B006D7C286B545800A2703C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 233EFDCF2860D76F00AF2B01 /* Alamofire.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B006D7E286B546000A2703C /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2E285B9BA3008A74B7 /* BigInt.framework */; };
+		5B006D7F286B546000A2703C /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2E285B9BA3008A74B7 /* BigInt.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B006D81286B546A00A2703C /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */; };
+		5B006D82286B546A00A2703C /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2A285B9BA3008A74B7 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B006D85286B547500A2703C /* TensorFlowLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2B285B9BA3008A74B7 /* TensorFlowLite.framework */; };
+		5B006D87286B549300A2703C /* Base58Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB25285B9B86008A74B7 /* Base58Swift.framework */; };
+		5B006D88286B549300A2703C /* Base58Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB25285B9B86008A74B7 /* Base58Swift.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B006D89286B54BC00A2703C /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB28285B9BA3008A74B7 /* SipHash.framework */; };
+		5B006D8A286B54BC00A2703C /* SipHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB28285B9BA3008A74B7 /* SipHash.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B006D8B286B54BD00A2703C /* SWMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB29285B9BA3008A74B7 /* SWMessages.framework */; };
+		5B006D8C286B54BD00A2703C /* SWMessages.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB29285B9BA3008A74B7 /* SWMessages.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B717C89286B683100649E5C /* FinalSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */; };
+		5B717C8A286B683100649E5C /* FinalSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CD03E8DBC0E73EBB49A7BB59 /* libPods-WageAdvanceApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C1057EB0B68252F7EACBBF /* libPods-WageAdvanceApp.a */; };
 		DAC7F48873E26DA791F6FAFE /* libPods-WageAdvanceApp-WageAdvanceAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEADD0E857D4F803A8A4CC9D /* libPods-WageAdvanceApp-WageAdvanceAppTests.a */; };
@@ -41,13 +54,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2340D4A9286393CA004416B1 /* Embed Frameworks */ = {
+		5B006D77286B513800A2703C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2340D4A8286393CA004416B1 /* FinalSDK.xcframework in Embed Frameworks */,
+				5B006D88286B549300A2703C /* Base58Swift.framework in Embed Frameworks */,
+				5B717C8A286B683100649E5C /* FinalSDK.framework in Embed Frameworks */,
+				5B006D7F286B546000A2703C /* BigInt.framework in Embed Frameworks */,
+				5B006D8C286B54BD00A2703C /* SWMessages.framework in Embed Frameworks */,
+				5B006D82286B546A00A2703C /* ObjectMapper.framework in Embed Frameworks */,
+				5B006D7C286B545800A2703C /* Alamofire.framework in Embed Frameworks */,
+				5B006D8A286B54BC00A2703C /* SipHash.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +95,6 @@
 		231FFB2D285B9BA3008A74B7 /* TensorFlowLiteC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlowLiteC.framework; sourceTree = "<group>"; };
 		231FFB2E285B9BA3008A74B7 /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BigInt.framework; sourceTree = "<group>"; };
 		233EFDCF2860D76F00AF2B01 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		2340D4A128638C44004416B1 /* FinalSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FinalSDK.xcframework; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WageAdvanceApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WageAdvanceApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WageAdvanceApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WageAdvanceApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA34C3BE357B242F24FE0C0 /* Pods-WageAdvanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WageAdvanceApp.debug.xcconfig"; path = "Target Support Files/Pods-WageAdvanceApp/Pods-WageAdvanceApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,9 +120,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2340D4AC28639545004416B1 /* TensorFlowLiteC.framework in Frameworks */,
+				5B006D81286B546A00A2703C /* ObjectMapper.framework in Frameworks */,
+				5B006D78286B513D00A2703C /* TensorFlowLiteC.framework in Frameworks */,
 				CD03E8DBC0E73EBB49A7BB59 /* libPods-WageAdvanceApp.a in Frameworks */,
-				2340D4A7286393CA004416B1 /* FinalSDK.xcframework in Frameworks */,
+				5B006D87286B549300A2703C /* Base58Swift.framework in Frameworks */,
+				5B006D7E286B546000A2703C /* BigInt.framework in Frameworks */,
+				5B006D89286B54BC00A2703C /* SipHash.framework in Frameworks */,
+				5B717C89286B683100649E5C /* FinalSDK.framework in Frameworks */,
+				5B006D85286B547500A2703C /* TensorFlowLite.framework in Frameworks */,
+				5B006D8B286B54BD00A2703C /* SWMessages.framework in Frameworks */,
+				5B006D7B286B545800A2703C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +195,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2340D4A128638C44004416B1 /* FinalSDK.xcframework */,
 				233EFDCF2860D76F00AF2B01 /* Alamofire.framework */,
 				231FFB2E285B9BA3008A74B7 /* BigInt.framework */,
 				231FFB2C285B9BA3008A74B7 /* FinalSDK.framework */,
@@ -258,7 +282,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				DCFEA3EB7267ABB22CC40457 /* [CP] Embed Pods Frameworks */,
 				181D22B56EA188D2F7AF90C5 /* [CP] Copy Pods Resources */,
-				2340D4A9286393CA004416B1 /* Embed Frameworks */,
+				5B006D77286B513800A2703C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -712,11 +736,7 @@
 				);
 				INFOPLIST_FILE = WageAdvanceAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -737,11 +757,7 @@
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				INFOPLIST_FILE = WageAdvanceAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -749,8 +765,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b7af0cfb-ba6d-4661-9c98-8d96a1d3b720";
-				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore";
+				PROVISIONING_PROFILE = "a8e7eb39-936a-4188-a076-f7a4caf36a00";
+				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore 1656431336";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WageAdvanceApp.app/WageAdvanceApp";
 			};
 			name = Release;
@@ -762,10 +778,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -774,10 +790,7 @@
 				);
 				INFOPLIST_FILE = WageAdvanceApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -786,7 +799,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.epayz.ungluong;
 				PRODUCT_NAME = WageAdvanceApp;
-				PROVISIONING_PROFILE_SPECIFIER = "com.scp.uongluong AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_WORKSPACE = YES;
@@ -803,7 +816,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -811,10 +824,7 @@
 				);
 				INFOPLIST_FILE = WageAdvanceApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -824,8 +834,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.epayz.ungluong;
 				PRODUCT_NAME = WageAdvanceApp;
-				PROVISIONING_PROFILE = "b7af0cfb-ba6d-4661-9c98-8d96a1d3b720";
-				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore";
+				PROVISIONING_PROFILE = "a8e7eb39-936a-4188-a076-f7a4caf36a00";
+				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore 1656431336";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -846,10 +856,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WageAdvanceApp-tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -877,10 +884,7 @@
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WageAdvanceApp-tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -888,8 +892,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WageAdvanceApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b7af0cfb-ba6d-4661-9c98-8d96a1d3b720";
-				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore";
+				PROVISIONING_PROFILE = "a8e7eb39-936a-4188-a076-f7a4caf36a00";
+				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore 1656431336";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -909,11 +913,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WageAdvanceApp-tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -940,11 +940,7 @@
 				DEVELOPMENT_TEAM = 5TVDXXMPX9;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "WageAdvanceApp-tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -952,8 +948,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WageAdvanceApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b7af0cfb-ba6d-4661-9c98-8d96a1d3b720";
-				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore";
+				PROVISIONING_PROFILE = "a8e7eb39-936a-4188-a076-f7a4caf36a00";
+				PROVISIONING_PROFILE_SPECIFIER = "com.epayz.ungluong AppStore 1656431336";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WageAdvanceApp-tvOS.app/WageAdvanceApp-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
@@ -992,7 +988,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1009,10 +1005,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
-					"$(inherited)",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -1056,7 +1049,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1066,10 +1059,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/lib/swift,
-					"$(inherited)",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",

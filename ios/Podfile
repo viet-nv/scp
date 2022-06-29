@@ -1,7 +1,7 @@
 pod 'RNFileViewer', :path => '../node_modules/react-native-file-viewer'
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 pod 'RNSha256', :path => '../node_modules/react-native-sha256'
-pod 'TensorFlowLiteObjC'
+# pod 'TensorFlowLiteObjC'
 
 
 require_relative '../node_modules/react-native/scripts/react_native_pods'

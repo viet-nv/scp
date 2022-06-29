@@ -327,7 +327,9 @@ export default {
   Sign: 'Ký',
   COMMITMENT_AGREEMENT: 'Văn bản Cam kết',
   MASTER_CONTRACT: 'Hợp đồng Khung',
+  COMPLETED: 'Hoàn thành',
   OUTDATED: 'Hết hạn',
+  REVIEWING: 'Đang thẩm định',
   Status: 'Trạng thái',
   'Account Management': 'Tài Khoản',
   'User Information': 'Thông tin tài khoản',
@@ -341,4 +343,7 @@ export default {
   'Hello, ': 'Xin chào, ',
   'Request now!': 'Ứng lương ngay!',
   'Attendance Detail': 'Chi tiết Bảng công',
+  'Waiting for signing documents': 'Văn bản chờ ký',
+  'No contract needs to be signed': 'Không có hợp đồng cần ký',
+  'Contract List': 'Danh sách hợp đồng',
 }

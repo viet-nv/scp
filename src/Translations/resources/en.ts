@@ -287,4 +287,6 @@ export default {
   COMMITMENT_AGREEMENT: 'Commitment Agreement',
   MASTER_CONTRACT: 'Master Contract',
   OUTDATED: 'Expired',
+  COMPLETED: 'Completed',
+  REVIEWING: 'Reviewing',
 }

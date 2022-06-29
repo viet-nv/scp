@@ -1,7 +1,8 @@
 import { Header, Screen } from '@/Components'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Box, Button, Flex, Text, VStack } from 'native-base'
+import { Box, Button, Divider, Flex, HStack, Text, VStack } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -93,6 +94,14 @@ function Contract() {
       )
   }
 
+  const masterContracts = otherData?.data?.filter(
+    (item: any) => item.type === 'MASTER_CONTRACT',
+  )
+
+  const commitmentContracts = otherData?.data?.filter(
+    (item: any) => item.type === 'COMMITMENT_AGREEMENT',
+  )
+
   return (
     <>
       <Screen
@@ -139,10 +148,19 @@ function Contract() {
           <ScrollView
             style={{
               marginTop: 56,
-              marginBottom: insets.bottom,
             }}
           >
-            <VStack paddingX="12px" space="24px" marginTop="16px">
+            <VStack paddingX="12px" space="16px" marginTop="16px">
+              <Text
+                fontWeight="500"
+                fontSize="16px"
+              >{t`Waiting for signing documents`}</Text>
+              {!waitingSignData?.data?.length && (
+                <Text
+                  textAlign="center"
+                  color={Colors.subText}
+                >{t`No contract needs to be signed`}</Text>
+              )}
               {waitingSignData?.data?.map((item: any) => (
                 <Box
                   key={item.id}
@@ -154,15 +172,6 @@ function Contract() {
                   <Text textAlign="center" fontWeight={500}>
                     {t(item.type)}
                   </Text>
-
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    marginTop="12px"
-                  >
-                    <Text color={Colors.subText}>{t`Status`}</Text>
-                    <Text>{t`Waiting to sign`}</Text>
-                  </Flex>
 
                   <Flex
                     flexDirection="row"
@@ -197,6 +206,40 @@ function Contract() {
                 </Box>
               ))}
 
+              <Divider />
+
+              <Text fontSize="16px" fontWeight="500">{t`Contract List`}</Text>
+
+              <HStack space="16px">
+                <Box
+                  borderRadius="4px"
+                  borderWidth="1px"
+                  borderColor={Colors.border}
+                  flex={1}
+                >
+                  <TouchableOpacity
+                    style={{
+                      padding: 8,
+                      justifyContent: 'center',
+                      alignSelf: 'center',
+                    }}
+                  >
+                    <Ionicons name="file" />
+                    <Text>{t`COMMITMENT_AGREEMENT`}</Text>
+                  </TouchableOpacity>
+                </Box>
+
+                <Box
+                  borderRadius="4px"
+                  borderWidth="1px"
+                  borderColor={Colors.border}
+                  flex={1}
+                >
+                  <TouchableOpacity style={{ padding: 12 }}>
+                    <Text>{t`MASTER_CONTRACT`}</Text>
+                  </TouchableOpacity>
+                </Box>
+              </HStack>
               {otherData?.data?.map((item: any) => (
                 <Box
                   key={item.id}
@@ -238,6 +281,8 @@ function Contract() {
                 </Box>
               ))}
             </VStack>
+
+            <Flex height={insets.bottom}></Flex>
           </ScrollView>
         )}
       </Screen>
