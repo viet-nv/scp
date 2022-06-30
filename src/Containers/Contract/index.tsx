@@ -2,7 +2,16 @@ import { Header, Screen } from '@/Components'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Colors } from '@/Theme/Variables'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Box, Button, Divider, Flex, HStack, Text, VStack } from 'native-base'
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  HStack,
+  Text,
+  VStack,
+  Actionsheet,
+} from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -101,6 +110,10 @@ function Contract() {
   const commitmentContracts = otherData?.data?.filter(
     (item: any) => item.type === 'COMMITMENT_AGREEMENT',
   )
+
+  const [showType, setShowType] = useState('')
+
+  const data = showType === 'master' ? masterContracts : commitmentContracts
 
   return (
     <>
@@ -218,14 +231,15 @@ function Contract() {
                   flex={1}
                 >
                   <TouchableOpacity
+                    onPress={() => setShowType('commitment')}
                     style={{
                       padding: 8,
                       justifyContent: 'center',
-                      alignSelf: 'center',
+                      alignItems: 'center',
                     }}
                   >
-                    <Ionicons name="file" />
-                    <Text>{t`COMMITMENT_AGREEMENT`}</Text>
+                    <Ionicons name="document-text" size={24} />
+                    <Text marginTop="6px">{t`COMMITMENT_AGREEMENT`}</Text>
                   </TouchableOpacity>
                 </Box>
 
@@ -235,51 +249,51 @@ function Contract() {
                   borderColor={Colors.border}
                   flex={1}
                 >
-                  <TouchableOpacity style={{ padding: 12 }}>
-                    <Text>{t`MASTER_CONTRACT`}</Text>
+                  <TouchableOpacity
+                    onPress={() => setShowType('master')}
+                    style={{
+                      padding: 8,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Ionicons name="contract" size={24} />
+                    <Text marginTop="6px">{t`MASTER_CONTRACT`}</Text>
                   </TouchableOpacity>
                 </Box>
               </HStack>
-              {otherData?.data?.map((item: any) => (
-                <Box
-                  key={item.id}
-                  borderRadius="4px"
-                  borderWidth="1px"
-                  padding="12px"
-                  borderColor={Colors.border}
-                >
-                  <Text textAlign="center" fontWeight={500}>
-                    {t(item.type)}
+
+              <Actionsheet isOpen={!!showType} onClose={() => setShowType('')}>
+                <Actionsheet.Content>
+                  <Text fontWeight="500" fontSize={16}>
+                    {showType === 'master'
+                      ? t`MASTER_CONTRACT`
+                      : t`COMMITMENT_AGREEMENT`}
                   </Text>
+                  {data?.map((item: any) => (
+                    <>
+                      <Actionsheet.Item
+                        onPress={() => hanldeViewFile(item.object)}
+                      >
+                        <HStack justifyContent="space-between">
+                          <Text color={Colors.subText}>{t`Contract No.`}:</Text>
+                          <Text fontWeight="500" marginLeft="16px">
+                            {item.contract_no}
+                          </Text>
+                        </HStack>
 
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    marginTop="12px"
-                  >
-                    <Text color={Colors.subText}>{t`Status`}</Text>
-                    <Text>{t(item.state)}</Text>
-                  </Flex>
-
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    marginTop="12px"
-                  >
-                    <Text color={Colors.subText}>{t`Contract No.`}</Text>
-                    <Text>{item.contract_no}</Text>
-                  </Flex>
-
-                  <Button
-                    flex={1}
-                    size="sm"
-                    variant="outline"
-                    marginRight="12px"
-                    marginTop="12px"
-                    onPress={() => hanldeViewFile(item.object)}
-                  >{t`View contract`}</Button>
-                </Box>
-              ))}
+                        <HStack justifyContent="space-between" marginTop="8px">
+                          <Text color={Colors.subText}>{t`Status`}:</Text>
+                          <Text fontWeight="500" marginLeft="16px">
+                            {t(item.state)}
+                          </Text>
+                        </HStack>
+                      </Actionsheet.Item>
+                      <Divider />
+                    </>
+                  ))}
+                </Actionsheet.Content>
+              </Actionsheet>
             </VStack>
 
             <Flex height={insets.bottom}></Flex>
