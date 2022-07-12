@@ -54,6 +54,8 @@ export const MenuScreen = () => {
   const { isOpen, onClose, onOpen } = useDisclose()
   const [isShowChangepass, showChangePass] = useState(false)
 
+  const [kycResult, setKycResult] = useState('')
+
   return (
     <Screen
       preset="scroll"
@@ -124,9 +126,24 @@ export const MenuScreen = () => {
 
           <TouchableOpacity
             style={ROW}
-            onPress={() => {
-              NativeModules.VnptEkyc.ekyc('FullFlow', console.log)
+            onPress={async () => {
+              console.log('ssss')
+              await NativeModules.RNEkycVnptSdk.initVnptEkyc('2')
+                .then((result: any) => {
+                  console.log('result ekyc:' + result)
+                  setKycResult(result)
+                })
+                .catch((err: any) => {
+                  setKycResult(err)
+                  console.log('err ekyc:' + err)
+                })
+
+              console.log('xxxx')
               // navigation.navigate('UserInfo')
+              // NativeModules.RNEkycVnptSdk.createCalendarEvent(
+              //   'testName',
+              //   'testLocation',
+              // )
             }}
           >
             <Icon
@@ -203,7 +220,7 @@ export const MenuScreen = () => {
           <TouchableOpacity
             style={ROW}
             onPress={() => {
-              const localFile = `${RNFS.DocumentDirectoryPath}/temporaryfile`
+              const localFile = `${RNFS.DocumentDirectoryPath}/temporaryfile.docx`
 
               RNFS.downloadFile({
                 fromUrl: `${
@@ -324,6 +341,8 @@ export const MenuScreen = () => {
           color={Colors.subText}
         />
       </TouchableOpacity>
+
+      <Text>{JSON.stringify(kycResult)}</Text>
     </Screen>
   )
 }
