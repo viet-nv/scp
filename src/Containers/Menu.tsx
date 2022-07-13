@@ -127,8 +127,7 @@ export const MenuScreen = () => {
           <TouchableOpacity
             style={ROW}
             onPress={async () => {
-              console.log('ssss')
-              await NativeModules.RNEkycVnptSdk.initVnptEkyc('2')
+              await NativeModules.RNEkycVnptSdk.initVnptEkyc('1')
                 .then((result: any) => {
                   console.log('result ekyc:' + result)
                   setKycResult(result)

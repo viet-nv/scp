@@ -40,13 +40,8 @@ RCT_EXPORT_METHOD(initVnptEkyc:(NSString*)type resoler:(RCTPromiseResolveBlock)r
     sdkRootViewController.isVersion = Pro;
     sdkRootViewController.isShowResult = true;
     sdkRootViewController.titleSelect = @"Xác minh thông tin";
-    sdkRootViewController.subTitleSelect =
-        @"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; "
-        @"font-size: 14\">Qúy khách vui lòng lựa chọn loại giấy tờ tùy thân "
-        @"<u> đã sử dụng để đăng ký dịch vụ eMB tại MBBank</u> để xác minh "
-        @"thông tin</span>";
-    sdkRootViewController.modalPresentationStyle =
-        UIModalPresentationFullScreen;
+    sdkRootViewController.subTitleSelect = @"Vui lòng chọn loại giấy tờ";
+    sdkRootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     sdkRootViewController.flowType = full;
 
     if (modalPresent) {
@@ -86,10 +81,14 @@ RCT_EXPORT_METHOD(initVnptEkyc:(NSString*)type resoler:(RCTPromiseResolveBlock)r
 }
 
 - (void)initParamSdk {
-  SaveData.shared.SDTokenKey = @"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJG+7yjM11qSToRJ96bNmKesY+LNLBHuSaqMFxVEPWJ2y8jEKqqXAGeNJqP2BxSCvZKjcD9G67atTdOjwJ9ijWcCAwEAAQ==";
-  SaveData.shared.SDTokenId = @"e180718c-8965-7d27-e053-62199f0a99a1";
-  SaveData.shared.SDAuthorization = @"bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTgwNzAwYy1lNmM3LTRlZjAtZTA1My02MzE5OWYwYTk1MWIiLCJhdWQiOlsicmVzdHNlcnZpY2UiXSwidXNlcl9uYW1lIjoic29sZWlsdm4uMTNAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCJdLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdCIsIm5hbWUiOiJzb2xlaWx2bi4xM0BnbWFpbC5jb20iLCJ1dWlkX2FjY291bnQiOiJlMTgwNzAwYy1lNmM3LTRlZjAtZTA1My02MzE5OWYwYTk1MWIiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6IjEyMjRlMzdhLTFmZjktNDBiZS05NGFjLWI5NGU5YzExNWRmMCIsImNsaWVudF9pZCI6ImFkbWluYXBwIn0.2pFa6UgsDna7HPjehAxw4RJRFY2Sgh5G6x5mnMPKwPn2n9hO0DtOZwkgGNgulqhrNY-NtRtLf3a5MIeykY1ICUFTZeJzsl1-OWz3bzBgyQLSpEpkdEucO_U6g2yg0VXzkKI6wAnhNOgGQT9ENMTb3SWKR55mtQmQzQ0d40FSm0ILAkFx9VCbm18RuAeECZKSyMItFr_Umsc4TJFS5t2tpTeA15dQC7aweNz8Px_YLgVTWjcrb05mzd2G6Pof9dKxJKuHOrN0Jda996KcJ2M70V774tVNLCC174FqNsXvb9gymz-DH5rACCBJLpPlFZ6ov6Qhk3rDcJCJpcGCuaR3KQ";
-   // SaveData.shared.expriseTime = 120;
+  [SaveData shared].SDTokenKey = @"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJG+7yjM11qSToRJ96bNmKesY+LNLBHuSaqMFxVEPWJ2y8jEKqqXAGeNJqP2BxSCvZKjcD9G67atTdOjwJ9ijWcCAwEAAQ==";
+  [SaveData shared].SDTokenId = @"e180718c-8965-7d27-e053-62199f0a99a1";
+  [SaveData shared].SDAuthorization = @"bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTgwNzAwYy1lNmM3LTRlZjAtZTA1My02MzE5OWYwYTk1MWIiLCJhdWQiOlsicmVzdHNlcnZpY2UiXSwidXNlcl9uYW1lIjoic29sZWlsdm4uMTNAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCJdLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdCIsIm5hbWUiOiJzb2xlaWx2bi4xM0BnbWFpbC5jb20iLCJ1dWlkX2FjY291bnQiOiJlMTgwNzAwYy1lNmM3LTRlZjAtZTA1My02MzE5OWYwYTk1MWIiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6IjEyMjRlMzdhLTFmZjktNDBiZS05NGFjLWI5NGU5YzExNWRmMCIsImNsaWVudF9pZCI6ImFkbWluYXBwIn0.2pFa6UgsDna7HPjehAxw4RJRFY2Sgh5G6x5mnMPKwPn2n9hO0DtOZwkgGNgulqhrNY-NtRtLf3a5MIeykY1ICUFTZeJzsl1-OWz3bzBgyQLSpEpkdEucO_U6g2yg0VXzkKI6wAnhNOgGQT9ENMTb3SWKR55mtQmQzQ0d40FSm0ILAkFx9VCbm18RuAeECZKSyMItFr_Umsc4TJFS5t2tpTeA15dQC7aweNz8Px_YLgVTWjcrb05mzd2G6Pof9dKxJKuHOrN0Jda996KcJ2M70V774tVNLCC174FqNsXvb9gymz-DH5rACCBJLpPlFZ6ov6Qhk3rDcJCJpcGCuaR3KQ";
+  [SaveData shared].ExpriseTime = 120;
+
+
+
+   RCTLog(@"token key: %@", [SaveData shared].SDTokenKey);
   /* ConfigSDK.shared.expriseTime = 120; */
   /* ConfigSDK.shared.language = @"vi"; */
 }
@@ -111,21 +110,21 @@ RCT_EXPORT_METHOD(initVnptEkyc:(NSString*)type resoler:(RCTPromiseResolveBlock)r
 - (void)sentCallback {
   RCTLogInfo(@"inside callback");
   NSString *timeoutJson =
-      [NSString stringWithFormat:@"%@", SaveData.shared.networkProblem];
+      [NSString stringWithFormat:@"%@", [SaveData shared].networkProblem];
   NSString *infoJson =
-      [NSString stringWithFormat:@"%@", SaveData.shared.jsonInfo];
+      [NSString stringWithFormat:@"%@", [SaveData shared].jsonInfo];
   NSString *compareJson =
-      [NSString stringWithFormat:@"%@", SaveData.shared.jsonCompareFace];
+      [NSString stringWithFormat:@"%@", [SaveData shared].jsonCompareFace];
   NSString *livenessJson =
-      [NSString stringWithFormat:@"%@", SaveData.shared.jsonLivenessFace];
+      [NSString stringWithFormat:@"%@", [SaveData shared].jsonLivenessFace];
   NSString *maskedFaceJson =
-      [NSString stringWithFormat:@"%@", SaveData.shared.jsonCheckMask];
+      [NSString stringWithFormat:@"%@", [SaveData shared].jsonCheckMask];
 
-  NSString *imageFront = [self encodeToBase64String:SaveData.shared.imageFront
+  NSString *imageFront = [self encodeToBase64String:[SaveData shared].imageFront
                                           typeImage:@"IMAGE_FRONT"];
-  NSString *imageBack = [self encodeToBase64String:SaveData.shared.imageBack
+  NSString *imageBack = [self encodeToBase64String:[SaveData shared].imageBack
                                          typeImage:@"IMAGE_BACK"];
-  NSString *imageFace = [self encodeToBase64String:SaveData.shared.imageFace
+  NSString *imageFace = [self encodeToBase64String:[SaveData shared].imageFace
                                          typeImage:@"IMAGE_FACE"];
 
    RCTLog(@"timeout data ekyc: %@", timeoutJson);
