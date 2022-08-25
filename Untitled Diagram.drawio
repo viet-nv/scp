@@ -1,1 +1,219 @@
-<mxfile host="app.diagrams.net" modified="2022-08-24T07:39:36.306Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36" version="20.2.6" etag="7nFXGXzbPHC12UF9W8IP" type="github"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">7VhZc9MwEP41Hp5gfBQnecRp0wKhU2ihw6NiK7aI7DWynINfzyqWYzsOOYD0yDQv0a43K2m/b4/YcPrx/FKQNPoEAeWGbQZzwzk3bNuybQe/lGZRaLq9bqEIBQu0UaW4Zb+oVppam7OAZg1DCcAlS5tKH5KE+rKhI0LArGk2Bt7cNSUhbSlufcLb2nsWyEjfwu5U+ivKwqjc2XJ7xZOYlMb6JllEApjVVM6F4fQFgCxW8bxPuQpeGZf794t7Ppy4lx8+Zz/JV+/j3fW314WzwSE/WV1B0ET+X9d24XpKeK7jpe8qF2UABeRJQJUT03C8SMYclxYuf1ApFxpwkktAFQgZQQgJ4UOAVNuNIZHazFIyTYJ3CliURxz8SaEaMM71Hihp+y5KmRQwWWGnHKyAUMacjCj3iD8JlwftAweBjxJIqHIVIBn0XarDXVRab8/YagwyyIVPt9jpbJFEhHSbP7ewU+er8VQjd0khplIs0EBQTiSbNslMdE6EK7sKd1xo6A+ggdOiwZDEqcp6oFnySuJqBmKyhRsKl1nEJL1NyTJAMywnTb7UeYBX9UJOskyjuAPkw0CaUiHpfGtYy6euzu2yuGlxVlUKq0z/qFYlzswjAXHWAuI7Fs+XlPyXlHT3TMmyY+3MSU2Wkhh7p6j2dAMskTUTGI8zPNg6dVYb/j2b3rbYdA0tMu3G41nT7ZHI1DmMS9aT55L7hxbhcgyDNxK4CtUq5XkYIlnQXWI4g3btiiAe5dnudtHAWDFoQGLGVbyuKJ9SyXyyoakQzkLc99xHuKnYTB7ckiUhSm4l3S3JivX3iM2m02w2K7nebcwN3aZ7rG7TaWF6g+gV0NkmX+J7Yh3fsddA6D12y+/uU6SfdQl+8I5fVtPdLd/as0xr9phvHPw0CPT0p4DeXjPlyxhwHIbZpzYIlCes8cnL+ag9CYxykSwHAcjlyySwbRKwNzWhB50EykJYA/ULTQlDMM3hKc4B6//8z5zHngPKStGEgKuY2maRYSeGwfos5ljHwwDF6k1tUQqr993OxW8=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-08-25T05:01:35.280Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36" etag="8_fj_meeZiC4o9qDQm37" version="20.2.7" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2125" dy="813" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-12" value="Farm Page" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="130.87" y="530" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-14" value="Redux Store" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="400.87" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-16" value="Farm Contract" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="260" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380.87" y="560" as="sourcePoint" />
+            <mxPoint x="240.87" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-18" value="Get list farm to display" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="KA_FsLk16-9v1-2NPB7d-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-30" value="" style="line;strokeWidth=2;html=1;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-18.75" y="793.85" width="412.69" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-31" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="KA_FsLk16-9v1-2NPB7d-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="186.87" y="747" as="sourcePoint" />
+            <mxPoint x="266.87" y="747" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-36" value="Render" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-31">
+          <mxGeometry x="-0.2571" y="1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-65" value="Get data to calc pool/farm APR" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-32" target="KA_FsLk16-9v1-2NPB7d-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-32" value="Farming Pool 1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-50" y="752" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-33" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="KA_FsLk16-9v1-2NPB7d-34">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="186.87" y="660" as="sourcePoint" />
+            <mxPoint x="266.87" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-35" value="Render" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-33">
+          <mxGeometry x="-0.2857" y="3" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.425;entryY=-0.058;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-34" target="KA_FsLk16-9v1-2NPB7d-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-67" value="Get data to calc pool/farm APR" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-66">
+          <mxGeometry x="0.0099" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-34" value="Farming Pool 2" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-50" y="620" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-37" value="Subgraph" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-420" y="685" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-43" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="181.43" y="530" as="sourcePoint" />
+            <mxPoint x="183" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="183" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-55" value="Get poolLength() (total farm)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-43">
+          <mxGeometry x="-0.0091" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-51" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="KA_FsLk16-9v1-2NPB7d-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="420" as="sourcePoint" />
+            <mxPoint x="230" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-53" value="Get user deposited NFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-51">
+          <mxGeometry x="0.385" y="1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-54" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;entryX=0.171;entryY=1.063;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="KA_FsLk16-9v1-2NPB7d-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="420" as="sourcePoint" />
+            <mxPoint x="140" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="121" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-56" value="Get pools info" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-54">
+          <mxGeometry x="0.4223" y="-2" relative="1" as="geometry">
+            <mxPoint x="-3" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-57" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="326.87" y="360" as="sourcePoint" />
+            <mxPoint x="410" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="360" />
+              <mxPoint x="410" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-58" value="Get. NFT detail info" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-57">
+          <mxGeometry x="0.5319" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-59" value="NFT Position Manager Contract" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="260" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-60" value="Aggreate" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="440" as="sourcePoint" />
+            <mxPoint x="290" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-61" value="Aggregate&amp;nbsp;" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-59">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="440" as="sourcePoint" />
+            <mxPoint x="320" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.843;entryY=-0.075;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-62" target="KA_FsLk16-9v1-2NPB7d-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-64" value="Store Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-63">
+          <mxGeometry x="0.4087" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-62" value="Dispatcher" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="250" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-72" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="475" y="820" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-73" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.72;exitY=0.691;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="740" as="sourcePoint" />
+            <mxPoint x="330" y="709" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-74" target="KA_FsLk16-9v1-2NPB7d-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-77" value="Get Available NFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-76">
+          <mxGeometry x="-0.1786" y="1" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-74" value="Deposit/withdraw Modal" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="330" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-75" value="NFT PositionManager Contract" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="620" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-78" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="KA_FsLk16-9v1-2NPB7d-72" target="KA_FsLk16-9v1-2NPB7d-74">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="445" y="830" as="sourcePoint" />
+            <mxPoint x="315" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-79" value="Select NFT and call Deposit" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-78">
+          <mxGeometry x="-0.084" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-80" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="30" y="110" width="20" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-81" value="Auto Refresh each block number" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-30" y="260" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-82" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="188" y="1000" as="sourcePoint" />
+            <mxPoint x="340" y="999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-85" value="stake/unstake modal" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="340" y="970" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-87" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="KA_FsLk16-9v1-2NPB7d-85">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="860" as="sourcePoint" />
+            <mxPoint x="320" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-88" value="View modal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KA_FsLk16-9v1-2NPB7d-87">
+          <mxGeometry x="0.2218" y="1" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-89" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;strokeColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="540" y="760" width="20" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="KA_FsLk16-9v1-2NPB7d-90" value="When user deposited sucess, stake modal doesnt trigger recall farm data =&amp;gt; delay, no nft show" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="560" y="860" width="180" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
